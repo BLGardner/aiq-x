@@ -121,9 +121,6 @@ AIQ-X is designed with privacy and portability in mind:
 - **Export and Import**  
   Save and restore results as `.json` files for backup or external analysis.
 
-- **Data Reset**  
-  Easily clear browser data to reset the suite.
-
 - **Portability**  
   Move your results seamlessly across machines.
 
