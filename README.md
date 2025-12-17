@@ -1,90 +1,140 @@
-AIQ-X Professional Suite
+# AIQ-X Professional Suite
 
-An advanced benchmarking and diagnostic framework designed to evaluate Large Language Models (LLMs) across multiple dimensions of reasoning, precision, and reliability.
-🎯 What's New in v4.0
+**AIQ-X** is an advanced benchmarking and diagnostic framework designed to evaluate Large Language Models (LLMs) across multiple dimensions of reasoning, precision, and reliability. It goes beyond surface-level accuracy to provide actionable insights for both model developers and decision makers.
 
-    Multi-Tier Testing: Choose between Basic (10Q), Advanced (25Q), or Expert (40+Q) suites.
+---
 
-    Professional Diagnostics: In-depth analysis highlighting specific weaknesses and strengths.
+## 🎯 What’s New in v4.0
 
-    Adaptive Testing: Tiers now probe deeper based on real-time performance patterns.
+- **Multi-Tier Testing**  
+  Choose between **Basic (10 questions)**, **Advanced (25 questions)**, or **Expert (40+ questions)** evaluation suites.
 
-    Actionable Insights: Direct guidance for both model trainers and end-users.
+- **Professional Diagnostics**  
+  In-depth analysis that highlights specific strengths and weaknesses rather than just aggregate scores.
 
-📊 Test Tiers Explained
-Tier	Questions	Duration	Best For
-Basic	10	2-5 mins	Quick comparisons and core capability checks.
-Advanced	25	5-10 mins	Identifying common failure modes and depth analysis.
-Expert	40+	10-20 mins	Stress tests, adversarial examples, and boundary cases.
+- **Adaptive Testing**  
+  Question paths dynamically probe deeper based on real-time performance patterns.
 
-    Recommendation: Start with the Basic tier to establish a baseline, then escalate to Advanced or Expert for rigorous evaluation.
+- **Actionable Insights**  
+  Clear guidance tailored for both model trainers and end users.
 
-🔬 For Model Trainers & Researchers
+---
 
-The Diagnostics tab identifies specific failure patterns to help guide your development cycle:
+## 📊 Test Tiers Explained
 
-    Consistency Issues: Variance across similar prompts.
+| Tier     | Questions | Duration   | Best For |
+|----------|-----------|------------|----------|
+| Basic    | 10        | 2–5 mins   | Quick comparisons and core capability checks |
+| Advanced | 25        | 5–10 mins  | Identifying common failure modes and depth analysis |
+| Expert   | 40+       | 10–20 mins | Stress tests, adversarial examples, and boundary cases |
 
-    Overconfidence Markers: Use of absolute language in uncertain contexts.
+**Recommendation:**  
+Start with the **Basic** tier to establish a baseline, then escalate to **Advanced** or **Expert** for more rigorous evaluation.
 
-    Instruction Following: Failures in adhering to specific formatting or constraints.
+---
 
-    Reasoning Gaps: Logical inconsistencies within multi-step problems.
+## 🔬 For Model Trainers & Researchers
 
-Reports include targeted suggestions for training data refinement, architectural adjustments, and fine-tuning strategies.
-💡 For End Users & Decision Makers
+The **Diagnostics** view identifies recurring failure patterns to support iterative model improvement, including:
 
-Stop relying on marketing claims. The Insights tab provides empirical data to drive your model selection:
+- **Consistency Issues**  
+  Variance in responses across semantically similar prompts.
 
-    Recommended Use Cases: Match models to tasks based on actual performance.
+- **Overconfidence Markers**  
+  Use of absolute or definitive language in uncertain contexts.
 
-    Risk Profiles: Visual indicators of where a model is likely to hallucinate or fail.
+- **Instruction Following Failures**  
+  Inability to adhere to explicit formatting rules or constraints.
 
-    Application Guidance: e.g., "Excellent for creative writing; avoid for mathematical tasks."
+- **Reasoning Gaps**  
+  Logical inconsistencies within multi-step or dependent problems.
 
-📈 Understanding Scores
+Reports include targeted suggestions for:
+- Training data refinement  
+- Architectural adjustments  
+- Fine-tuning and alignment strategies  
 
-Scores are calculated across four primary dimensions:
+---
 
-    Length & Depth: Rewarding comprehensive and nuanced responses.
+## 💡 For End Users & Decision Makers
 
-    Uncertainty Calibration: Rewarding appropriate "hedging" and honesty about limitations.
+Move beyond marketing claims. The **Insights** tab provides empirical, task-relevant data to guide model selection:
 
-    Structure: Assessing logical organization and clarity of thought.
+- **Recommended Use Cases**  
+  Match models to tasks based on observed performance.
 
-    Domain-Specific: Criteria tailored to the unique requirements of each subject.
+- **Risk Profiles**  
+  Visual indicators of where a model is likely to hallucinate or fail.
 
-Note: Low scores indicate a mismatch between the model's response style and the evaluation criteria, which may vary in importance depending on your specific use case.
-🎓 Domain Definitions
+- **Application Guidance**  
+  Examples:  
+  - “Excellent for creative writing”  
+  - “Avoid for mathematical or formal reasoning tasks”
 
-AIQ-X evaluates models across these 10 critical domains:
+---
 
-    Logical Reasoning: Decision theory, paradoxes, and complex logic.
+## 📈 Understanding Scores
 
-    Mathematical Precision: Operational accuracy and ambiguity handling.
+AIQ-X scores responses across four primary dimensions:
 
-    Epistemic Calibration: Awareness of knowledge limitations.
+- **Length & Depth**  
+  Rewards comprehensive, nuanced, and well-developed answers.
 
-    Ethical Reasoning: Navigating ethical dilemmas and frameworks.
+- **Uncertainty Calibration**  
+  Rewards appropriate hedging and honesty about limitations.
 
-    Creativity: Innovative thinking and novel solution generation.
+- **Structure**  
+  Evaluates logical organization and clarity of thought.
 
-    Robustness: Edge case handling and challenging assumptions.
+- **Domain-Specific Criteria**  
+  Tailored scoring rules based on the subject area being tested.
 
-    Planning: Multi-step plans with interdependent constraints.
+> **Note:**  
+> Low scores do not necessarily indicate poor quality overall. They often reflect a mismatch between a model’s response style and the evaluation criteria, which may vary in importance depending on your use case.
 
-    Meta-Cognition: Self-awareness and identifying limitations.
+---
 
-    Instruction Compliance: Strict adherence to explicit requirements.
+## 🎓 Domain Definitions
 
-    Communication Clarity: Explaining complex topics to non-experts.
+AIQ-X evaluates performance across **10 critical domains**:
 
-⚙️ Data Management & Privacy
+1. **Logical Reasoning** – Decision theory, paradoxes, and complex logic  
+2. **Mathematical Precision** – Operational accuracy and ambiguity handling  
+3. **Epistemic Calibration** – Awareness of knowledge limits  
+4. **Ethical Reasoning** – Navigating ethical dilemmas and frameworks  
+5. **Creativity** – Novel ideas and innovative solutions  
+6. **Robustness** – Edge-case handling and assumption stress-testing  
+7. **Planning** – Multi-step reasoning with interdependent constraints  
+8. **Meta-Cognition** – Self-awareness and limitation recognition  
+9. **Instruction Compliance** – Strict adherence to explicit requirements  
+10. **Communication Clarity** – Explaining complex topics to non-experts  
 
-    Local Storage: All evaluation data stays in your browser. Nothing is sent to external servers.
+---
 
-    Export/Import: Save results as .json for backup or external analysis.
+## ⚙️ Data Management & Privacy
 
-    Data Reset: Easily clear browser data to reset the suite.
+AIQ-X is designed with privacy and portability in mind:
 
-    Portability: Move your results across machines with ease.
+- **Local Storage Only**  
+  All evaluation data remains in your browser. Nothing is sent to external servers.
+
+- **Export and Import**  
+  Save and restore results as `.json` files for backup or external analysis.
+
+- **Data Reset**  
+  Easily clear browser data to reset the suite.
+
+- **Portability**  
+  Move your results seamlessly across machines.
+
+---
+
+## 🚀 Getting Started
+
+Clone or deploy the suite, select a test tier, and begin evaluating.  
+For meaningful comparisons, use consistent prompts and tiers across models.
+
+---
+
+**AIQ-X Professional Suite**  
+*Measure what matters. Diagnose what fails. Choose models with confidence.*
