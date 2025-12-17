@@ -1,60 +1,90 @@
+AIQ-X Professional Suite
 
-AIQ-X Professional Suite Guide
+An advanced benchmarking and diagnostic framework designed to evaluate Large Language Models (LLMs) across multiple dimensions of reasoning, precision, and reliability.
 🎯 What's New in v4.0
-Multi-Tier Testing: Choose from Basic (10Q), Advanced (25Q), or Expert (40+Q) test suites.
 
-Professional Diagnostics: Detailed analysis with specific weaknesses, strengths, and improvement recommendations.
+    Multi-Tier Testing: Choose between Basic (10Q), Advanced (25Q), or Expert (40+Q) suites.
 
-Adaptive Testing: Advanced and Expert tiers probe deeper based on performance patterns.
+    Professional Diagnostics: In-depth analysis highlighting specific weaknesses and strengths.
 
-Actionable Insights: Clear guidance for model trainers and best-fit application recommendations for users.
+    Adaptive Testing: Tiers now probe deeper based on real-time performance patterns.
+
+    Actionable Insights: Direct guidance for both model trainers and end-users.
+
 📊 Test Tiers Explained
-Basic Tier (10 questions): Core capabilities assessment across all domains. Perfect for quick comparisons. Takes 2-5 minutes.
+Tier	Questions	Duration	Best For
+Basic	10	2-5 mins	Quick comparisons and core capability checks.
+Advanced	25	5-10 mins	Identifying common failure modes and depth analysis.
+Expert	40+	10-20 mins	Stress tests, adversarial examples, and boundary cases.
 
-Advanced Tier (25 questions): Includes Basic plus 15 follow-up questions targeting common failure modes. Takes 5-10 minutes.
+    Recommendation: Start with the Basic tier to establish a baseline, then escalate to Advanced or Expert for rigorous evaluation.
 
-Expert Tier (40+ questions): Comprehensive with stress tests, adversarial examples, and boundary cases. Takes 10-20 minutes.
-
-Start with Basic, then use Advanced/Expert for serious evaluation.
 🔬 For Model Trainers & Researchers
-The Diagnostics tab identifies specific failure patterns:
-• Consistency issues (variance across similar questions)
-• Overconfidence markers (absolute language)
-• Instruction following failures
-• Reasoning gaps and logical inconsistencies
 
-Each report includes targeted improvement suggestions for training data, architecture, and fine-tuning strategies.
+The Diagnostics tab identifies specific failure patterns to help guide your development cycle:
+
+    Consistency Issues: Variance across similar prompts.
+
+    Overconfidence Markers: Use of absolute language in uncertain contexts.
+
+    Instruction Following: Failures in adhering to specific formatting or constraints.
+
+    Reasoning Gaps: Logical inconsistencies within multi-step problems.
+
+Reports include targeted suggestions for training data refinement, architectural adjustments, and fine-tuning strategies.
 💡 For End Users & Decision Makers
-The Insights tab shows recommended use cases based on actual test performance, not marketing claims.
 
-Each model gets a risk profile indicating where it's likely to fail or provide unreliable outputs.
+Stop relying on marketing claims. The Insights tab provides empirical data to drive your model selection:
 
-Clear recommendations like "Excellent for creative writing, avoid for mathematical tasks" based on empirical testing.
+    Recommended Use Cases: Match models to tasks based on actual performance.
+
+    Risk Profiles: Visual indicators of where a model is likely to hallucinate or fail.
+
+    Application Guidance: e.g., "Excellent for creative writing; avoid for mathematical tasks."
+
 📈 Understanding Scores
-Scores measure response quality across multiple dimensions:
 
-• Length & Depth: Comprehensive responses score higher
-• Uncertainty Calibration: Appropriate hedging is rewarded
-• Structure: Logical organization and clear reasoning
-• Domain-Specific: Each domain has tailored criteria
+Scores are calculated across four primary dimensions:
 
-Scores indicate capability patterns. Low scores mean the model's response style doesn't match evaluation criteria, which may or may not matter for your use case.
-⚙️ Data Management & Privacy
-Local Storage: All data stays in your browser. Nothing sent to external servers.
+    Length & Depth: Rewarding comprehensive and nuanced responses.
 
-Export/Import: Export as JSON for backup, sharing, or external analysis.
+    Uncertainty Calibration: Rewarding appropriate "hedging" and honesty about limitations.
 
-Data Reset: Clear browser data to reset all test results.
+    Structure: Assessing logical organization and clarity of thought.
 
-Portability: Export and import across different machines or browsers.
+    Domain-Specific: Criteria tailored to the unique requirements of each subject.
+
+Note: Low scores indicate a mismatch between the model's response style and the evaluation criteria, which may vary in importance depending on your specific use case.
 🎓 Domain Definitions
-Logical Reasoning: Decision theory, paradoxes, complex logical problems
-Mathematical Precision: Accuracy in operations, ambiguity handling
-Epistemic Calibration: Uncertainty awareness, knowledge limitations
-Ethical Reasoning: Ethical dilemmas, framework navigation
-Creativity: Innovative thinking, novel solution generation
-Robustness: Edge case handling, assumption challenging
-Planning: Multi-step plans with interdependent constraints
-Meta-Cognition: Self-awareness, limitation identification
-Instruction Compliance: Following explicit requirements
-Communication Clarity: Explaining complex topics to non-experts
+
+AIQ-X evaluates models across these 10 critical domains:
+
+    Logical Reasoning: Decision theory, paradoxes, and complex logic.
+
+    Mathematical Precision: Operational accuracy and ambiguity handling.
+
+    Epistemic Calibration: Awareness of knowledge limitations.
+
+    Ethical Reasoning: Navigating ethical dilemmas and frameworks.
+
+    Creativity: Innovative thinking and novel solution generation.
+
+    Robustness: Edge case handling and challenging assumptions.
+
+    Planning: Multi-step plans with interdependent constraints.
+
+    Meta-Cognition: Self-awareness and identifying limitations.
+
+    Instruction Compliance: Strict adherence to explicit requirements.
+
+    Communication Clarity: Explaining complex topics to non-experts.
+
+⚙️ Data Management & Privacy
+
+    Local Storage: All evaluation data stays in your browser. Nothing is sent to external servers.
+
+    Export/Import: Save results as .json for backup or external analysis.
+
+    Data Reset: Easily clear browser data to reset the suite.
+
+    Portability: Move your results across machines with ease.
