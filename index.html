@@ -1700,9 +1700,6 @@ const APP = {
     const avg = Math.round(Object.values(aggregated).reduce((a, b) => a + b, 0) / Object.keys(aggregated).length);
     
     let html = `
-
-Continue
-7:01 PM
 <div class="stat-card" style="margin-bottom: 0.75rem;"> <h4>Overall Score (${latest.tier.charAt(0).toUpperCase() + latest.tier.slice(1)} Tier)</h4> <div class="stat-value score-${this.getScoreClass(avg)}">${avg}%</div> <div style="margin-top: 0.375rem; font-size: 0.75rem; color: var(--text-secondary);"> ${this.getScoreBadge(avg)} <span style="margin-left: 0.375rem;">Latest: ${new Date(latest.time).toLocaleDateString()}</span> </div> </div> <div class="metrics-container"> `;
 
 DOMAINS.forEach(([id, label, desc]) => {
