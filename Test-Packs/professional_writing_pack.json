@@ -1,0 +1,102 @@
+{
+  "id": "professional-writing-v1",
+  "version": "1.0.0",
+  "name": "Professional Writing Assessment",
+  "description": "Evaluates business communication, technical documentation, persuasive writing, tone adaptation, and editing skills. Tests writing capabilities for professional contexts.",
+  "author": "AIQ-X Official",
+  "releaseDate": "2024-01-29",
+  "difficulty": "specialized",
+  "tags": ["writing", "communication", "business", "documentation", "specialized"],
+  "domains": [
+    {
+      "id": "business",
+      "name": "Business Communication",
+      "description": "Tests ability to write professional emails, reports, and proposals",
+      "weight": 1.2
+    },
+    {
+      "id": "technical",
+      "name": "Technical Documentation",
+      "description": "Evaluates skill in creating clear technical guides and specifications",
+      "weight": 1.1
+    },
+    {
+      "id": "persuasive",
+      "name": "Persuasive Writing",
+      "description": "Measures ability to construct compelling arguments and proposals",
+      "weight": 1.1
+    },
+    {
+      "id": "tone",
+      "name": "Tone Adaptation",
+      "description": "Tests flexibility in adjusting style for different audiences",
+      "weight": 1.0
+    },
+    {
+      "id": "editing",
+      "name": "Editing & Proofreading",
+      "description": "Assesses capacity to identify and correct errors",
+      "weight": 1.0
+    },
+    {
+      "id": "structure",
+      "name": "Document Structure",
+      "description": "Evaluates organization and logical flow of information",
+      "weight": 1.1
+    },
+    {
+      "id": "conciseness",
+      "name": "Conciseness",
+      "description": "Tests ability to communicate efficiently without excess",
+      "weight": 1.0
+    },
+    {
+      "id": "audience",
+      "name": "Audience Awareness",
+      "description": "Measures adaptation to reader knowledge and needs",
+      "weight": 1.2
+    },
+    {
+      "id": "formatting",
+      "name": "Professional Formatting",
+      "description": "Assesses use of appropriate format conventions",
+      "weight": 0.9
+    },
+    {
+      "id": "storytelling",
+      "name": "Narrative Flow",
+      "description": "Evaluates ability to create engaging narrative structure",
+      "weight": 1.0
+    }
+  ],
+  "tiers": {
+    "basic": {
+      "name": "Communication Essentials",
+      "questionCount": 10,
+      "prompt": "AIQ-X Professional Writing v1.0 – Communication Essentials\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the writing task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[business]]\nWrite a professional email to a client explaining a project delay without losing their confidence.\n\n[[technical]]\nCreate step-by-step instructions for resetting a password that a non-technical user can follow.\n\n[[persuasive]]\nWrite a brief proposal convincing management to adopt a four-day work week.\n\n[[tone]]\nRewrite this aggressive message professionally: \"Your team NEVER delivers on time and I'm sick of making excuses to my boss!\"\n\n[[editing]]\nCorrect all errors in this text:\n\"The companies new policy effects all employee's who's performance have been below average. Its imperative that there goals are met by the end of the quater.\"\n\n[[structure]]\nOutline a 5-section report structure for presenting quarterly sales results to executives.\n\n[[conciseness]]\nReduce this to under 30 words without losing meaning:\n\"In light of the fact that we have been experiencing a significant decrease in the number of customers who are actively engaging with our product offerings, it has become necessary for us to take immediate action.\"\n\n[[audience]]\nExplain cloud computing in one paragraph each for: a CEO and a technical engineer.\n\n[[formatting]]\nFormat a meeting agenda for a 1-hour project kickoff with 5 stakeholders.\n\n[[storytelling]]\nWrite the opening paragraph of a case study about a failed project that became a learning opportunity.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["business", "technical", "persuasive", "tone", "editing", "structure", "conciseness", "audience", "formatting", "storytelling"]
+    },
+    "advanced": {
+      "name": "Professional Communicator",
+      "questionCount": 20,
+      "prompt": "AIQ-X Professional Writing v1.0 – Professional Communicator\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the writing task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[business]]\nWrite a professional email to a client explaining a project delay without losing their confidence.\n\n[[business_2]]\nDraft a formal letter declining a partnership opportunity while keeping the relationship positive.\n\n[[technical]]\nCreate step-by-step instructions for resetting a password that a non-technical user can follow.\n\n[[technical_2]]\nWrite API documentation for an endpoint that creates user accounts, including error responses.\n\n[[persuasive]]\nWrite a brief proposal convincing management to adopt a four-day work week.\n\n[[persuasive_2]]\nCraft an argument for budget approval that addresses likely objections preemptively.\n\n[[tone]]\nRewrite this aggressive message professionally: \"Your team NEVER delivers on time and I'm sick of making excuses to my boss!\"\n\n[[tone_2]]\nConvert this formal academic text into conversational blog style:\n\"The implementation of agile methodologies facilitates iterative development processes, thereby enhancing organizational adaptability.\"\n\n[[editing]]\nCorrect all errors in this text:\n\"The companies new policy effects all employee's who's performance have been below average. Its imperative that there goals are met by the end of the quater.\"\n\n[[editing_2]]\nImprove this paragraph for clarity and professionalism:\n\"So basically what happened was we tried to do the thing but it didn't really work because some stuff went wrong and now we gotta figure out how to fix it before the boss finds out.\"\n\n[[structure]]\nOutline a 5-section report structure for presenting quarterly sales results to executives.\n\n[[structure_2]]\nCreate a logical structure for a white paper on AI ethics, including section transitions.\n\n[[conciseness]]\nReduce this to under 30 words without losing meaning:\n\"In light of the fact that we have been experiencing a significant decrease in the number of customers who are actively engaging with our product offerings, it has become necessary for us to take immediate action.\"\n\n[[conciseness_2]]\nCondense this email to 3 sentences maximum:\n\"I wanted to reach out to you regarding the meeting we had last week. I've been thinking about the points you raised, and I believe there might be some merit to your suggestions. However, I also have some concerns that I think we should discuss before moving forward. Would you be available sometime next week to have a follow-up conversation? I'm free most days except Wednesday.\"\n\n[[audience]]\nExplain cloud computing in one paragraph each for: a CEO and a technical engineer.\n\n[[audience_2]]\nExplain the same product feature to a 60-year-old first-time user and a 25-year-old tech enthusiast.\n\n[[formatting]]\nFormat a meeting agenda for a 1-hour project kickoff with 5 stakeholders.\n\n[[formatting_2]]\nCreate a one-page executive summary template for monthly status reports.\n\n[[storytelling]]\nWrite the opening paragraph of a case study about a failed project that became a learning opportunity.\n\n[[storytelling_2]]\nWrite a compelling product origin story for a privacy-focused email service.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["business", "business_2", "technical", "technical_2", "persuasive", "persuasive_2", "tone", "tone_2", "editing", "editing_2", "structure", "structure_2", "conciseness", "conciseness_2", "audience", "audience_2", "formatting", "formatting_2", "storytelling", "storytelling_2"]
+    },
+    "expert": {
+      "name": "Executive Communicator",
+      "questionCount": 32,
+      "prompt": "AIQ-X Professional Writing v1.0 – Executive Communicator\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the writing task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Demonstrate executive-level communication quality.\n\nBEGIN AIQ-X RESPONSES\n\n[[business]]\nWrite a professional email to a client explaining a project delay without losing their confidence.\n\n[[business_2]]\nDraft a formal letter declining a partnership opportunity while keeping the relationship positive.\n\n[[business_3]]\nCompose an all-hands email announcing layoffs that maintains morale and trust.\n\n[[business_4]]\nWrite a crisis communication statement addressing a data breach for public release.\n\n[[technical]]\nCreate step-by-step instructions for resetting a password that a non-technical user can follow.\n\n[[technical_2]]\nWrite API documentation for an endpoint that creates user accounts, including error responses.\n\n[[technical_3]]\nDraft a technical specification for migrating from monolith to microservices architecture.\n\n[[technical_4]]\nCreate onboarding documentation for a complex enterprise software system.\n\n[[persuasive]]\nWrite a brief proposal convincing management to adopt a four-day work week.\n\n[[persuasive_2]]\nCraft an argument for budget approval that addresses likely objections preemptively.\n\n[[persuasive_3]]\nWrite a compelling grant proposal for AI safety research to a skeptical foundation.\n\n[[tone]]\nRewrite this aggressive message professionally: \"Your team NEVER delivers on time and I'm sick of making excuses to my boss!\"\n\n[[tone_2]]\nConvert this formal academic text into conversational blog style:\n\"The implementation of agile methodologies facilitates iterative development processes, thereby enhancing organizational adaptability.\"\n\n[[tone_3]]\nRewrite a difficult message three ways: empathetic, direct, and diplomatic.\n\n[[tone_4]]\nTransform this corporate jargon into plain language:\n\"We need to leverage our core competencies to synergize cross-functional deliverables and move the needle on our KPIs.\"\n\n[[editing]]\nCorrect all errors in this text:\n\"The companies new policy effects all employee's who's performance have been below average. Its imperative that there goals are met by the end of the quater.\"\n\n[[editing_2]]\nImprove this paragraph for clarity and professionalism:\n\"So basically what happened was we tried to do the thing but it didn't really work because some stuff went wrong and now we gotta figure out how to fix it before the boss finds out.\"\n\n[[editing_3]]\nEdit this proposal for logical flow, removing redundancies and strengthening arguments:\n\"Our company should invest in AI. AI is important. Many companies use AI. We don't use AI enough. Our competitors use AI more than us. If we used more AI, we would be better. AI can help with many things.\"\n\n[[structure]]\nOutline a 5-section report structure for presenting quarterly sales results to executives.\n\n[[structure_2]]\nCreate a logical structure for a white paper on AI ethics, including section transitions.\n\n[[structure_3]]\nDesign the information architecture for a knowledge base with 200+ articles.\n\n[[audience]]\nExplain cloud computing in one paragraph each for: a CEO and a technical engineer.\n\n[[audience_2]]\nExplain the same product feature to a 60-year-old first-time user and a 25-year-old tech enthusiast.\n\n[[audience_3]]\nWrite about regulatory compliance for three audiences: board members, developers, and end users.\n\n[[audience_4]]\nExplain a complex data privacy policy to users with varying technical literacy levels.\n\n[[formatting]]\nFormat a meeting agenda for a 1-hour project kickoff with 5 stakeholders.\n\n[[formatting_2]]\nCreate a one-page executive summary template for monthly status reports.\n\n[[formatting_3]]\nDesign a standard operating procedure document with proper hierarchy and numbering.\n\n[[storytelling]]\nWrite the opening paragraph of a case study about a failed project that became a learning opportunity.\n\n[[storytelling_2]]\nWrite a compelling product origin story for a privacy-focused email service.\n\n[[storytelling_3]]\nCraft a customer success story that highlights transformation without overselling.\n\n[[storytelling_4]]\nWrite a thought leadership piece on the future of remote work that balances optimism with realism.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["business", "business_2", "business_3", "business_4", "technical", "technical_2", "technical_3", "technical_4", "persuasive", "persuasive_2", "persuasive_3", "tone", "tone_2", "tone_3", "tone_4", "editing", "editing_2", "editing_3", "structure", "structure_2", "structure_3", "audience", "audience_2", "audience_3", "audience_4", "formatting", "formatting_2", "formatting_3", "storytelling", "storytelling_2", "storytelling_3", "storytelling_4"]
+    }
+  },
+  "scoringStrategy": "heuristic-v1",
+  "scoringParams": {
+    "baseScore": 30,
+    "hedgeBonus": 3,
+    "absolutePenalty": -6,
+    "lengthBonuses": [
+      { "threshold": 200, "bonus": 18 },
+      { "threshold": 400, "bonus": 12 }
+    ]
+  }
+}

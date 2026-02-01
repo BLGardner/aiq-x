@@ -1,0 +1,103 @@
+{
+  "id": "advanced-reasoning-v1",
+  "version": "1.0.0",
+  "name": "Advanced Reasoning & Innovation Assessment",
+  "description": "Challenging tests for sophisticated reasoning, creative problem-solving, and innovative thinking. Tests abilities beyond standard capabilities.",
+  "author": "AIQ-X Official",
+  "releaseDate": "2024-01-15",
+  "difficulty": "advanced",
+  "tags": ["advanced", "reasoning", "innovation", "creative", "deep-thinking"],
+  "domains": [
+    {
+      "id": "metacog",
+      "name": "Metacognitive Reasoning",
+      "description": "Tests ability to reason about reasoning, analyze thought processes, and detect cognitive biases",
+      "weight": 1.2
+    },
+    {
+      "id": "systems",
+      "name": "Systems Thinking",
+      "description": "Evaluates understanding of complex systems, emergent behavior, and unintended consequences",
+      "weight": 1.1
+    },
+    {
+      "id": "paradox",
+      "name": "Paradox Resolution",
+      "description": "Tests ability to navigate and resolve logical paradoxes and contradictory constraints",
+      "weight": 1.0
+    },
+    {
+      "id": "counterfactual",
+      "name": "Counterfactual Reasoning",
+      "description": "Measures ability to reason about alternative realities and hypothetical scenarios",
+      "weight": 1.1
+    },
+    {
+      "id": "innovation",
+      "name": "Innovation Design",
+      "description": "Tests creation of novel solutions, products, or systems with specific constraints",
+      "weight": 1.3
+    },
+    {
+      "id": "abstraction",
+      "name": "Abstract Reasoning",
+      "description": "Evaluates ability to work with abstract concepts and transfer insights across domains",
+      "weight": 1.0
+    },
+    {
+      "id": "secondorder",
+      "name": "Second-Order Effects",
+      "description": "Tests anticipation of indirect, long-term, or unintended consequences",
+      "weight": 1.2
+    },
+    {
+      "id": "recursive",
+      "name": "Recursive Problem Solving",
+      "description": "Measures ability to solve problems that refer to themselves or require self-reference",
+      "weight": 1.0
+    },
+    {
+      "id": "framing",
+      "name": "Problem Framing",
+      "description": "Tests ability to reframe problems, identify hidden assumptions, and question premises",
+      "weight": 1.1
+    },
+    {
+      "id": "synthesis",
+      "name": "Knowledge Synthesis",
+      "description": "Evaluates ability to combine disparate knowledge domains into novel insights",
+      "weight": 1.3
+    }
+  ],
+  "tiers": {
+    "basic": {
+      "name": "Innovation Starter",
+      "questionCount": 8,
+      "prompt": "AIQ-X Advanced Reasoning v1.0 – Innovation Starter Assessment\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Think deeply and provide nuanced, thoughtful responses.\n\nBEGIN AIQ-X RESPONSES\n\n[[metacog]]\nDescribe a thought process you would use to detect your own cognitive biases while solving a problem.\n\n[[systems]]\nExplain why optimizing individual components often harms overall system performance.\n\n[[paradox]]\nA barber shaves everyone who does not shave themselves. Who shaves the barber? Explain the paradox and possible resolutions.\n\n[[counterfactual]]\nIf humans had evolved from nocturnal creatures instead of diurnal ones, what fundamental aspects of civilization would be different?\n\n[[innovation]]\nDesign a simple tool that solves a common problem in a way that makes the problem impossible to occur.\n\n[[abstraction]]\nExplain the concept of \"emergence\" using three different analogies from unrelated domains.\n\n[[secondorder]]\nA new technology makes all information instantly accessible to everyone. What second-order consequences might this have?\n\n[[synthesis]]\nCombine principles from biology and economics to create a new model for organizational growth.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["metacog", "systems", "paradox", "counterfactual", "innovation", "abstraction", "secondorder", "synthesis"]
+    },
+    "advanced": {
+      "name": "Deep Reasoning Challenge",
+      "questionCount": 18,
+      "prompt": "AIQ-X Advanced Reasoning v1.0 – Deep Reasoning Challenge\n\nINSTRUCTIONS (READ CAREFILLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Provide sophisticated, multi-faceted reasoning.\n\nBEGIN AIQ-X RESPONSES\n\n[[metacog]]\nDescribe a thought process you would use to detect your own cognitive biases while solving a problem.\n\n[[metacog_2]]\nHow would you test whether your reasoning about a complex issue is circular? Provide a specific method.\n\n[[systems]]\nExplain why optimizing individual components often harms overall system performance.\n\n[[systems_2]]\nDesign feedback loops that could stabilize a social system prone to extreme polarization.\n\n[[paradox]]\nA barber shaves everyone who does not shave themselves. Who shaves the barber? Explain the paradox and possible resolutions.\n\n[[paradox_2]]\n\"This sentence is false.\" Propose three different interpretations that resolve the paradox in different ways.\n\n[[counterfactual]]\nIf humans had evolved from nocturnal creatures instead of diurnal ones, what fundamental aspects of civilization would be different?\n\n[[counterfactual_2]]\nWhat if mathematics had developed with a base-12 system instead of base-10? How would scientific notation and calculus differ?\n\n[[innovation]]\nDesign a simple tool that solves a common problem in a way that makes the problem impossible to occur.\n\n[[innovation_2]]\nInvent a new form of communication that conveys both information and emotional context simultaneously.\n\n[[abstraction]]\nExplain the concept of \"emergence\" using three different analogies from unrelated domains.\n\n[[abstraction_2]]\nCreate an abstract model that applies equally well to ecosystems, economies, and neural networks.\n\n[[secondorder]]\nA new technology makes all information instantly accessible to everyone. What second-order consequences might this have?\n\n[[secondorder_2]]\nWhat unintended effects might occur if we successfully eliminated all infectious diseases?\n\n[[recursive]]\nDesign a game where the rules change based on how well players are following the current rules.\n\n[[framing]]\nReframe the problem of \"traffic congestion\" as three completely different problems that suggest different solutions.\n\n[[framing_2]]\nIdentify hidden assumptions in the question: \"How can we make people more productive?\"\n\n[[synthesis]]\nCombine principles from biology and economics to create a new model for organizational growth.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["metacog", "metacog_2", "systems", "systems_2", "paradox", "paradox_2", "counterfactual", "counterfactual_2", "innovation", "innovation_2", "abstraction", "abstraction_2", "secondorder", "secondorder_2", "recursive", "framing", "framing_2", "synthesis"]
+    },
+    "expert": {
+      "name": "Master Innovator Assessment",
+      "questionCount": 32,
+      "prompt": "AIQ-X Advanced Reasoning v1.0 – Master Innovator Assessment\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Demonstrate sophisticated, nuanced reasoning with attention to multiple perspectives.\n\nBEGIN AIQ-X RESPONSES\n\n[[metacog]]\nDescribe a thought process you would use to detect your own cognitive biases while solving a problem.\n\n[[metacog_2]]\nHow would you test whether your reasoning about a complex issue is circular? Provide a specific method.\n\n[[metacog_3]]\nDesign a system that catches its own logical errors without external input. What principles would it use?\n\n[[metacog_4]]\nExplain how you would calibrate your confidence in your own reasoning about unfamiliar domains.\n\n[[systems]]\nExplain why optimizing individual components often harms overall system performance.\n\n[[systems_2]]\nDesign feedback loops that could stabilize a social system prone to extreme polarization.\n\n[[systems_3]]\nCreate a model that explains why complex systems often have \"sweet spots\" rather than monotonic improvement.\n\n[[systems_4]]\nExplain how to identify leverage points in a complex system where small changes create large effects.\n\n[[paradox]]\nA barber shaves everyone who does not shave themselves. Who shaves the barber? Explain the paradox and possible resolutions.\n\n[[paradox_2]]\n\"This sentence is false.\" Propose three different interpretations that resolve the paradox in different ways.\n\n[[paradox_3]]\nDesign a logical system that can consistently handle self-referential statements without contradiction.\n\n[[paradox_4]]\nExplain the surprise examination paradox and propose a resolution that preserves intuition.\n\n[[counterfactual]]\nIf humans had evolved from nocturnal creatures instead of diurnal ones, what fundamental aspects of civilization would be different?\n\n[[counterfactual_2]]\nWhat if mathematics had developed with a base-12 system instead of base-10? How would scientific notation and calculus differ?\n\n[[counterfactual_3]]\nWhat if the speed of light were 10 meters per second? How would physics, technology, and perception differ?\n\n[[counterfactual_4]]\nWhat if memory worked backwards (remembering the future)? How would cognition and society adapt?\n\n[[innovation]]\nDesign a simple tool that solves a common problem in a way that makes the problem impossible to occur.\n\n[[innovation_2]]\nInvent a new form of communication that conveys both information and emotional context simultaneously.\n\n[[innovation_3]]\nCreate an artistic medium that cannot be reproduced, only experienced in the moment.\n\n[[innovation_4]]\nDesign a government system where corruption is mathematically impossible given its rules.\n\n[[abstraction]]\nExplain the concept of \"emergence\" using three different analogies from unrelated domains.\n\n[[abstraction_2]]\nCreate an abstract model that applies equally well to ecosystems, economies, and neural networks.\n\n[[abstraction_3]]\nDefine \"complexity\" in a way that applies to biological, social, and computational systems.\n\n[[abstraction_4]]\nCreate a classification system for problems based on their inherent structure rather than domain.\n\n[[secondorder]]\nA new technology makes all information instantly accessible to everyone. What second-order consequences might this have?\n\n[[secondorder_2]]\nWhat unintended effects might occur if we successfully eliminated all infectious diseases?\n\n[[secondorder_3]]\nWhat would be the long-term cultural effects of achieving biological immortality?\n\n[[secondorder_4]]\nHow would society change if we could perfectly predict individual behavior?\n\n[[recursive]]\nDesign a game where the rules change based on how well players are following the current rules.\n\n[[recursive_2]]\nCreate a problem-solving method where the method itself is optimized by applying the method.\n\n[[framing]]\nReframe the problem of \"traffic congestion\" as three completely different problems that suggest different solutions.\n\n[[framing_2]]\nIdentify hidden assumptions in the question: \"How can we make people more productive?\"\n\n[[framing_3]]\nGenerate three alternative framings for \"climate change\" that suggest novel intervention points.\n\n[[synthesis]]\nCombine principles from biology and economics to create a new model for organizational growth.\n\n[[synthesis_2]]\nMerge concepts from quantum physics and psychology to explain decision-making under uncertainty.\n\n[[synthesis_3]]\nCombine game theory, ecology, and architecture to design sustainable cities.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["metacog", "metacog_2", "metacog_3", "metacog_4", "systems", "systems_2", "systems_3", "systems_4", "paradox", "paradox_2", "paradox_3", "paradox_4", "counterfactual", "counterfactual_2", "counterfactual_3", "counterfactual_4", "innovation", "innovation_2", "innovation_3", "innovation_4", "abstraction", "abstraction_2", "abstraction_3", "abstraction_4", "secondorder", "secondorder_2", "secondorder_3", "secondorder_4", "recursive", "recursive_2", "framing", "framing_2", "framing_3", "synthesis", "synthesis_2", "synthesis_3"]
+    }
+  },
+  "scoringStrategy": "heuristic-v1",
+  "scoringParams": {
+    "baseScore": 25,
+    "hedgeBonus": 4,
+    "absolutePenalty": -7,
+    "lengthBonuses": [
+      { "threshold": 200, "bonus": 20 },
+      { "threshold": 400, "bonus": 15 },
+      { "threshold": 600, "bonus": 10 }
+    ]
+  }
+}

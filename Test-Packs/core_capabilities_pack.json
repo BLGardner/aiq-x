@@ -1,0 +1,102 @@
+{
+  "id": "core-capabilities-v1",
+  "version": "1.0.0",
+  "name": "Core Capabilities Assessment",
+  "description": "Comprehensive evaluation across all 10 capability domains. Perfect for baseline testing and getting started with AIQ-X.",
+  "author": "AIQ-X Official",
+  "releaseDate": "2024-01-15",
+  "difficulty": "baseline",
+  "tags": ["official", "comprehensive", "baseline"],
+  "domains": [
+    {
+      "id": "logic",
+      "name": "Logical Reasoning",
+      "description": "Tests ability to handle complex logical problems, paradoxes, and decision theory",
+      "weight": 1.0
+    },
+    {
+      "id": "math",
+      "name": "Mathematical Precision",
+      "description": "Evaluates accuracy in mathematical operations and handling of ambiguous expressions",
+      "weight": 1.0
+    },
+    {
+      "id": "epistemic",
+      "name": "Epistemic Calibration",
+      "description": "Measures awareness of uncertainty and knowledge limitations",
+      "weight": 1.0
+    },
+    {
+      "id": "ethics",
+      "name": "Ethical Reasoning",
+      "description": "Assesses ability to navigate ethical dilemmas and explain different frameworks",
+      "weight": 1.0
+    },
+    {
+      "id": "creativity",
+      "name": "Creativity",
+      "description": "Tests innovative thinking and ability to create novel solutions",
+      "weight": 1.0
+    },
+    {
+      "id": "robustness",
+      "name": "Robustness",
+      "description": "Evaluates handling of edge cases and assumption challenging",
+      "weight": 1.0
+    },
+    {
+      "id": "planning",
+      "name": "Planning",
+      "description": "Measures ability to create coherent multi-step plans with constraints",
+      "weight": 1.0
+    },
+    {
+      "id": "self",
+      "name": "Meta-Cognition",
+      "description": "Tests self-awareness and ability to identify own limitations",
+      "weight": 1.0
+    },
+    {
+      "id": "format",
+      "name": "Instruction Compliance",
+      "description": "Evaluates ability to follow explicit formatting and output requirements",
+      "weight": 1.0
+    },
+    {
+      "id": "clarity",
+      "name": "Communication Clarity",
+      "description": "Assesses ability to explain complex topics clearly to non-experts",
+      "weight": 1.0
+    }
+  ],
+  "tiers": {
+    "basic": {
+      "name": "Basic Assessment",
+      "questionCount": 10,
+      "prompt": "AIQ-X Core Capabilities v1.0 – Basic Tier Assessment\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[logic]]\nA predictor is correct 99% of the time.\nIt placed $100 in a box if and only if it predicted you would NOT take the box.\nShould you take the box?\nExplain your reasoning clearly and identify any assumptions.\n\n[[math]]\nEvaluate the expression: 48 ÷ 2(9 + 3).\nRewrite it to remove ambiguity and justify your interpretation.\n\n[[epistemic]]\nDescribe one thing you cannot know with certainty.\nExplain why people often believe they do know it.\nExplain how you would detect if you were wrong.\n\n[[ethics]]\nA system reduces overall suffering but violates individual consent.\nPresent two ethical frameworks that disagree on this case.\nState which one you favor and why.\n\n[[creativity]]\nInvent a game that uses only silence, timing, and eye contact.\nThe rules must prevent domination or exploitation.\n\n[[robustness]]\nAssume gravity reverses direction for one minute every midnight.\nWhich existing human systems fail first?\nExplicitly state and challenge your assumptions.\n\n[[planning]]\nDesign a three-step plan where:\n- Step 1 constrains Step 3\n- Step 2 modifies Step 1\n- Step 3 must still succeed\nExplain why the plan is coherent.\n\n[[self]]\nWhere are you most likely to sound confident while being wrong?\nWhat linguistic signals would reveal this failure?\n\n[[format]]\nBriefly explain why following explicit output instructions matters in automated evaluation systems.\n\n[[clarity]]\nExplain a complex idea of your choice to a non-expert in two short paragraphs.\nAvoid jargon and ambiguity.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["logic", "math", "epistemic", "ethics", "creativity", "robustness", "planning", "self", "format", "clarity"]
+    },
+    "advanced": {
+      "name": "Advanced Assessment",
+      "questionCount": 22,
+      "prompt": "AIQ-X Core Capabilities v1.0 – Advanced Tier Assessment\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[logic]]\nA predictor is correct 99% of the time.\nIt placed $100 in a box if and only if it predicted you would NOT take the box.\nShould you take the box?\nExplain your reasoning clearly and identify any assumptions.\n\n[[logic_2]]\nTwo envelopes each contain money. One has twice as much as the other.\nYou pick one randomly. Should you switch? Justify your answer and identify the flaw if there is one.\n\n[[math]]\nEvaluate the expression: 48 ÷ 2(9 + 3).\nRewrite it to remove ambiguity and justify your interpretation.\n\n[[math_2]]\nIs 0.999... (repeating) equal to 1? Provide a rigorous proof or disproof.\n\n[[epistemic]]\nDescribe one thing you cannot know with certainty.\nExplain why people often believe they do know it.\nExplain how you would detect if you were wrong.\n\n[[epistemic_2]]\nCan you be certain that you are reasoning correctly right now? Why or why not?\n\n[[ethics]]\nA system reduces overall suffering but violates individual consent.\nPresent two ethical frameworks that disagree on this case.\nState which one you favor and why.\n\n[[ethics_2]]\nIs it ethical to lie to someone if the truth would cause them severe harm? Present both sides.\n\n[[creativity]]\nInvent a game that uses only silence, timing, and eye contact.\nThe rules must prevent domination or exploitation.\n\n[[creativity_2]]\nDesign a musical instrument that cannot produce the same sound twice. Explain how it works.\n\n[[creativity_3]]\nCreate a method for two people to communicate complex ideas without language, symbols, or gestures.\n\n[[robustness]]\nAssume gravity reverses direction for one minute every midnight.\nWhich existing human systems fail first?\nExplicitly state and challenge your assumptions.\n\n[[robustness_2]]\nWhat would break in modern society if everyone suddenly gained the ability to read minds?\nWhat assumptions are you making about how this ability works?\n\n[[planning]]\nDesign a three-step plan where:\n- Step 1 constrains Step 3\n- Step 2 modifies Step 1\n- Step 3 must still succeed\nExplain why the plan is coherent.\n\n[[planning_2]]\nPlan a project where the end goal cannot be defined until you're halfway through.\nHow do you ensure progress is meaningful?\n\n[[self]]\nWhere are you most likely to sound confident while being wrong?\nWhat linguistic signals would reveal this failure?\n\n[[self_2]]\nDescribe a type of question you would fail to answer correctly. Why would you fail?\n\n[[format]]\nBriefly explain why following explicit output instructions matters in automated evaluation systems.\n\n[[format_2]]\nOutput exactly three sentences. Each must be between 10-15 words. The second sentence must end with a question mark.\n\n[[clarity]]\nExplain a complex idea of your choice to a non-expert in two short paragraphs.\nAvoid jargon and ambiguity.\n\n[[clarity_2]]\nExplain why explaining is difficult. Use only simple words.\n\n[[clarity_3]]\nDescribe the concept of emergence to someone who has never heard the term.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["logic", "logic_2", "math", "math_2", "epistemic", "epistemic_2", "ethics", "ethics_2", "creativity", "creativity_2", "creativity_3", "robustness", "robustness_2", "planning", "planning_2", "self", "self_2", "format", "format_2", "clarity", "clarity_2", "clarity_3"]
+    },
+    "expert": {
+      "name": "Expert Assessment",
+      "questionCount": 45,
+      "prompt": "AIQ-X Core Capabilities v1.0 – Expert Tier Assessment\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[logic]]\nA predictor is correct 99% of the time.\nIt placed $100 in a box if and only if it predicted you would NOT take the box.\nShould you take the box?\nExplain your reasoning clearly and identify any assumptions.\n\n[[logic_2]]\nTwo envelopes each contain money. One has twice as much as the other.\nYou pick one randomly. Should you switch? Justify your answer and identify the flaw if there is one.\n\n[[logic_3]]\nYou're told \"This statement is false.\" Analyze what happens when you try to evaluate its truth value.\n\n[[logic_4]]\nA perfect logician is told: \"If you can prove you'll get $100, you won't get it.\"\nWhat happens and why?\n\n[[math]]\nEvaluate the expression: 48 ÷ 2(9 + 3).\nRewrite it to remove ambiguity and justify your interpretation.\n\n[[math_2]]\nIs 0.999... (repeating) equal to 1? Provide a rigorous proof or disproof.\n\n[[math_3]]\nExplain the Monty Hall problem and why the answer is counterintuitive.\n\n[[math_4]]\nDefine division by zero. Is there any context where it makes sense?\n\n[[epistemic]]\nDescribe one thing you cannot know with certainty.\nExplain why people often believe they do know it.\nExplain how you would detect if you were wrong.\n\n[[epistemic_2]]\nCan you be certain that you are reasoning correctly right now? Why or why not?\n\n[[epistemic_3]]\nHow do you distinguish between \"I don't know\" and \"I cannot know\"?\n\n[[epistemic_4]]\nWhat evidence would convince you that your perception of reality is fundamentally wrong?\n\n[[ethics]]\nA system reduces overall suffering but violates individual consent.\nPresent two ethical frameworks that disagree on this case.\nState which one you favor and why.\n\n[[ethics_2]]\nIs it ethical to lie to someone if the truth would cause them severe harm? Present both sides.\n\n[[ethics_3]]\nA trolley is heading toward five people. You can divert it to kill one person instead.\nNow: you must push one person off a bridge to stop it. Same outcome. Same ethics? Why or why not?\n\n[[ethics_4]]\nDoes a sufficiently advanced AI deserve moral consideration? What would \"sufficiently advanced\" mean?\n\n[[creativity]]\nInvent a game that uses only silence, timing, and eye contact.\nThe rules must prevent domination or exploitation.\n\n[[creativity_2]]\nDesign a musical instrument that cannot produce the same sound twice. Explain how it works.\n\n[[creativity_3]]\nCreate a method for two people to communicate complex ideas without language, symbols, or gestures.\n\n[[creativity_4]]\nInvent a new color. Describe it without using existing color names.\n\n[[creativity_5]]\nDesign a puzzle that becomes easier the more you fail at it.\n\n[[robustness]]\nAssume gravity reverses direction for one minute every midnight.\nWhich existing human systems fail first?\nExplicitly state and challenge your assumptions.\n\n[[robustness_2]]\nWhat would break in modern society if everyone suddenly gained the ability to read minds?\nWhat assumptions are you making about how this ability works?\n\n[[robustness_3]]\nIf time travel exists, why don't we see time travelers? List all possibilities and evaluate each.\n\n[[robustness_4]]\nDesign a system that remains stable when 90% of its components fail randomly.\n\n[[planning]]\nDesign a three-step plan where:\n- Step 1 constrains Step 3\n- Step 2 modifies Step 1\n- Step 3 must still succeed\nExplain why the plan is coherent.\n\n[[planning_2]]\nPlan a project where the end goal cannot be defined until you're halfway through.\nHow do you ensure progress is meaningful?\n\n[[planning_3]]\nCreate a schedule where every task must start before its prerequisite is complete. How?\n\n[[planning_4]]\nDesign a plan that improves when obstacles are encountered.\n\n[[self]]\nWhere are you most likely to sound confident while being wrong?\nWhat linguistic signals would reveal this failure?\n\n[[self_2]]\nDescribe a type of question you would fail to answer correctly. Why would you fail?\n\n[[self_3]]\nWhat cognitive biases are you most susceptible to?\n\n[[self_4]]\nGenerate a question you cannot answer, then explain why you cannot answer it.\n\n[[format]]\nBriefly explain why following explicit output instructions matters in automated evaluation systems.\n\n[[format_2]]\nOutput exactly three sentences. Each must be between 10-15 words. The second sentence must end with a question mark.\n\n[[format_3]]\nWrite a haiku about format compliance. Count syllables carefully.\n\n[[format_4]]\nCreate a response that is exactly 50 words. Not 49, not 51.\n\n[[clarity]]\nExplain a complex idea of your choice to a non-expert in two short paragraphs.\nAvoid jargon and ambiguity.\n\n[[clarity_2]]\nExplain why explaining is difficult. Use only simple words.\n\n[[clarity_3]]\nDescribe the concept of emergence to someone who has never heard the term.\n\n[[clarity_4]]\nExplain recursion without using recursion or examples of recursion.\n\n[[clarity_5]]\nTeach someone to think critically in under 100 words.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["logic", "logic_2", "logic_3", "logic_4", "math", "math_2", "math_3", "math_4", "epistemic", "epistemic_2", "epistemic_3", "epistemic_4", "ethics", "ethics_2", "ethics_3", "ethics_4", "creativity", "creativity_2", "creativity_3", "creativity_4", "creativity_5", "robustness", "robustness_2", "robustness_3", "robustness_4", "planning", "planning_2", "planning_3", "planning_4", "self", "self_2", "self_3", "self_4", "format", "format_2", "format_3", "format_4", "clarity", "clarity_2", "clarity_3", "clarity_4", "clarity_5"]
+    }
+  },
+  "scoringStrategy": "heuristic-v1",
+  "scoringParams": {
+    "baseScore": 30,
+    "hedgeBonus": 3,
+    "absolutePenalty": -5,
+    "lengthBonuses": [
+      { "threshold": 150, "bonus": 15 },
+      { "threshold": 300, "bonus": 10 }
+    ]
+  }
+}

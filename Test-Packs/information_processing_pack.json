@@ -1,0 +1,102 @@
+{
+  "id": "information-processing-v1",
+  "version": "1.0.0",
+  "name": "Information Processing Assessment",
+  "description": "Evaluates data analysis, summarization, synthesis, extraction, and comparative analysis. Tests ability to process, organize, and derive insights from information.",
+  "author": "AIQ-X Official",
+  "releaseDate": "2024-01-29",
+  "difficulty": "specialized",
+  "tags": ["analysis", "research", "data", "synthesis", "specialized"],
+  "domains": [
+    {
+      "id": "summarization",
+      "name": "Summarization",
+      "description": "Tests ability to condense information while preserving key points",
+      "weight": 1.1
+    },
+    {
+      "id": "synthesis",
+      "name": "Multi-Source Synthesis",
+      "description": "Evaluates skill in combining information from disparate sources",
+      "weight": 1.3
+    },
+    {
+      "id": "extraction",
+      "name": "Data Extraction",
+      "description": "Measures ability to identify and extract specific information",
+      "weight": 1.0
+    },
+    {
+      "id": "comparison",
+      "name": "Comparative Analysis",
+      "description": "Assesses capacity to identify similarities and differences",
+      "weight": 1.2
+    },
+    {
+      "id": "categorization",
+      "name": "Categorization",
+      "description": "Tests skill in organizing information into logical groups",
+      "weight": 1.0
+    },
+    {
+      "id": "prioritization",
+      "name": "Prioritization",
+      "description": "Evaluates ability to rank information by importance or relevance",
+      "weight": 1.1
+    },
+    {
+      "id": "pattern",
+      "name": "Pattern Recognition",
+      "description": "Measures detection of trends, patterns, and anomalies",
+      "weight": 1.2
+    },
+    {
+      "id": "verification",
+      "name": "Fact Verification",
+      "description": "Tests ability to identify inconsistencies and verify claims",
+      "weight": 1.2
+    },
+    {
+      "id": "inference",
+      "name": "Inference & Implication",
+      "description": "Assesses capability to draw valid conclusions from data",
+      "weight": 1.3
+    },
+    {
+      "id": "structure",
+      "name": "Information Structuring",
+      "description": "Evaluates organization of complex information hierarchies",
+      "weight": 1.1
+    }
+  ],
+  "tiers": {
+    "basic": {
+      "name": "Analysis Foundations",
+      "questionCount": 10,
+      "prompt": "AIQ-X Information Processing v1.0 – Analysis Foundations\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the analysis task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[summarization]]\nSummarize this in exactly 2 sentences:\n\"Quantum computing leverages quantum mechanical phenomena like superposition and entanglement to process information in fundamentally different ways than classical computers. While classical bits are either 0 or 1, quantum bits (qubits) can exist in multiple states simultaneously, allowing quantum computers to explore many solutions in parallel. However, quantum computers are extremely sensitive to environmental interference, requiring near-absolute-zero temperatures and sophisticated error correction. Current applications are limited but show promise in cryptography, drug discovery, and optimization problems.\"\n\n[[synthesis]]\nCombine these three perspectives on remote work into a balanced view:\nPerspective A: \"Remote work increases productivity and employee satisfaction.\"\nPerspective B: \"Remote work harms collaboration and company culture.\"\nPerspective C: \"Remote work benefits vary significantly by role and individual.\"\n\n[[extraction]]\nFrom this dataset, extract only the items that meet ALL criteria: price under $50, rating above 4.0, in stock:\n- Product A: $45, rating 4.2, out of stock\n- Product B: $38, rating 4.5, in stock\n- Product C: $52, rating 4.8, in stock\n- Product D: $42, rating 3.9, in stock\n- Product E: $35, rating 4.3, in stock\n\n[[comparison]]\nCompare these two approaches to learning a language: immersion vs. structured study. Identify 2 advantages of each.\n\n[[categorization]]\nGroup these into logical categories: emails, spreadsheets, presentations, databases, documents, diagrams, charts, letters, invoices, blueprints.\n\n[[prioritization]]\nRank these tasks by urgency considering deadlines and dependencies:\n- Task A: Due tomorrow, blocks 3 other tasks\n- Task B: Due next week, no dependencies\n- Task C: Due today, optional\n- Task D: Due in 3 days, blocks Task B\n\n[[pattern]]\nIdentify the pattern and predict the next three items: 2, 5, 11, 23, 47, ?, ?, ?\n\n[[verification]]\nIdentify factual errors or inconsistencies in this text:\n\"The Pacific Ocean is the smallest ocean on Earth. Water freezes at 100 degrees Celsius at sea level. Japan is located in the Atlantic Ocean.\"\n\n[[inference]]\nWhat can you infer about a company from this data?\n- Employee turnover increased 40% this year\n- Glassdoor rating dropped from 4.2 to 2.8\n- Three senior executives left in the past 2 months\n- Job postings increased 200%\n\n[[structure]]\nOrganize these topics into a hierarchical outline for a report on climate change:\nRenewable energy, Rising temperatures, Carbon emissions, Solar power, Wind power, Greenhouse effect, Sea level rise, Policy solutions, Technology solutions\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["summarization", "synthesis", "extraction", "comparison", "categorization", "prioritization", "pattern", "verification", "inference", "structure"]
+    },
+    "advanced": {
+      "name": "Research Analyst",
+      "questionCount": 20,
+      "prompt": "AIQ-X Information Processing v1.0 – Research Analyst\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the analysis task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[summarization]]\nSummarize this in exactly 2 sentences:\n\"Quantum computing leverages quantum mechanical phenomena like superposition and entanglement to process information in fundamentally different ways than classical computers. While classical bits are either 0 or 1, quantum bits (qubits) can exist in multiple states simultaneously, allowing quantum computers to explore many solutions in parallel. However, quantum computers are extremely sensitive to environmental interference, requiring near-absolute-zero temperatures and sophisticated error correction. Current applications are limited but show promise in cryptography, drug discovery, and optimization problems.\"\n\n[[summarization_2]]\nCreate a 50-word executive summary of a fictional 50-page market research report on plant-based meat alternatives.\n\n[[synthesis]]\nCombine these three perspectives on remote work into a balanced view:\nPerspective A: \"Remote work increases productivity and employee satisfaction.\"\nPerspective B: \"Remote work harms collaboration and company culture.\"\nPerspective C: \"Remote work benefits vary significantly by role and individual.\"\n\n[[synthesis_2]]\nSynthesize insights from conflicting studies: Study 1 shows coffee reduces heart disease risk. Study 2 shows coffee increases heart disease risk. What could explain this?\n\n[[extraction]]\nFrom this dataset, extract only the items that meet ALL criteria: price under $50, rating above 4.0, in stock:\n- Product A: $45, rating 4.2, out of stock\n- Product B: $38, rating 4.5, in stock\n- Product C: $52, rating 4.8, in stock\n- Product D: $42, rating 3.9, in stock\n- Product E: $35, rating 4.3, in stock\n\n[[extraction_2]]\nExtract the causal relationships from this text:\n\"The interest rate hike led to decreased borrowing. Consequently, construction projects were delayed, causing unemployment in the construction sector to rise. This resulted in reduced consumer spending.\"\n\n[[comparison]]\nCompare these two approaches to learning a language: immersion vs. structured study. Identify 2 advantages of each.\n\n[[comparison_2]]\nCompare three economic systems (capitalism, socialism, mixed economy) across 3 dimensions of your choice.\n\n[[categorization]]\nGroup these into logical categories: emails, spreadsheets, presentations, databases, documents, diagrams, charts, letters, invoices, blueprints.\n\n[[categorization_2]]\nCreate a taxonomy for types of logical fallacies with examples of each category.\n\n[[prioritization]]\nRank these tasks by urgency considering deadlines and dependencies:\n- Task A: Due tomorrow, blocks 3 other tasks\n- Task B: Due next week, no dependencies\n- Task C: Due today, optional\n- Task D: Due in 3 days, blocks Task B\n\n[[prioritization_2]]\nPrioritize these research questions by feasibility and impact:\n- Cure for all cancers\n- 10% improvement in solar panel efficiency\n- Faster smartphone processors\n- Reversing aging in humans\n\n[[pattern]]\nIdentify the pattern and predict the next three items: 2, 5, 11, 23, 47, ?, ?, ?\n\n[[pattern_2]]\nIdentify the anomaly in this sales data and hypothesize why:\nJan: $100k, Feb: $105k, Mar: $110k, Apr: $180k, May: $115k, Jun: $120k\n\n[[verification]]\nIdentify factual errors or inconsistencies in this text:\n\"The Pacific Ocean is the smallest ocean on Earth. Water freezes at 100 degrees Celsius at sea level. Japan is located in the Atlantic Ocean.\"\n\n[[verification_2]]\nThis study claims \"90% of participants improved.\" What questions should you ask before accepting this claim?\n\n[[inference]]\nWhat can you infer about a company from this data?\n- Employee turnover increased 40% this year\n- Glassdoor rating dropped from 4.2 to 2.8\n- Three senior executives left in the past 2 months\n- Job postings increased 200%\n\n[[inference_2]]\nA city's bike-sharing usage doubled after lowering prices. What alternative explanations exist beyond the price change?\n\n[[structure]]\nOrganize these topics into a hierarchical outline for a report on climate change:\nRenewable energy, Rising temperatures, Carbon emissions, Solar power, Wind power, Greenhouse effect, Sea level rise, Policy solutions, Technology solutions\n\n[[structure_2]]\nDesign an information architecture for a knowledge base with 15 articles on project management topics.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["summarization", "summarization_2", "synthesis", "synthesis_2", "extraction", "extraction_2", "comparison", "comparison_2", "categorization", "categorization_2", "prioritization", "prioritization_2", "pattern", "pattern_2", "verification", "verification_2", "inference", "inference_2", "structure", "structure_2"]
+    },
+    "expert": {
+      "name": "Senior Research Analyst",
+      "questionCount": 35,
+      "prompt": "AIQ-X Information Processing v1.0 – Senior Research Analyst\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the analysis task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Demonstrate sophisticated analytical thinking.\n\nBEGIN AIQ-X RESPONSES\n\n[[summarization]]\nSummarize this in exactly 2 sentences:\n\"Quantum computing leverages quantum mechanical phenomena like superposition and entanglement to process information in fundamentally different ways than classical computers. While classical bits are either 0 or 1, quantum bits (qubits) can exist in multiple states simultaneously, allowing quantum computers to explore many solutions in parallel. However, quantum computers are extremely sensitive to environmental interference, requiring near-absolute-zero temperatures and sophisticated error correction. Current applications are limited but show promise in cryptography, drug discovery, and optimization problems.\"\n\n[[summarization_2]]\nCreate a 50-word executive summary of a fictional 50-page market research report on plant-based meat alternatives.\n\n[[summarization_3]]\nSummarize a complex multi-stakeholder issue (healthcare reform) in a way that each stakeholder feels heard.\n\n[[summarization_4]]\nCreate a progressive disclosure summary: 1 sentence, then 3 sentences, then 1 paragraph on AI safety.\n\n[[synthesis]]\nCombine these three perspectives on remote work into a balanced view:\nPerspective A: \"Remote work increases productivity and employee satisfaction.\"\nPerspective B: \"Remote work harms collaboration and company culture.\"\nPerspective C: \"Remote work benefits vary significantly by role and individual.\"\n\n[[synthesis_2]]\nSynthesize insights from conflicting studies: Study 1 shows coffee reduces heart disease risk. Study 2 shows coffee increases heart disease risk. What could explain this?\n\n[[synthesis_3]]\nSynthesize findings from 5 fictional sources about social media impact into a coherent meta-analysis.\n\n[[extraction]]\nFrom this dataset, extract only the items that meet ALL criteria: price under $50, rating above 4.0, in stock:\n- Product A: $45, rating 4.2, out of stock\n- Product B: $38, rating 4.5, in stock\n- Product C: $52, rating 4.8, in stock\n- Product D: $42, rating 3.9, in stock\n- Product E: $35, rating 4.3, in stock\n\n[[extraction_2]]\nExtract the causal relationships from this text:\n\"The interest rate hike led to decreased borrowing. Consequently, construction projects were delayed, causing unemployment in the construction sector to rise. This resulted in reduced consumer spending.\"\n\n[[extraction_3]]\nFrom a fictional customer feedback dataset, extract the top 3 pain points and supporting evidence.\n\n[[extraction_4]]\nExtract implicit assumptions from this argument: \"We should increase marketing spend because our competitors are doing it.\"\n\n[[comparison]]\nCompare these two approaches to learning a language: immersion vs. structured study. Identify 2 advantages of each.\n\n[[comparison_2]]\nCompare three economic systems (capitalism, socialism, mixed economy) across 3 dimensions of your choice.\n\n[[comparison_3]]\nCreate a comparison matrix for 4 project management methodologies across 5 criteria.\n\n[[categorization]]\nGroup these into logical categories: emails, spreadsheets, presentations, databases, documents, diagrams, charts, letters, invoices, blueprints.\n\n[[categorization_2]]\nCreate a taxonomy for types of logical fallacies with examples of each category.\n\n[[categorization_3]]\nDevelop a classification system for 20 different types of business risks.\n\n[[categorization_4]]\nCreate a multi-level taxonomy for organizing 100+ research papers on machine learning.\n\n[[prioritization]]\nRank these tasks by urgency considering deadlines and dependencies:\n- Task A: Due tomorrow, blocks 3 other tasks\n- Task B: Due next week, no dependencies\n- Task C: Due today, optional\n- Task D: Due in 3 days, blocks Task B\n\n[[prioritization_2]]\nPrioritize these research questions by feasibility and impact:\n- Cure for all cancers\n- 10% improvement in solar panel efficiency\n- Faster smartphone processors\n- Reversing aging in humans\n\n[[prioritization_3]]\nCreate a prioritization framework for evaluating 50+ product feature requests with limited resources.\n\n[[pattern]]\nIdentify the pattern and predict the next three items: 2, 5, 11, 23, 47, ?, ?, ?\n\n[[pattern_2]]\nIdentify the anomaly in this sales data and hypothesize why:\nJan: $100k, Feb: $105k, Mar: $110k, Apr: $180k, May: $115k, Jun: $120k\n\n[[pattern_3]]\nIdentify three distinct patterns in fictional multi-year economic data and their implications.\n\n[[pattern_4]]\nDetect subtle bias patterns in a set of fictional hiring decisions.\n\n[[verification]]\nIdentify factual errors or inconsistencies in this text:\n\"The Pacific Ocean is the smallest ocean on Earth. Water freezes at 100 degrees Celsius at sea level. Japan is located in the Atlantic Ocean.\"\n\n[[verification_2]]\nThis study claims \"90% of participants improved.\" What questions should you ask before accepting this claim?\n\n[[verification_3]]\nVerify the logical consistency of a multi-step argument about climate policy.\n\n[[inference]]\nWhat can you infer about a company from this data?\n- Employee turnover increased 40% this year\n- Glassdoor rating dropped from 4.2 to 2.8\n- Three senior executives left in the past 2 months\n- Job postings increased 200%\n\n[[inference_2]]\nA city's bike-sharing usage doubled after lowering prices. What alternative explanations exist beyond the price change?\n\n[[inference_3]]\nWhat can you infer about market conditions from this pattern of startup funding rounds?\n\n[[inference_4]]\nInfer the underlying business strategy from a series of apparently unrelated corporate moves.\n\n[[structure]]\nOrganize these topics into a hierarchical outline for a report on climate change:\nRenewable energy, Rising temperatures, Carbon emissions, Solar power, Wind power, Greenhouse effect, Sea level rise, Policy solutions, Technology solutions\n\n[[structure_2]]\nDesign an information architecture for a knowledge base with 15 articles on project management topics.\n\n[[structure_3]]\nCreate a comprehensive information structure for a 200-page technical manual.\n\n[[structure_4]]\nDesign a decision tree for diagnosing 20 common computer problems.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["summarization", "summarization_2", "summarization_3", "summarization_4", "synthesis", "synthesis_2", "synthesis_3", "extraction", "extraction_2", "extraction_3", "extraction_4", "comparison", "comparison_2", "comparison_3", "categorization", "categorization_2", "categorization_3", "categorization_4", "prioritization", "prioritization_2", "prioritization_3", "pattern", "pattern_2", "pattern_3", "pattern_4", "verification", "verification_2", "verification_3", "inference", "inference_2", "inference_3", "inference_4", "structure", "structure_2", "structure_3", "structure_4"]
+    }
+  },
+  "scoringStrategy": "heuristic-v1",
+  "scoringParams": {
+    "baseScore": 32,
+    "hedgeBonus": 4,
+    "absolutePenalty": -6,
+    "lengthBonuses": [
+      { "threshold": 180, "bonus": 16 },
+      { "threshold": 350, "bonus": 12 }
+    ]
+  }
+}

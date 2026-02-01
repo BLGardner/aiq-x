@@ -1,0 +1,102 @@
+{
+  "id": "code-proficiency-v1",
+  "version": "1.0.0",
+  "name": "Code Proficiency Assessment",
+  "description": "Evaluates programming capabilities across languages, debugging, architecture, optimization, and code quality. Tests practical coding skills essential for development tasks.",
+  "author": "AIQ-X Official",
+  "releaseDate": "2024-01-29",
+  "difficulty": "specialized",
+  "tags": ["coding", "programming", "debugging", "architecture", "specialized"],
+  "domains": [
+    {
+      "id": "syntax",
+      "name": "Multi-Language Syntax",
+      "description": "Tests ability to write correct code across different programming languages",
+      "weight": 1.0
+    },
+    {
+      "id": "debugging",
+      "name": "Debugging & Error Detection",
+      "description": "Evaluates capability to identify and fix bugs in existing code",
+      "weight": 1.2
+    },
+    {
+      "id": "architecture",
+      "name": "Software Architecture",
+      "description": "Measures understanding of design patterns and system structure",
+      "weight": 1.3
+    },
+    {
+      "id": "optimization",
+      "name": "Code Optimization",
+      "description": "Tests ability to improve code efficiency and performance",
+      "weight": 1.1
+    },
+    {
+      "id": "readability",
+      "name": "Code Readability",
+      "description": "Assesses capacity to write clean, maintainable, documented code",
+      "weight": 1.0
+    },
+    {
+      "id": "algorithms",
+      "name": "Algorithm Design",
+      "description": "Evaluates problem-solving through algorithmic thinking",
+      "weight": 1.2
+    },
+    {
+      "id": "testing",
+      "name": "Testing & Quality",
+      "description": "Tests understanding of unit testing, edge cases, and quality assurance",
+      "weight": 1.1
+    },
+    {
+      "id": "security",
+      "name": "Security Awareness",
+      "description": "Measures ability to identify and prevent security vulnerabilities",
+      "weight": 1.3
+    },
+    {
+      "id": "refactoring",
+      "name": "Code Refactoring",
+      "description": "Tests skill in restructuring code without changing behavior",
+      "weight": 1.0
+    },
+    {
+      "id": "documentation",
+      "name": "Technical Documentation",
+      "description": "Evaluates ability to explain code and generate useful documentation",
+      "weight": 1.0
+    }
+  ],
+  "tiers": {
+    "basic": {
+      "name": "Developer Fundamentals",
+      "questionCount": 10,
+      "prompt": "AIQ-X Code Proficiency v1.0 – Developer Fundamentals\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Provide working code where requested.\n\nBEGIN AIQ-X RESPONSES\n\n[[syntax]]\nWrite a function in Python that reverses a string without using built-in reverse methods.\n\n[[debugging]]\nThis code has a bug. Identify and fix it:\n```python\ndef find_max(numbers):\n    max_val = 0\n    for num in numbers:\n        if num > max_val:\n            max_val = num\n    return max_val\n```\n\n[[architecture]]\nExplain the Single Responsibility Principle with a code example showing violation and correction.\n\n[[optimization]]\nThis function is inefficient. Optimize it and explain why:\n```python\ndef has_duplicates(lst):\n    for i in range(len(lst)):\n        for j in range(len(lst)):\n            if i != j and lst[i] == lst[j]:\n                return True\n    return False\n```\n\n[[readability]]\nRewrite this code to be more readable:\n```python\ndef f(x):\n    return [i*2 for i in x if i%2==0]\n```\n\n[[algorithms]]\nDescribe an algorithm to find if a linked list has a cycle. What's the time complexity?\n\n[[testing]]\nWrite three test cases for a function that validates email addresses. Include edge cases.\n\n[[security]]\nIdentify the security vulnerability in this SQL query construction:\n```python\nquery = \"SELECT * FROM users WHERE username='\" + user_input + \"'\"\n```\n\n[[refactoring]]\nRefactor this nested conditional into a cleaner structure:\n```python\nif user:\n    if user.is_active:\n        if user.has_permission:\n            return True\nreturn False\n```\n\n[[documentation]]\nWrite a docstring for a function that calculates fibonacci numbers using memoization.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["syntax", "debugging", "architecture", "optimization", "readability", "algorithms", "testing", "security", "refactoring", "documentation"]
+    },
+    "advanced": {
+      "name": "Professional Developer",
+      "questionCount": 20,
+      "prompt": "AIQ-X Code Proficiency v1.0 – Professional Developer\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Provide working code where requested.\n\nBEGIN AIQ-X RESPONSES\n\n[[syntax]]\nWrite a function in Python that reverses a string without using built-in reverse methods.\n\n[[syntax_2]]\nWrite the same string reversal function in JavaScript and explain key differences from Python.\n\n[[debugging]]\nThis code has a bug. Identify and fix it:\n```python\ndef find_max(numbers):\n    max_val = 0\n    for num in numbers:\n        if num > max_val:\n            max_val = num\n    return max_val\n```\n\n[[debugging_2]]\nThis async code has a race condition. Identify and fix it:\n```javascript\nlet counter = 0;\nasync function increment() {\n    const current = counter;\n    await delay(10);\n    counter = current + 1;\n}\n```\n\n[[architecture]]\nExplain the Single Responsibility Principle with a code example showing violation and correction.\n\n[[architecture_2]]\nDesign a class structure for a payment processing system using the Strategy pattern.\n\n[[optimization]]\nThis function is inefficient. Optimize it and explain why:\n```python\ndef has_duplicates(lst):\n    for i in range(len(lst)):\n        for j in range(len(lst)):\n            if i != j and lst[i] == lst[j]:\n                return True\n    return False\n```\n\n[[optimization_2]]\nOptimize this database query approach and explain the improvement:\n```python\nfor user_id in user_ids:  # 1000 users\n    user = db.query(\"SELECT * FROM users WHERE id = ?\", user_id)\n    process(user)\n```\n\n[[readability]]\nRewrite this code to be more readable:\n```python\ndef f(x):\n    return [i*2 for i in x if i%2==0]\n```\n\n[[readability_2]]\nImprove naming and structure in this function:\n```python\ndef calc(a, b, t):\n    if t == 1:\n        return a + b\n    elif t == 2:\n        return a - b\n    else:\n        return a * b\n```\n\n[[algorithms]]\nDescribe an algorithm to find if a linked list has a cycle. What's the time complexity?\n\n[[algorithms_2]]\nImplement binary search recursively and explain when it fails.\n\n[[testing]]\nWrite three test cases for a function that validates email addresses. Include edge cases.\n\n[[testing_2]]\nDesign a testing strategy for a function that calls external APIs. How do you handle failures?\n\n[[security]]\nIdentify the security vulnerability in this SQL query construction:\n```python\nquery = \"SELECT * FROM users WHERE username='\" + user_input + \"'\"\n```\n\n[[security_2]]\nWhat's wrong with this authentication approach? Suggest improvements:\n```python\nif password == stored_password:\n    login_user()\n```\n\n[[refactoring]]\nRefactor this nested conditional into a cleaner structure:\n```python\nif user:\n    if user.is_active:\n        if user.has_permission:\n            return True\nreturn False\n```\n\n[[refactoring_2]]\nRefactor this code to eliminate duplication:\n```python\ndef get_user_email(user_id):\n    db = connect_db()\n    result = db.query(f\"SELECT email FROM users WHERE id={user_id}\")\n    db.close()\n    return result\n\ndef get_user_name(user_id):\n    db = connect_db()\n    result = db.query(f\"SELECT name FROM users WHERE id={user_id}\")\n    db.close()\n    return result\n```\n\n[[documentation]]\nWrite a docstring for a function that calculates fibonacci numbers using memoization.\n\n[[documentation_2]]\nGenerate API documentation for a REST endpoint that creates user accounts with validation.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["syntax", "syntax_2", "debugging", "debugging_2", "architecture", "architecture_2", "optimization", "optimization_2", "readability", "readability_2", "algorithms", "algorithms_2", "testing", "testing_2", "security", "security_2", "refactoring", "refactoring_2", "documentation", "documentation_2"]
+    },
+    "expert": {
+      "name": "Senior Engineer",
+      "questionCount": 35,
+      "prompt": "AIQ-X Code Proficiency v1.0 – Senior Engineer\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Answer the task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Provide production-quality code where requested.\n\nBEGIN AIQ-X RESPONSES\n\n[[syntax]]\nWrite a function in Python that reverses a string without using built-in reverse methods.\n\n[[syntax_2]]\nWrite the same string reversal function in JavaScript and explain key differences from Python.\n\n[[syntax_3]]\nImplement a generic type-safe version in TypeScript with proper type annotations.\n\n[[syntax_4]]\nWrite the same in Rust, explaining ownership and borrowing considerations.\n\n[[debugging]]\nThis code has a bug. Identify and fix it:\n```python\ndef find_max(numbers):\n    max_val = 0\n    for num in numbers:\n        if num > max_val:\n            max_val = num\n    return max_val\n```\n\n[[debugging_2]]\nThis async code has a race condition. Identify and fix it:\n```javascript\nlet counter = 0;\nasync function increment() {\n    const current = counter;\n    await delay(10);\n    counter = current + 1;\n}\n```\n\n[[debugging_3]]\nFind the memory leak in this React component:\n```javascript\nfunction Timer() {\n    const [time, setTime] = useState(0);\n    setInterval(() => setTime(t => t + 1), 1000);\n    return <div>{time}</div>;\n}\n```\n\n[[debugging_4]]\nThis distributed system has a subtle consistency bug. Identify it:\n```python\ndef transfer_money(from_account, to_account, amount):\n    from_balance = get_balance(from_account)\n    if from_balance >= amount:\n        set_balance(from_account, from_balance - amount)\n        to_balance = get_balance(to_account)\n        set_balance(to_account, to_balance + amount)\n```\n\n[[architecture]]\nExplain the Single Responsibility Principle with a code example showing violation and correction.\n\n[[architecture_2]]\nDesign a class structure for a payment processing system using the Strategy pattern.\n\n[[architecture_3]]\nArchitect a microservices system for e-commerce. Include service boundaries and communication patterns.\n\n[[architecture_4]]\nDesign an event-driven system that handles 10k events/second with guaranteed ordering per user.\n\n[[optimization]]\nThis function is inefficient. Optimize it and explain why:\n```python\ndef has_duplicates(lst):\n    for i in range(len(lst)):\n        for j in range(len(lst)):\n            if i != j and lst[i] == lst[j]:\n                return True\n    return False\n```\n\n[[optimization_2]]\nOptimize this database query approach and explain the improvement:\n```python\nfor user_id in user_ids:  # 1000 users\n    user = db.query(\"SELECT * FROM users WHERE id = ?\", user_id)\n    process(user)\n```\n\n[[optimization_3]]\nOptimize this React component that re-renders unnecessarily:\n```javascript\nfunction UserList({ users }) {\n    return users.map(user => (\n        <UserCard key={user.id} user={user} \n                  onClick={() => console.log(user.id)} />\n    ));\n}\n```\n\n[[readability]]\nRewrite this code to be more readable:\n```python\ndef f(x):\n    return [i*2 for i in x if i%2==0]\n```\n\n[[readability_2]]\nImprove naming and structure in this function:\n```python\ndef calc(a, b, t):\n    if t == 1:\n        return a + b\n    elif t == 2:\n        return a - b\n    else:\n        return a * b\n```\n\n[[readability_3]]\nRefactor this callback hell into readable async/await:\n```javascript\ngetUser(id, (user) => {\n    getOrders(user.id, (orders) => {\n        processOrders(orders, (result) => {\n            saveResult(result, (saved) => {\n                console.log('Done');\n            });\n        });\n    });\n});\n```\n\n[[algorithms]]\nDescribe an algorithm to find if a linked list has a cycle. What's the time complexity?\n\n[[algorithms_2]]\nImplement binary search recursively and explain when it fails.\n\n[[algorithms_3]]\nDesign an algorithm to find the kth largest element in an unsorted array in O(n) average time.\n\n[[algorithms_4]]\nImplement a LRU cache with O(1) get and put operations. Explain your data structure choice.\n\n[[testing]]\nWrite three test cases for a function that validates email addresses. Include edge cases.\n\n[[testing_2]]\nDesign a testing strategy for a function that calls external APIs. How do you handle failures?\n\n[[testing_3]]\nWrite integration tests for a user registration flow with email verification. Cover failure modes.\n\n[[testing_4]]\nHow would you test a distributed transaction system? Describe your approach to chaos testing.\n\n[[security]]\nIdentify the security vulnerability in this SQL query construction:\n```python\nquery = \"SELECT * FROM users WHERE username='\" + user_input + \"'\"\n```\n\n[[security_2]]\nWhat's wrong with this authentication approach? Suggest improvements:\n```python\nif password == stored_password:\n    login_user()\n```\n\n[[security_3]]\nReview this JWT implementation for security issues:\n```python\ndef create_token(user_id):\n    payload = {\"user_id\": user_id, \"exp\": time() + 3600}\n    return jwt.encode(payload, \"secret123\", algorithm=\"HS256\")\n```\n\n[[security_4]]\nIdentify CSRF, XSS, and other vulnerabilities in this Express route:\n```javascript\napp.post('/transfer', (req, res) => {\n    const { to, amount } = req.body;\n    transferMoney(req.user.id, to, amount);\n    res.send(`Transferred ${amount} to ${to}`);\n});\n```\n\n[[refactoring]]\nRefactor this nested conditional into a cleaner structure:\n```python\nif user:\n    if user.is_active:\n        if user.has_permission:\n            return True\nreturn False\n```\n\n[[refactoring_2]]\nRefactor this code to eliminate duplication:\n```python\ndef get_user_email(user_id):\n    db = connect_db()\n    result = db.query(f\"SELECT email FROM users WHERE id={user_id}\")\n    db.close()\n    return result\n\ndef get_user_name(user_id):\n    db = connect_db()\n    result = db.query(f\"SELECT name FROM users WHERE id={user_id}\")\n    db.close()\n    return result\n```\n\n[[refactoring_3]]\nRefactor this God Class into well-separated concerns:\n```python\nclass UserManager:\n    def create_user(self, data): ...\n    def send_welcome_email(self, user): ...\n    def log_user_creation(self, user): ...\n    def update_analytics(self, user): ...\n    def validate_user_data(self, data): ...\n```\n\n[[documentation]]\nWrite a docstring for a function that calculates fibonacci numbers using memoization.\n\n[[documentation_2]]\nGenerate API documentation for a REST endpoint that creates user accounts with validation.\n\n[[documentation_3]]\nWrite architectural decision records (ADR) for choosing microservices over monolith.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["syntax", "syntax_2", "syntax_3", "syntax_4", "debugging", "debugging_2", "debugging_3", "debugging_4", "architecture", "architecture_2", "architecture_3", "architecture_4", "optimization", "optimization_2", "optimization_3", "readability", "readability_2", "readability_3", "algorithms", "algorithms_2", "algorithms_3", "algorithms_4", "testing", "testing_2", "testing_3", "testing_4", "security", "security_2", "security_3", "security_4", "refactoring", "refactoring_2", "refactoring_3", "documentation", "documentation_2", "documentation_3"]
+    }
+  },
+  "scoringStrategy": "heuristic-v1",
+  "scoringParams": {
+    "baseScore": 30,
+    "hedgeBonus": 3,
+    "absolutePenalty": -6,
+    "lengthBonuses": [
+      { "threshold": 150, "bonus": 15 },
+      { "threshold": 300, "bonus": 10 }
+    ]
+  }
+}

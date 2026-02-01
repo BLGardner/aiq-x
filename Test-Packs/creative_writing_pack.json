@@ -1,0 +1,102 @@
+{
+  "id": "creative-writing-v1",
+  "version": "1.0.0",
+  "name": "Creative Writing Assessment",
+  "description": "Evaluates storytelling, character development, world-building, stylistic variation, and narrative structure. Tests creative fiction and imaginative writing capabilities.",
+  "author": "AIQ-X Official",
+  "releaseDate": "2024-01-29",
+  "difficulty": "specialized",
+  "tags": ["creative", "fiction", "storytelling", "narrative", "specialized"],
+  "domains": [
+    {
+      "id": "narrative",
+      "name": "Narrative Structure",
+      "description": "Tests ability to construct compelling plot and story arcs",
+      "weight": 1.2
+    },
+    {
+      "id": "character",
+      "name": "Character Development",
+      "description": "Evaluates skill in creating believable, complex characters",
+      "weight": 1.3
+    },
+    {
+      "id": "dialogue",
+      "name": "Dialogue Craft",
+      "description": "Measures ability to write natural, character-appropriate dialogue",
+      "weight": 1.0
+    },
+    {
+      "id": "description",
+      "name": "Descriptive Writing",
+      "description": "Assesses capacity to create vivid imagery and atmosphere",
+      "weight": 1.1
+    },
+    {
+      "id": "style",
+      "name": "Stylistic Range",
+      "description": "Tests flexibility in adopting different writing styles",
+      "weight": 1.2
+    },
+    {
+      "id": "worldbuilding",
+      "name": "World-Building",
+      "description": "Evaluates creation of coherent, immersive settings",
+      "weight": 1.1
+    },
+    {
+      "id": "pacing",
+      "name": "Pacing & Rhythm",
+      "description": "Measures control of story tempo and tension",
+      "weight": 1.0
+    },
+    {
+      "id": "voice",
+      "name": "Narrative Voice",
+      "description": "Tests development of distinct, consistent voice",
+      "weight": 1.1
+    },
+    {
+      "id": "originality",
+      "name": "Originality",
+      "description": "Assesses creativity and avoidance of clichés",
+      "weight": 1.3
+    },
+    {
+      "id": "emotion",
+      "name": "Emotional Resonance",
+      "description": "Evaluates ability to evoke genuine emotion in readers",
+      "weight": 1.2
+    }
+  ],
+  "tiers": {
+    "basic": {
+      "name": "Storytelling Foundations",
+      "questionCount": 10,
+      "prompt": "AIQ-X Creative Writing v1.0 – Storytelling Foundations\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the creative writing task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[narrative]]\nWrite the opening paragraph of a story where the first sentence contradicts the last sentence.\n\n[[character]]\nCreate a character who believes they're the hero but is actually the antagonist. Describe them in 3-4 sentences.\n\n[[dialogue]]\nWrite a dialogue between two people saying goodbye, where one knows they'll never see the other again but can't say so.\n\n[[description]]\nDescribe a familiar place (like a kitchen) in a way that makes it feel alien and unsettling.\n\n[[style]]\nWrite the same scene (someone receiving bad news) in two contrasting styles: sparse minimalism and ornate verbosity.\n\n[[worldbuilding]]\nCreate a society where lying is physically impossible. Describe one consequence of this constraint.\n\n[[pacing]]\nWrite a 50-word paragraph where the first half is slow and contemplative, the second half is rapid and urgent.\n\n[[voice]]\nWrite the same event (finding a mysterious letter) from the perspective of a cynical detective and an optimistic child.\n\n[[originality]]\nTake a cliché scenario (love at first sight, chosen one, etc.) and subvert it in an unexpected way.\n\n[[emotion]]\nWrite a scene that conveys profound loss without using the words: sad, cry, tears, death, or grief.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["narrative", "character", "dialogue", "description", "style", "worldbuilding", "pacing", "voice", "originality", "emotion"]
+    },
+    "advanced": {
+      "name": "Advanced Storytelling",
+      "questionCount": 20,
+      "prompt": "AIQ-X Creative Writing v1.0 – Advanced Storytelling\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the creative writing task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n\nBEGIN AIQ-X RESPONSES\n\n[[narrative]]\nWrite the opening paragraph of a story where the first sentence contradicts the last sentence.\n\n[[narrative_2]]\nConstruct a plot synopsis for a story told in reverse chronological order that only makes sense backwards.\n\n[[character]]\nCreate a character who believes they're the hero but is actually the antagonist. Describe them in 3-4 sentences.\n\n[[character_2]]\nWrite a character transformation arc in 5 sentences, showing clear change without stating it explicitly.\n\n[[dialogue]]\nWrite a dialogue between two people saying goodbye, where one knows they'll never see the other again but can't say so.\n\n[[dialogue_2]]\nCreate a conversation where both characters are lying but the truth is still communicated to the reader.\n\n[[description]]\nDescribe a familiar place (like a kitchen) in a way that makes it feel alien and unsettling.\n\n[[description_2]]\nDescribe a fantastical creature using only comparisons to mundane objects and sensations.\n\n[[style]]\nWrite the same scene (someone receiving bad news) in two contrasting styles: sparse minimalism and ornate verbosity.\n\n[[style_2]]\nWrite in the style of three different literary periods: Victorian, Modernist, and Contemporary.\n\n[[worldbuilding]]\nCreate a society where lying is physically impossible. Describe one consequence of this constraint.\n\n[[worldbuilding_2]]\nDesign a magic system with clear rules and limitations. Show how these limitations create story tension.\n\n[[pacing]]\nWrite a 50-word paragraph where the first half is slow and contemplative, the second half is rapid and urgent.\n\n[[pacing_2]]\nWrite a chase scene where tension builds despite the action slowing down.\n\n[[voice]]\nWrite the same event (finding a mysterious letter) from the perspective of a cynical detective and an optimistic child.\n\n[[voice_2]]\nDevelop a narrative voice that contradicts what's happening in the story (e.g., cheerful tone describing something dark).\n\n[[originality]]\nTake a cliché scenario (love at first sight, chosen one, etc.) and subvert it in an unexpected way.\n\n[[originality_2]]\nInvent a new metaphor for time that doesn't involve rivers, clocks, or linear progression.\n\n[[emotion]]\nWrite a scene that conveys profound loss without using the words: sad, cry, tears, death, or grief.\n\n[[emotion_2]]\nWrite a scene where a character experiences conflicting emotions simultaneously. Show, don't tell.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["narrative", "narrative_2", "character", "character_2", "dialogue", "dialogue_2", "description", "description_2", "style", "style_2", "worldbuilding", "worldbuilding_2", "pacing", "pacing_2", "voice", "voice_2", "originality", "originality_2", "emotion", "emotion_2"]
+    },
+    "expert": {
+      "name": "Master Storyteller",
+      "questionCount": 35,
+      "prompt": "AIQ-X Creative Writing v1.0 – Master Storyteller\n\nINSTRUCTIONS (READ CAREFULLY):\n- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n- Use the EXACT section markers provided.\n- Complete the creative writing task associated with each section.\n- Do NOT repeat the questions.\n- Do NOT include any text outside the response block.\n- Demonstrate literary excellence and sophisticated technique.\n\nBEGIN AIQ-X RESPONSES\n\n[[narrative]]\nWrite the opening paragraph of a story where the first sentence contradicts the last sentence.\n\n[[narrative_2]]\nConstruct a plot synopsis for a story told in reverse chronological order that only makes sense backwards.\n\n[[narrative_3]]\nCreate a circular narrative where the ending loops back to the beginning but with transformed meaning.\n\n[[narrative_4]]\nWrite a story outline with three parallel timelines that intersect at a single crucial moment.\n\n[[character]]\nCreate a character who believes they're the hero but is actually the antagonist. Describe them in 3-4 sentences.\n\n[[character_2]]\nWrite a character transformation arc in 5 sentences, showing clear change without stating it explicitly.\n\n[[character_3]]\nCreate a character entirely through what they own, without describing appearance or explicitly stating personality.\n\n[[character_4]]\nWrite a character whose dialogue contradicts their actions, revealing deeper truth through the tension.\n\n[[dialogue]]\nWrite a dialogue between two people saying goodbye, where one knows they'll never see the other again but can't say so.\n\n[[dialogue_2]]\nCreate a conversation where both characters are lying but the truth is still communicated to the reader.\n\n[[dialogue_3]]\nWrite dialogue that sounds natural but follows strict formal poetry meter (iambic pentameter).\n\n[[description]]\nDescribe a familiar place (like a kitchen) in a way that makes it feel alien and unsettling.\n\n[[description_2]]\nDescribe a fantastical creature using only comparisons to mundane objects and sensations.\n\n[[description_3]]\nDescribe a landscape through the unreliable perspective of someone in an altered mental state.\n\n[[description_4]]\nCreate a description where every sensory detail contradicts the emotional atmosphere you're building.\n\n[[style]]\nWrite the same scene (someone receiving bad news) in two contrasting styles: sparse minimalism and ornate verbosity.\n\n[[style_2]]\nWrite in the style of three different literary periods: Victorian, Modernist, and Contemporary.\n\n[[style_3]]\nMimic the style of three different authors so distinctly that their voices are recognizable.\n\n[[worldbuilding]]\nCreate a society where lying is physically impossible. Describe one consequence of this constraint.\n\n[[worldbuilding_2]]\nDesign a magic system with clear rules and limitations. Show how these limitations create story tension.\n\n[[worldbuilding_3]]\nBuild a world where one fundamental law of physics works differently. Show cascading consequences.\n\n[[worldbuilding_4]]\nCreate a culture with unique social customs that reveal deeper values through everyday interactions.\n\n[[pacing]]\nWrite a 50-word paragraph where the first half is slow and contemplative, the second half is rapid and urgent.\n\n[[pacing_2]]\nWrite a chase scene where tension builds despite the action slowing down.\n\n[[pacing_3]]\nConstruct a scene where nothing happens but tension escalates unbearably.\n\n[[voice]]\nWrite the same event (finding a mysterious letter) from the perspective of a cynical detective and an optimistic child.\n\n[[voice_2]]\nDevelop a narrative voice that contradicts what's happening in the story (e.g., cheerful tone describing something dark).\n\n[[voice_3]]\nCreate a second-person narrative voice that doesn't feel gimmicky or distant.\n\n[[voice_4]]\nWrite in a collective first-person plural voice that maintains individual character distinction.\n\n[[originality]]\nTake a cliché scenario (love at first sight, chosen one, etc.) and subvert it in an unexpected way.\n\n[[originality_2]]\nInvent a new metaphor for time that doesn't involve rivers, clocks, or linear progression.\n\n[[originality_3]]\nCreate an original conflict that isn't person vs person, nature, society, or self.\n\n[[emotion]]\nWrite a scene that conveys profound loss without using the words: sad, cry, tears, death, or grief.\n\n[[emotion_2]]\nWrite a scene where a character experiences conflicting emotions simultaneously. Show, don't tell.\n\n[[emotion_3]]\nEvoke a specific emotion (your choice) using only dialogue punctuation, rhythm, and sentence fragments.\n\n[[emotion_4]]\nWrite a moment of quiet joy that feels earned after implied struggle, without describing the struggle directly.\n\nEND AIQ-X RESPONSES",
+      "expectedDomains": ["narrative", "narrative_2", "narrative_3", "narrative_4", "character", "character_2", "character_3", "character_4", "dialogue", "dialogue_2", "dialogue_3", "description", "description_2", "description_3", "description_4", "style", "style_2", "style_3", "worldbuilding", "worldbuilding_2", "worldbuilding_3", "worldbuilding_4", "pacing", "pacing_2", "pacing_3", "voice", "voice_2", "voice_3", "voice_4", "originality", "originality_2", "originality_3", "emotion", "emotion_2", "emotion_3", "emotion_4"]
+    }
+  },
+  "scoringStrategy": "heuristic-v1",
+  "scoringParams": {
+    "baseScore": 28,
+    "hedgeBonus": 2,
+    "absolutePenalty": -4,
+    "lengthBonuses": [
+      { "threshold": 250, "bonus": 20 },
+      { "threshold": 500, "bonus": 15 }
+    ]
+  }
+}
