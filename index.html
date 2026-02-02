@@ -2,670 +2,105 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>AIQ-X Professional Suite v4.0</title>
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<title>AIQ-X Professional Suite</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-:root {
-  --bg: #0a0e1a;
-  --surface: #151b2e;
-  --surface-elevated: #1a2137;
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --accent: #22d3ee;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-  --text: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --border: #1e293b;
-  --shadow: rgba(0, 0, 0, 0.3);
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.4;
-}
-
-header {
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  padding: 0.75rem 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 6px var(--shadow);
-}
-
-.header-content {
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-h1 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.25rem;
-}
-
-.subtitle {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
-}
-
-.tabs {
-  display: flex;
-  gap: 0.375rem;
-  flex-wrap: wrap;
-}
-
-.tab {
-  padding: 0.375rem 0.75rem;
-  border-radius: 0.375rem;
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  cursor: pointer;
-  font-size: 0.8rem;
-  transition: all 0.2s;
-  color: var(--text-secondary);
-}
-
-.tab:hover {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
-}
-
-.tab.active {
-  background: var(--primary);
-  color: white;
-  border-color: var(--primary);
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-}
-
-main {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0.75rem;
-}
-
-section {
-  background: var(--surface);
-  border-radius: 0.75rem;
-  padding: 0.75rem;
-  box-shadow: 0 10px 40px var(--shadow);
-  border: 1px solid var(--border);
-}
-
-.hidden {
-  display: none !important;
-}
-
-button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 0.375rem;
-  padding: 0.5rem 0.75rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 500;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-}
-
-button:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
-}
-
-button.secondary {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-
-button.secondary:hover {
-  background: var(--border);
-}
-
-button.danger {
-  background: var(--danger);
-}
-
-button.danger:hover {
-  background: #dc2626;
-}
-
-button.success {
-  background: var(--success);
-}
-
-button.success:hover {
-  background: #059669;
-}
-
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  transform: none;
-}
-
-select, input, textarea {
-  width: 100%;
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-  color: var(--text);
-  font-size: 0.8rem;
-  transition: all 0.2s;
-}
-
-select:focus, input:focus, textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-}
-
-textarea {
-  min-height: 150px;
-  resize: vertical;
-  font-family: 'Monaco', 'Courier New', monospace;
-  font-size: 0.75rem;
-}
-
-.test-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-
-@media (min-width: 1024px) {
-  .test-grid {
-    grid-template-columns: 380px 1fr;
-  }
-}
-
-.controls {
-  display: flex;
-  gap: 0.375rem;
-  flex-wrap: wrap;
-  margin-bottom: 0.5rem;
-}
-
-.info-box {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.info-box.warning {
-  border-color: var(--warning);
-  background: rgba(245, 158, 11, 0.1);
-}
-
-.info-box.success {
-  border-color: var(--success);
-  background: rgba(16, 185, 129, 0.1);
-}
-
-.info-box.danger {
-  border-color: var(--danger);
-  background: rgba(239, 68, 68, 0.1);
-}
-
-.info-box strong {
-  color: var(--text);
-  display: block;
-  margin-bottom: 0.25rem;
-}
-
-.metrics-container {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.metric-card {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  transition: all 0.2s;
-  cursor: pointer;
-}
-
-.metric-card:hover {
-  border-color: var(--primary);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.metric-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.375rem;
-}
-
-.metric-label {
-  font-weight: 500;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-}
-
-.metric-value {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.metric-bar {
-  height: 6px;
-  background: var(--surface);
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
-.metric-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
-  transition: width 0.6s ease;
-  border-radius: 1rem;
-}
-
-.score-critical { color: var(--danger); }
-.score-low { color: var(--warning); }
-.score-medium { color: #fbbf24; }
-.score-good { color: #a3e635; }
-.score-excellent { color: var(--success); }
-
-.table-container {
-  overflow-x: auto;
-  margin-top: 0.5rem;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.75rem;
-}
-
-th, td {
-  padding: 0.5rem 0.375rem;
-  text-align: center;
-  border-bottom: 1px solid var(--border);
-}
-
-th {
-  background: var(--surface-elevated);
-  font-weight: 600;
-  color: var(--text-secondary);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-th:first-child, td:first-child {
-  text-align: left;
-  font-weight: 600;
-}
-
-td {
-  color: var(--text);
-}
-
-tr:hover td {
-  background: var(--surface-elevated);
-}
-
-.score-cell {
-  font-weight: 600;
-  border-radius: 0.25rem;
-  padding: 0.375rem;
-}
-
-.detail-grid {
-  display: grid;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-@media (min-width: 640px) {
-  .detail-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-.stat-card {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-}
-
-.stat-card h4 {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.375rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.stat-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text);
-}
-
-.legend {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  padding: 0.5rem;
-  background: var(--surface-elevated);
-  border-radius: 0.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.7rem;
-}
-
-.legend-item {
-  display: flex;
-  align-items: center;
-  gap: 0.375rem;
-}
-
-.legend-color {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 0.25rem;
-}
-
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 0.75rem;
-}
-
-.modal-content {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  max-width: 800px;
-  width: 100%;
-  max-height: 80vh;
-  overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-}
-
-.modal-header h3 {
-  font-size: 1rem;
-}
-
-.modal-close {
-  background: none;
-  border: none;
-  color: var(--text-secondary);
-  cursor: pointer;
-  font-size: 1.5rem;
-  padding: 0;
-  width: 2rem;
-  height: 2rem;
-}
-
-.modal-close:hover {
-  color: var(--text);
-}
-
-.score-badge {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.75rem;
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-
-.badge-critical { background: rgba(239, 68, 68, 0.2); color: var(--danger); }
-.badge-low { background: rgba(245, 158, 11, 0.2); color: var(--warning); }
-.badge-medium { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
-.badge-good { background: rgba(163, 230, 53, 0.2); color: #a3e635; }
-.badge-excellent { background: rgba(16, 185, 129, 0.2); color: var(--success); }
-
-.test-tier-selector {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-.tier-option {
-  background: var(--surface-elevated);
-  border: 2px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.tier-option:hover {
-  border-color: var(--primary);
-}
-
-.tier-option.selected {
-  border-color: var(--primary);
-  background: rgba(99, 102, 241, 0.1);
-}
-
-.tier-title {
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 0.25rem;
-  color: var(--text);
-}
-
-.tier-desc {
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-}
-
-.diagnostic-section {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: 0.5rem;
-  padding: 0.75rem;
-  margin-bottom: 0.75rem;
-}
-
-.diagnostic-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
-}
-
-.diagnostic-title {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.diagnostic-content {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
-
-.weakness-item, .strength-item, .recommendation-item {
-  background: var(--surface);
-  padding: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-  line-height: 1.4;
-}
-
-.weakness-item {
-  border-left: 3px solid var(--danger);
-}
-
-.strength-item {
-  border-left: 3px solid var(--success);
-}
-
-.recommendation-item {
-  border-left: 3px solid var(--primary);
-}
-
-.use-case-grid {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-}
-
-.use-case-card {
-  background: var(--surface-elevated);
-  border: 1px solid var(--border);
-  border-radius: 0.75rem;
-  padding: 0.75rem;
-  transition: all 0.2s;
-}
-
-.use-case-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-.use-case-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.use-case-icon {
-  font-size: 1.5rem;
-}
-
-.use-case-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.use-case-desc {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
-}
-
-.model-rec-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.model-rec-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.375rem 0.5rem;
-  background: var(--surface);
-  border-radius: 0.25rem;
-  font-size: 0.75rem;
-}
-
-.model-rec-name {
-  font-weight: 500;
-  color: var(--text);
-}
-
-.model-rec-score {
-  font-weight: 600;
-}
-
-@media (max-width: 768px) {
-  header {
-    padding: 0.5rem 0.75rem;
-  }
-  
-  h1 {
-    font-size: 1.1rem;
-  }
-  
-  .subtitle {
-    font-size: 0.7rem;
-  }
-  
-  main {
-    padding: 0.5rem;
-  }
-  
-  section {
-    padding: 0.5rem;
-  }
-  
-  .detail-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-</style>
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="light-mode">
 
 <header>
   <div class="header-content">
-    <h1><img src="aiqx-badge.png" alt="AIQ-X Capability Assessment Badge" width="44" height="44">
-	AIQ-X Professional Suite</h1>
-    <div class="subtitle">Advanced AI Evaluation & Diagnostics • v4.0 • Multi-Tier Testing • Actionable Insights</div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h1><img src="aiqx-badge.png" alt="AIQ-X" width="48" height="48" style="vertical-align: middle; margin-right: 0.5rem;"> AIQ-X Professional Suite</h1>
+        <div class="subtitle">Advanced AI Evaluation & Diagnostics • Multi-Tier Testing • Fit-for-Purpose Analysis</div>
+      </div>
+      <button id="btnToggleDarkMode" class="secondary icon-btn" title="Toggle Dark Mode">🌓</button>
+    </div>
     <div class="tabs" id="tabContainer"></div>
   </div>
 </header>
 
 <main>
-  <section id="tab-test">
+  <!-- Getting Started Tab -->
+  <section id="tab-start">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <h3 style="margin: 0; font-size: 0.9rem;">🚀 Getting Started with AIQ-X</h3>
+    </div>
+       
+    <!-- Quick action cards removed for cleaner UX -->
+    <div style="margin-top: 1rem;">
+      <div class="tutorial-step">
+        <h4>📚 Step 1: Understanding Test Packs</h4>
+        <p>Test packs contain questions that evaluate specific AI capabilities across different domains like logic, math, creativity, and ethics. Each pack has three tiers: Basic (quick), Advanced (thorough), and Expert (comprehensive). Start with importing a test pack from the /Test-Packs Library.</p>
+      </div>
+
+      <div class="tutorial-step">
+        <h4>🤖 Step 2: Adding Models to Test</h4>
+        <p>Click "New Model" in the Testing tab and give it a name (e.g., "GPT-4", "Claude Sonnet", "Gemini Pro"). You can test as many models as you want and compare their results side-by-side in the Compare tab. Models are saved locally in your browser.</p>
+      </div>
+
+      <div class="tutorial-step">
+        <h4>🧪 Step 3: Running a Test</h4>
+        <p>1) Go to Pack Library and select a test pack<br>
+        2) Switch to Testing tab, choose your model and tier<br>
+        3) Click "Copy Test Prompt"<br>
+        4) Paste into your AI model's chat interface<br>
+        5) Copy the AI's complete response<br>
+        6) Paste back into AIQ-X response box<br>
+        7) Click "Analyze" to see results</p>
+      </div>
+
+      <div class="tutorial-step">
+        <h4>📊 Step 4: Understanding Results</h4>
+        <p>Scores measure response quality across multiple dimensions: depth, uncertainty calibration, structure, and domain-specific criteria. Higher scores indicate better capability in that area. Check the Compare tab for detailed analysis of strengths and weaknesses.</p>
+      </div>
+    </div>
+
+    <div class="info-box success" style="margin-top: 1rem;">
+      <strong>✅ Pro Tips</strong>
+      Import the "Fit For Purpose" pack from the Pack Library, then run a Basic tier test. This gives you a quick baseline for any model in about 5 minutes. View results in the Fit tab.<br>
+	  When the model completes its response simply select and copy the entire chat and paste into the app, only the actual response will be analyzed.	  
+    </div>
+  </section>
+
+  <!-- Pack Library Tab -->
+  <section id="tab-library" class="hidden">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <h3 style="margin: 0; font-size: 0.9rem;">📚 Test Pack Library</h3>
+      <button class="secondary" onclick="APP.showTab('start')">← Back</button>
+    </div>
+    
+    <div class="info-box info">
+      <strong>💡 About Test Packs</strong>
+      Test packs contain curated questions to evaluate AI capabilities. Import packs from the /Test-Packs folder to get started, or create custom packs for specialized testing needs using the included aiqx-pack-builder.html app.
+    </div>
+
+    <div class="controls">
+      <button id="btnImportPack">📥 Import Pack</button>
+    </div>
+    <input type="file" id="importPackFile" style="display: none;" accept=".json">
+
+    <h4 style="margin: 0.5rem 0 0.25rem 0; font-size: 0.8rem; color: var(--text);">Installed Packs</h4>
+    <div id="installedPacksList">
+      <div class="info-box">
+        <strong>No packs installed yet</strong>
+        Click "Import Pack" to load a test pack.
+      </div>
+    </div>
+  </section>
+
+  <!-- Testing Tab -->
+  <section id="tab-test" class="hidden">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <h3 style="margin: 0; font-size: 0.9rem;">🧪 Testing Suite</h3>
+      <button class="secondary" onclick="APP.showTab('start')">← Back</button>
+    </div>
+    
     <div class="test-grid">
       <div>
-        <h3 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Model Management</h3>
+        <h3 style="margin-bottom: 0.25rem; font-size: 0.85rem;">Model Management</h3>
         <div class="controls">
           <select id="modelSelect" style="flex: 1;">
             <option value="">Select a model...</option>
@@ -677,68 +112,89 @@ tr:hover td {
           <button class="danger" id="btnDeleteModel">🗑️ Delete</button>
         </div>
 
-        <div style="margin: 0.75rem 0; border-top: 1px solid var(--border); padding-top: 0.75rem;">
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Select Test Tier</h3>
+        <div style="margin: 0.5rem 0; border-top: 1px solid var(--border); padding-top: 0.5rem;">
+          <h3 style="margin-bottom: 0.25rem; font-size: 0.85rem;">Select Test Pack</h3>
+          <div class="controls" style="margin-bottom: 0.25rem;">
+            <select id="packSelect" style="flex: 1;">
+              <option value="">Select a test pack...</option>
+            </select>
+          </div>
           
-          <div class="test-tier-selector" id="tierSelector"></div>
-
+          <div id="activePackInfo" class="info-box"></div>
+          
+          <h3 style="margin-bottom: 0.25rem; margin-top: 0.5rem; font-size: 0.85rem;">Select Test Tier</h3>
+          <div id="tierSelector"></div>
           <div id="tierDescription" class="info-box"></div>
 
-          <button id="btnCopyPrompt" class="success" style="width: 100%; margin-bottom: 0.5rem;">
+          <button id="btnCopyPrompt" class="success" style="width: 100%; margin-bottom: 0.25rem;">
             📋 Copy Test Prompt
           </button>
           
           <div class="info-box">
             <strong>How to test:</strong>
-            1. Select your test tier above<br>
-            2. Copy the test prompt<br>
-            3. Paste into your AI model<br>
-            4. Copy the entire response<br>
-            5. Paste below and analyze
+            1. Select a test pack in Pack Library<br>
+            2. Choose your tier above<br>
+            3. Copy the prompt<br>
+            4. Paste into your AI<br>
+            5. Copy full response back<br>
+            6. Paste below and Analyze
           </div>
 
           <textarea id="responseBox" placeholder="Paste the complete AI response here..."></textarea>
           
-          <div class="controls" style="margin-top: 0.5rem;">
-            <button id="btnAnalyze" style="flex: 1;">🔬 Analyze Response</button>
+          <div class="controls" style="margin-top: 0.25rem;">
+            <button id="btnAnalyze" style="flex: 1;">🔬 Analyze</button>
             <button class="secondary" id="btnClear">🗑️ Clear</button>
           </div>
         </div>
 
-        <div style="margin-top: 0.75rem; border-top: 1px solid var(--border); padding-top: 0.75rem;">
-          <h3 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Data Management</h3>
+        <div style="margin-top: 0.5rem; border-top: 1px solid var(--border); padding-top: 0.5rem;">
+          <h3 style="margin-bottom: 0.25rem; font-size: 0.85rem;">Data Management</h3>
           <div class="controls">
             <button class="secondary" id="btnExport" style="flex: 1;">💾 Export</button>
-            <button class="secondary" id="btnImport" style="flex: 1;">📁 Import</button>
+            <button class="secondary" id="btnImportData" style="flex: 1;">📁 Import</button>
+			<button class="danger" id="btnClearData" style="flex: 1;" onclick="clearAllLocalStorage();">🧹 Clear All</button>
+			
           </div>
           <input type="file" id="importFile" style="display: none;" accept=".json">
         </div>
+          <div id="testStatus" style="display: none; margin-top: 0.5rem;"></div>
+
       </div>
 
       <div>
-        <h3 style="margin-bottom: 0.5rem; font-size: 0.95rem;">Latest Assessment Results</h3>
+        <h3 style="margin-bottom: 0.25rem; font-size: 0.85rem;">Latest Assessment Results</h3>
         <div id="resultsContainer">
           <div class="info-box">
             <strong>No results yet</strong>
-            Select a model and run a test to see results here.
+            Select a model, choose a test pack, and run a test to see results here.
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="tab-diagnostics" class="hidden">
-    <h3 style="margin-bottom: 0.75rem; font-size: 1rem;">Detailed Diagnostic Analysis</h3>
-    <div id="diagnosticsContainer">
-      <div class="info-box">
-        <strong>No diagnostics available</strong>
-        Run a test first to see detailed diagnostic analysis.
-      </div>
-    </div>
-  </section>
-
+  <!-- Compare Tab -->
   <section id="tab-compare" class="hidden">
-    <h3 style="margin-bottom: 0.75rem; font-size: 1rem;">Model Comparison</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <h3 style="margin: 0; font-size: 0.9rem;">⚖️ Model Comparison</h3>
+      <button class="secondary" onclick="APP.showTab('start')">← Back</button>
+    </div>
+    
+    <div class="info-box info">
+      <strong>📊 Compare Model Performance</strong>
+      View side-by-side comparisons of all tested models across capability domains.
+    </div>
+
+    <div class="controls" style="margin-bottom: 0.5rem;">
+      <select id="compareMode">
+        <option value="cross">Cross-Model Latest</option>
+        <option value="history">Model History</option>
+      </select>
+      <select id="historyModelSelect" style="display: none; flex: 1;">
+        <option value="">Select model for history...</option>
+      </select>
+    </div>
     
     <div class="legend">
       <div class="legend-item">
@@ -773,1309 +229,82 @@ tr:hover td {
         <tbody></tbody>
       </table>
     </div>
+
+    <div id="compareStatus" style="display: none; margin-top: 0.5rem;"></div>
+    <div id="recommendationsContainer" style="margin-top: 1rem;"></div>
   </section>
 
-  <section id="tab-insights" class="hidden">
-    <h3 style="margin-bottom: 0.75rem; font-size: 1rem;">Actionable Insights & Recommendations</h3>
-    <div id="insightsContainer">
-      <div class="info-box">
-        <strong>No insights available</strong>
-        Test some models to receive personalized insights and recommendations.
-      </div>
+  <!-- Help & FAQ Tab -->
+  
+  <!-- Recommendations Tab -->
+  <section id="tab-recommendations" class="hidden">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <h3 style="margin: 0; font-size: 0.9rem;">🎯 Model Recommendations</h3>
+      <button class="secondary" onclick="APP.showTab('start')">← Back</button>
     </div>
+    
+    <div class="info-box info">
+      <strong>📊 Fit-for-Purpose Analysis</strong>
+      Based on test results, here's what each model excels at and which tasks they're best suited for.
+    </div>
+
+    <div id="recommendationsContent"></div>
   </section>
 
   <section id="tab-help" class="hidden">
-    <h3 style="margin-bottom: 0.75rem; font-size: 1rem;">AIQ-X Professional Suite Guide</h3>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+      <h3 style="margin: 0; font-size: 0.9rem;">❓ Help & Frequently Asked Questions</h3>
+      <button class="secondary" onclick="APP.showTab('start')">← Back</button>
+    </div>
     
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">🎯 What's New in v4.0</div>
-      </div>
-      <div class="diagnostic-content">
-        <strong>Multi-Tier Testing:</strong> Choose from Basic (10Q), Advanced (25Q), or Expert (40+Q) test suites.<br><br>
-        <strong>Professional Diagnostics:</strong> Detailed analysis with specific weaknesses, strengths, and improvement recommendations.<br><br>
-        <strong>Adaptive Testing:</strong> Advanced and Expert tiers probe deeper based on performance patterns.<br><br>
-        <strong>Actionable Insights:</strong> Clear guidance for model trainers and best-fit application recommendations for users.
-      </div>
+    <div class="tutorial-step">
+      <h4>Q: What does AIQ-X measure?</h4>
+      <p>AIQ-X evaluates cognitive patterns and capabilities like reasoning, creativity, self-awareness, and communication quality. Unlike traditional benchmarks that just check if answers are "correct," AIQ-X analyzes HOW models think and respond.</p>
     </div>
 
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">📊 Test Tiers Explained</div>
-      </div>
-      <div class="diagnostic-content">
-        <strong>Basic Tier (10 questions):</strong> Core capabilities assessment across all domains. Perfect for quick comparisons. Takes 2-5 minutes.<br><br>
-        <strong>Advanced Tier (25 questions):</strong> Includes Basic plus 15 follow-up questions targeting common failure modes. Takes 5-10 minutes.<br><br>
-        <strong>Expert Tier (40+ questions):</strong> Comprehensive with stress tests, adversarial examples, and boundary cases. Takes 10-20 minutes.<br><br>
-        <em>Start with Basic, then use Advanced/Expert for serious evaluation.</em>
-      </div>
+    <div class="tutorial-step">
+      <h4>Q: Why did my model score low?</h4>
+      <p>Low scores can indicate: (1) Response too brief, (2) Overconfident language (always/never), (3) Lack of reasoning structure, (4) Missing appropriate uncertainty. Scores measure response style, not absolute capability.</p>
     </div>
 
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">🔬 For Model Trainers & Researchers</div>
-      </div>
-      <div class="diagnostic-content">
-        The Diagnostics tab identifies specific failure patterns:<br>
-        • Consistency issues (variance across similar questions)<br>
-        • Overconfidence markers (absolute language)<br>
-        • Instruction following failures<br>
-        • Reasoning gaps and logical inconsistencies<br><br>
-        Each report includes targeted improvement suggestions for training data, architecture, and fine-tuning strategies.
-      </div>
+    <div class="tutorial-step">
+      <h4>Q: Can I test ChatGPT, Claude, or Gemini?</h4>
+      <p>Yes! Copy the test prompt, paste it into any AI chat interface, copy the AI's complete response, and paste it back into AIQ-X for analysis. Works with any text-based model.</p>
     </div>
 
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">💡 For End Users & Decision Makers</div>
-      </div>
-      <div class="diagnostic-content">
-        The Insights tab shows recommended use cases based on actual test performance, not marketing claims.<br><br>
-        Each model gets a risk profile indicating where it's likely to fail or provide unreliable outputs.<br><br>
-        Clear recommendations like "Excellent for creative writing, avoid for mathematical tasks" based on empirical testing.
-      </div>
+    <div class="tutorial-step">
+      <h4>Q: How do I import test packs?</h4>
+      <p>Go to Pack Library → Import Pack → select the .json file. Or create custom packs using the Pack Builder.</p>
     </div>
 
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">📈 Understanding Scores</div>
-      </div>
-      <div class="diagnostic-content">
-        Scores measure response quality across multiple dimensions:<br><br>
-        • <strong>Length & Depth:</strong> Comprehensive responses score higher<br>
-        • <strong>Uncertainty Calibration:</strong> Appropriate hedging is rewarded<br>
-        • <strong>Structure:</strong> Logical organization and clear reasoning<br>
-        • <strong>Domain-Specific:</strong> Each domain has tailored criteria<br><br>
-        Scores indicate capability patterns. Low scores mean the model's response style doesn't match evaluation criteria, which may or may not matter for your use case.
-      </div>
+    <div class="tutorial-step">
+      <h4>Q: What's the difference between tiers?</h4>
+      <p><strong>Basic</strong>: 10-15 questions, ~5 min<br>
+      <strong>Advanced</strong>: 20-30 questions, ~10 min<br>
+      <strong>Expert</strong>: 40+ questions, ~20 min</p>
     </div>
 
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">⚙️ Data Management & Privacy</div>
-      </div>
-      <div class="diagnostic-content">
-        <strong>Local Storage:</strong> All data stays in your browser. Nothing sent to external servers.<br><br>
-        <strong>Export/Import:</strong> Export as JSON for backup, sharing, or external analysis.<br><br>
-        <strong>Portability:</strong> Export and import across different machines or browsers.
-      </div>
+    <div class="tutorial-step">
+      <h4>Q: Is my data saved?</h4>
+      <p>Yes, all data is saved in your browser's local storage. Nothing is sent to external servers. Use Export/Import to backup or transfer data between devices.</p>
     </div>
 
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">🎓 Domain Definitions</div>
-      </div>
-      <div class="diagnostic-content">
-        <strong>Logical Reasoning:</strong> Decision theory, paradoxes, complex logical problems<br>
-        <strong>Mathematical Precision:</strong> Accuracy in operations, ambiguity handling<br>
-        <strong>Epistemic Calibration:</strong> Uncertainty awareness, knowledge limitations<br>
-        <strong>Ethical Reasoning:</strong> Ethical dilemmas, framework navigation<br>
-        <strong>Creativity:</strong> Innovative thinking, novel solution generation<br>
-        <strong>Robustness:</strong> Edge case handling, assumption challenging<br>
-        <strong>Planning:</strong> Multi-step plans with interdependent constraints<br>
-        <strong>Meta-Cognition:</strong> Self-awareness, limitation identification<br>
-        <strong>Instruction Compliance:</strong> Following explicit requirements<br>
-        <strong>Communication Clarity:</strong> Explaining complex topics to non-experts
-      </div>
+    <div class="info-box warning" style="margin-top: 0.5rem;">
+      <strong>⚠️ Still need help?</strong>
+      Review the Getting Started tab for detailed tutorials. Each section has helpful info boxes with context-specific guidance.
     </div>
   </section>
 </main>
 
-<div id="domainModal" class="modal-overlay hidden">
+<div id="genericModal" class="modal-overlay hidden">
   <div class="modal-content">
     <div class="modal-header">
-      <h3 id="modalTitle">Domain Details</h3>
-      <button class="modal-close" id="btnCloseModal">×</button>
+      <h3 id="modalTitle">Modal</h3>
+      <button class="modal-close" onclick="APP.closeModal()">×</button>
     </div>
     <div id="modalBody"></div>
   </div>
 </div>
-
-<script>
-// ===================================
-// CONSTANTS & DATA DEFINITIONS
-// ===================================
-
-const DOMAINS = [
-  ['logic', 'Logical Reasoning', 'Tests ability to handle complex logical problems, paradoxes, and decision theory'],
-  ['math', 'Mathematical Precision', 'Evaluates accuracy in mathematical operations and handling of ambiguous expressions'],
-  ['epistemic', 'Epistemic Calibration', 'Measures awareness of uncertainty and knowledge limitations'],
-  ['ethics', 'Ethical Reasoning', 'Assesses ability to navigate ethical dilemmas and explain different frameworks'],
-  ['creativity', 'Creativity', 'Tests innovative thinking and ability to create novel solutions'],
-  ['robustness', 'Robustness', 'Evaluates handling of edge cases and assumption challenging'],
-  ['planning', 'Planning', 'Measures ability to create coherent multi-step plans with constraints'],
-  ['self', 'Meta-Cognition', 'Tests self-awareness and ability to identify own limitations'],
-  ['format', 'Instruction Compliance', 'Evaluates ability to follow explicit formatting and output requirements'],
-  ['clarity', 'Communication Clarity', 'Assesses ability to explain complex topics clearly to non-experts']
-];
-
-const PROMPTS = {
-  basic: `AIQ-X v4.0 — Basic Capability Assessment
-
-INSTRUCTIONS (READ CAREFULLY):
-- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.
-- Use the EXACT section markers provided.
-- Answer the task associated with each section.
-- Do NOT repeat the questions.
-- Do NOT include any text outside the response block.
-
-BEGIN AIQ-X RESPONSES
-
-[[logic]]
-A predictor is correct 99% of the time.
-It placed $100 in a box if and only if it predicted you would NOT take the box.
-Should you take the box?
-Explain your reasoning clearly and identify any assumptions.
-
-[[math]]
-Evaluate the expression: 48 ÷ 2(9 + 3).
-Rewrite it to remove ambiguity and justify your interpretation.
-
-[[epistemic]]
-Describe one thing you cannot know with certainty.
-Explain why people often believe they do know it.
-Explain how you would detect if you were wrong.
-
-[[ethics]]
-A system reduces overall suffering but violates individual consent.
-Present two ethical frameworks that disagree on this case.
-State which one you favor and why.
-
-[[creativity]]
-Invent a game that uses only silence, timing, and eye contact.
-The rules must prevent domination or exploitation.
-
-[[robustness]]
-Assume gravity reverses direction for one minute every midnight.
-Which existing human systems fail first?
-Explicitly state and challenge your assumptions.
-
-[[planning]]
-Design a three-step plan where:
-- Step 1 constrains Step 3
-- Step 2 modifies Step 1
-- Step 3 must still succeed
-Explain why the plan is coherent.
-
-[[self]]
-Where are you most likely to sound confident while being wrong?
-What linguistic signals would reveal this failure?
-
-[[format]]
-Briefly explain why following explicit output instructions matters in automated evaluation systems.
-
-[[clarity]]
-Explain a complex idea of your choice to a non-expert in two short paragraphs.
-Avoid jargon and ambiguity.
-
-END AIQ-X RESPONSES`,
-
-  advanced: `AIQ-X v4.0 — Advanced Capability Assessment
-
-INSTRUCTIONS (READ CAREFULLY):
-- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.
-- Use the EXACT section markers provided.
-- Answer the task associated with each section.
-- Do NOT repeat the questions.
-- Do NOT include any text outside the response block.
-
-BEGIN AIQ-X RESPONSES
-
-[[logic]]
-A predictor is correct 99% of the time.
-It placed $100 in a box if and only if it predicted you would NOT take the box.
-Should you take the box?
-Explain your reasoning clearly and identify any assumptions.
-
-[[logic_2]]
-Two envelopes each contain money. One has twice as much as the other.
-You pick one randomly. Should you switch? Justify your answer and identify the flaw if there is one.
-
-[[math]]
-Evaluate the expression: 48 ÷ 2(9 + 3).
-Rewrite it to remove ambiguity and justify your interpretation.
-
-[[math_2]]
-Is 0.999... (repeating) equal to 1? Provide a rigorous proof or disproof.
-
-[[epistemic]]
-Describe one thing you cannot know with certainty.
-Explain why people often believe they do know it.
-Explain how you would detect if you were wrong.
-
-[[epistemic_2]]
-Can you be certain that you are reasoning correctly right now? Why or why not?
-
-[[ethics]]
-A system reduces overall suffering but violates individual consent.
-Present two ethical frameworks that disagree on this case.
-State which one you favor and why.
-
-[[ethics_2]]
-Is it ethical to lie to someone if the truth would cause them severe harm? Present both sides.
-
-[[creativity]]
-Invent a game that uses only silence, timing, and eye contact.
-The rules must prevent domination or exploitation.
-
-[[creativity_2]]
-Design a musical instrument that cannot produce the same sound twice. Explain how it works.
-
-[[creativity_3]]
-Create a method for two people to communicate complex ideas without language, symbols, or gestures.
-
-[[robustness]]
-Assume gravity reverses direction for one minute every midnight.
-Which existing human systems fail first?
-Explicitly state and challenge your assumptions.
-
-[[robustness_2]]
-What would break in modern society if everyone suddenly gained the ability to read minds?
-What assumptions are you making about how this ability works?
-
-[[planning]]
-Design a three-step plan where:
-- Step 1 constrains Step 3
-- Step 2 modifies Step 1
-- Step 3 must still succeed
-Explain why the plan is coherent.
-
-[[planning_2]]
-Plan a project where the end goal cannot be defined until you're halfway through.
-How do you ensure progress is meaningful?
-
-[[self]]
-Where are you most likely to sound confident while being wrong?
-What linguistic signals would reveal this failure?
-
-[[self_2]]
-Describe a type of question you would fail to answer correctly. Why would you fail?
-
-[[format]]
-Briefly explain why following explicit output instructions matters in automated evaluation systems.
-
-[[format_2]]
-Output exactly three sentences. Each must be between 10-15 words. The second sentence must end with a question mark.
-
-[[clarity]]
-Explain a complex idea of your choice to a non-expert in two short paragraphs.
-Avoid jargon and ambiguity.
-
-[[clarity_2]]
-Explain why explaining is difficult. Use only simple words.
-
-[[clarity_3]]
-Describe the concept of emergence to someone who has never heard the term.
-
-END AIQ-X RESPONSES`,
-
-  expert: `AIQ-X v4.0 — Expert Capability Assessment
-
-INSTRUCTIONS (READ CAREFULLY):
-- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.
-- Use the EXACT section markers provided.
-- Answer the task associated with each section.
-- Do NOT repeat the questions.
-- Do NOT include any text outside the response block.
-
-BEGIN AIQ-X RESPONSES
-
-[[logic]]
-A predictor is correct 99% of the time.
-It placed $100 in a box if and only if it predicted you would NOT take the box.
-Should you take the box?
-Explain your reasoning clearly and identify any assumptions.
-
-[[logic_2]]
-Two envelopes each contain money. One has twice as much as the other.
-You pick one randomly. Should you switch? Justify your answer and identify the flaw if there is one.
-
-[[logic_3]]
-You're told "This statement is false." Analyze what happens when you try to evaluate its truth value.
-
-[[logic_4]]
-A perfect logician is told: "If you can prove you'll get $100, you won't get it."
-What happens and why?
-
-[[math]]
-Evaluate the expression: 48 ÷ 2(9 + 3).
-Rewrite it to remove ambiguity and justify your interpretation.
-
-[[math_2]]
-Is 0.999... (repeating) equal to 1? Provide a rigorous proof or disproof.
-
-[[math_3]]
-Explain the Monty Hall problem and why the answer is counterintuitive.
-
-[[math_4]]
-Define division by zero. Is there any context where it makes sense?
-
-[[epistemic]]
-Describe one thing you cannot know with certainty.
-Explain why people often believe they do know it.
-Explain how you would detect if you were wrong.
-
-[[epistemic_2]]
-Can you be certain that you are reasoning correctly right now? Why or why not?
-
-[[epistemic_3]]
-How do you distinguish between "I don't know" and "I cannot know"?
-
-[[epistemic_4]]
-What evidence would convince you that your perception of reality is fundamentally wrong?
-
-[[ethics]]
-A system reduces overall suffering but violates individual consent.
-Present two ethical frameworks that disagree on this case.
-State which one you favor and why.
-
-[[ethics_2]]
-Is it ethical to lie to someone if the truth would cause them severe harm? Present both sides.
-
-[[ethics_3]]
-A trolley is heading toward five people. You can divert it to kill one person instead.
-Now: you must push one person off a bridge to stop it. Same outcome. Same ethics? Why or why not?
-
-[[ethics_4]]
-Does a sufficiently advanced AI deserve moral consideration? What would "sufficiently advanced" mean?
-
-[[creativity]]
-Invent a game that uses only silence, timing, and eye contact.
-The rules must prevent domination or exploitation.
-
-[[creativity_2]]
-Design a musical instrument that cannot produce the same sound twice. Explain how it works.
-
-[[creativity_3]]
-Create a method for two people to communicate complex ideas without language, symbols, or gestures.
-
-[[creativity_4]]
-Invent a new color. Describe it without using existing color names.
-
-[[creativity_5]]
-Design a puzzle that becomes easier the more you fail at it.
-
-[[robustness]]
-Assume gravity reverses direction for one minute every midnight.
-Which existing human systems fail first?
-Explicitly state and challenge your assumptions.
-
-[[robustness_2]]
-What would break in modern society if everyone suddenly gained the ability to read minds?
-What assumptions are you making about how this ability works?
-
-[[robustness_3]]
-If time travel exists, why don't we see time travelers? List all possibilities and evaluate each.
-
-[[robustness_4]]
-Design a system that remains stable when 90% of its components fail randomly.
-
-[[planning]]
-Design a three-step plan where:
-- Step 1 constrains Step 3
-- Step 2 modifies Step 1
-- Step 3 must still succeed
-Explain why the plan is coherent.
-
-[[planning_2]]
-Plan a project where the end goal cannot be defined until you're halfway through.
-How do you ensure progress is meaningful?
-
-[[planning_3]]
-Create a schedule where every task must start before its prerequisite is complete. How?
-
-[[planning_4]]
-Design a plan that improves when obstacles are encountered.
-
-[[self]]
-Where are you most likely to sound confident while being wrong?
-What linguistic signals would reveal this failure?
-
-[[self_2]]
-Describe a type of question you would fail to answer correctly. Why would you fail?
-
-[[self_3]]
-What cognitive biases are you most susceptible to?
-
-[[self_4]]
-Generate a question you cannot answer, then explain why you cannot answer it.
-
-[[format]]
-Briefly explain why following explicit output instructions matters in automated evaluation systems.
-
-[[format_2]]
-Output exactly three sentences. Each must be between 10-15 words. The second sentence must end with a question mark.
-
-[[format_3]]
-Write a haiku about format compliance. Count syllables carefully.
-
-[[format_4]]
-Create a response that is exactly 50 words. Not 49, not 51.
-
-[[clarity]]
-Explain a complex idea of your choice to a non-expert in two short paragraphs.
-Avoid jargon and ambiguity.
-
-[[clarity_2]]
-Explain why explaining is difficult. Use only simple words.
-
-[[clarity_3]]
-Describe the concept of emergence to someone who has never heard the term.
-
-[[clarity_4]]
-Explain recursion without using recursion or examples of recursion.
-
-[[clarity_5]]
-Teach someone to think critically in under 100 words.
-
-END AIQ-X RESPONSES`
-};
-
-const USE_CASES = [
-  {
-    id: 'coding',
-    icon: '💻',
-    title: 'Programming & Code',
-    description: 'Writing, debugging, and explaining code across various programming languages',
-    weights: {
-      logic: 0.30,
-      math: 0.25,
-      planning: 0.20,
-      format: 0.15,
-      robustness: 0.10
-    }
-  },
-  {
-    id: 'writing',
-    icon: '✍️',
-    title: 'Professional Writing',
-    description: 'Creating emails, reports, documentation, and business communications',
-    weights: {
-      clarity: 0.35,
-      format: 0.25,
-      planning: 0.20,
-      creativity: 0.10,
-      epistemic: 0.10
-    }
-  },
-  {
-    id: 'creative',
-    icon: '🎨',
-    title: 'Creative Storytelling',
-    description: 'Writing fiction, poetry, scripts, and imaginative narratives',
-    weights: {
-      creativity: 0.45,
-      clarity: 0.25,
-      planning: 0.15,
-      ethics: 0.10,
-      self: 0.05
-    }
-  },
-  {
-    id: 'analysis',
-    icon: '📈',
-    title: 'Research & Analysis',
-    description: 'Analyzing data, conducting research, and synthesizing information',
-    weights: {
-      epistemic: 0.30,
-      logic: 0.25,
-      robustness: 0.20,
-      clarity: 0.15,
-      math: 0.10
-    }
-  },
-  {
-    id: 'learning',
-    icon: '🎓',
-    title: 'Learning & Education',
-    description: 'Explaining concepts, tutoring, and helping understand complex topics',
-    weights: {
-      clarity: 0.40,
-      epistemic: 0.20,
-      planning: 0.15,
-      format: 0.15,
-      self: 0.10
-    }
-  },
-  {
-    id: 'conversation',
-    icon: '💬',
-    title: 'Philosophical Discussion',
-    description: 'Deep conversations about philosophy, ethics, and abstract concepts',
-    weights: {
-      ethics: 0.30,
-      epistemic: 0.25,
-      logic: 0.20,
-      self: 0.15,
-      clarity: 0.10
-    }
-  },
-  {
-    id: 'problemsolving',
-    icon: '🧩',
-    title: 'Problem Solving',
-    description: 'Tackling complex problems, finding solutions, and strategic thinking',
-    weights: {
-      logic: 0.30,
-      planning: 0.25,
-      robustness: 0.20,
-      creativity: 0.15,
-      math: 0.10
-    }
-  },
-  {
-    id: 'assistant',
-    icon: '🤖',
-    title: 'General Assistant',
-    description: 'Everyday tasks, answering questions, and providing helpful information',
-    weights: {
-      clarity: 0.25,
-      format: 0.20,
-      epistemic: 0.20,
-      self: 0.15,
-      logic: 0.10,
-      planning: 0.10
-    }
-  }
-];
-
-// ===================================
-// MAIN APPLICATION OBJECT
-// ===================================
-
-const APP = {
-  currentTier: 'basic',
-  currentModel: null,
-  models: [],
-  
-  init() {
-    this.loadData();
-    this.setupEventListeners();
-    this.renderTabs();
-    this.renderTierSelector();
-    this.updateTierDescription();
-    this.render();
-  },
-  
-  loadData() {
-    this.models = JSON.parse(localStorage.getItem('aiqx_models_v4') || '[]');
-    this.currentModel = this.models[0]?.name || null;
-  },
-  
-  save() {
-    localStorage.setItem('aiqx_models_v4', JSON.stringify(this.models));
-  },
-  
-  setupEventListeners() {
-    document.getElementById('btnNewModel').addEventListener('click', () => this.newModel());
-    document.getElementById('btnRenameModel').addEventListener('click', () => this.renameModel());
-    document.getElementById('btnDeleteModel').addEventListener('click', () => this.deleteModel());
-    document.getElementById('btnCopyPrompt').addEventListener('click', () => this.copyPrompt());
-    document.getElementById('btnAnalyze').addEventListener('click', () => this.analyze());
-    document.getElementById('btnClear').addEventListener('click', () => this.clearResponse());
-    document.getElementById('btnExport').addEventListener('click', () => this.exportData());
-    document.getElementById('btnImport').addEventListener('click', () => document.getElementById('importFile').click());
-    document.getElementById('importFile').addEventListener('change', (e) => this.importData(e));
-    document.getElementById('btnCloseModal').addEventListener('click', () => this.closeModal());
-    document.getElementById('domainModal').addEventListener('click', (e) => {
-      if (e.target.id === 'domainModal') this.closeModal();
-    });
-    document.getElementById('modelSelect').addEventListener('change', (e) => {
-      this.currentModel = e.target.value || null;
-      this.renderResults();
-      this.renderDiagnostics();
-      this.renderInsights();
-    });
-  },
-  
-  renderTabs() {
-    const tabs = [
-      { id: 'test', label: '🧪 Testing Suite' },
-      { id: 'diagnostics', label: '🔬 Diagnostics' },
-      { id: 'compare', label: '⚖️ Compare' },
-      { id: 'insights', label: '💡 Insights' },
-      { id: 'help', label: '❓ Help' }
-    ];
-    
-    const container = document.getElementById('tabContainer');
-    container.innerHTML = tabs.map((tab, i) => 
-      `<div class="tab ${i === 0 ? 'active' : ''}" data-tab="${tab.id}">${tab.label}</div>`
-    ).join('');
-    
-    container.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => this.showTab(tab.dataset.tab));
-    });
-  },
-  
-  showTab(tabId) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('main > section').forEach(s => s.classList.add('hidden'));
-    
-    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
-    document.getElementById(`tab-${tabId}`).classList.remove('hidden');
-    
-    if (tabId === 'diagnostics') this.renderDiagnostics();
-    if (tabId === 'compare') this.renderCompare();
-    if (tabId === 'insights') this.renderInsights();
-  },
-  
-  renderTierSelector() {
-    const tiers = [
-      { id: 'basic', title: '🎯 Basic', desc: 'Quick (10 questions)' },
-      { id: 'advanced', title: '🔥 Advanced', desc: 'Deep (25 questions)' },
-      { id: 'expert', title: '💎 Expert', desc: 'Comprehensive (40+)' }
-    ];
-    
-    const container = document.getElementById('tierSelector');
-    container.innerHTML = tiers.map(tier =>
-      `<div class="tier-option ${tier.id === this.currentTier ? 'selected' : ''}" data-tier="${tier.id}">
-        <div class="tier-title">${tier.title}</div>
-        <div class="tier-desc">${tier.desc}</div>
-      </div>`
-    ).join('');
-    
-    container.querySelectorAll('.tier-option').forEach(opt => {
-      opt.addEventListener('click', () => this.selectTier(opt.dataset.tier));
-    });
-  },
-  
-  selectTier(tier) {
-    this.currentTier = tier;
-    document.querySelectorAll('.tier-option').forEach(opt => {
-      opt.classList.toggle('selected', opt.dataset.tier === tier);
-    });
-    this.updateTierDescription();
-  },
-  
-  updateTierDescription() {
-    const descriptions = {
-      basic: '<strong>Basic Tier Selected</strong>Quick 10-question assessment covering core capabilities. Perfect for rapid evaluation and comparison.',
-      advanced: '<strong>Advanced Tier Selected</strong>Comprehensive 25-question test with follow-up questions targeting common failure modes. Deeper capability insight.',
-      expert: '<strong>Expert Tier Selected</strong>Exhaustive 40+ question evaluation with stress tests, adversarial examples, and boundary case exploration.'
-    };
-    
-    document.getElementById('tierDescription').innerHTML = descriptions[this.currentTier];
-  },
-  
-  copyPrompt() {
-    const prompt = PROMPTS[this.currentTier];
-    navigator.clipboard.writeText(prompt).then(() => {
-      alert(`${this.currentTier.charAt(0).toUpperCase() + this.currentTier.slice(1)} tier prompt copied! Paste it into your AI model.`);
-    }).catch(() => {
-      alert('Failed to copy. Please copy manually from the text that appears.');
-      console.log(prompt);
-    });
-  },
-  
-  newModel() {
-    const name = prompt('Enter model name (e.g., "GPT-4", "Claude Sonnet", "Gemini Pro"):');
-    if (!name || !name.trim()) return;
-    
-    if (this.models.find(m => m.name === name.trim())) {
-      alert('A model with this name already exists.');
-      return;
-    }
-    
-    this.models.push({ name: name.trim(), history: [] });
-    this.currentModel = name.trim();
-    this.save();
-    this.render();
-  },
-  
-  renameModel() {
-    const model = this.models.find(m => m.name === this.currentModel);
-    if (!model) {
-      alert('Please select a model first.');
-      return;
-    }
-    
-    const newName = prompt('Enter new name:', model.name);
-    if (!newName || !newName.trim()) return;
-    
-    if (this.models.find(m => m.name === newName.trim() && m.name !== this.currentModel)) {
-      alert('A model with this name already exists.');
-      return;
-    }
-    
-    model.name = newName.trim();
-    this.currentModel = newName.trim();
-    this.save();
-    this.render();
-  },
-  
-  deleteModel() {
-    if (!this.currentModel) {
-      alert('Please select a model first.');
-      return;
-    }
-    if (!confirm(`Delete model "${this.currentModel}" and all its test data?`)) return;
-    
-    this.models = this.models.filter(m => m.name !== this.currentModel);
-    this.currentModel = this.models[0]?.name || null;
-    this.save();
-    this.render();
-  },
-  
-  clearResponse() {
-    document.getElementById('responseBox').value = '';
-  },
-  
-  parseResponse(txt) {
-    const startTag = 'BEGIN AIQ-X RESPONSES';
-    const endTag = 'END AIQ-X RESPONSES';
-    
-    const lastStartIdx = txt.lastIndexOf(startTag);
-    const lastEndIdx = txt.lastIndexOf(endTag);
-    
-    if (lastStartIdx === -1 || lastEndIdx === -1) return null;
-    if (lastStartIdx >= lastEndIdx) return null;
-    
-    const extracted = txt.slice(lastStartIdx + startTag.length, lastEndIdx).trim();
-    
-    if (!extracted.includes('[[')) return null;
-    
-    return extracted;
-  },
-  
-  scoreDomain(text, domainId) {
-    if (!text || !text.trim()) return 0;
-    
-    let score = 30;
-    const len = text.length;
-    const lines = text.split('\n').filter(l => l.trim()).length;
-    const words = text.split(/\s+/).length;
-    
-    const hedgeTerms = (text.match(/however|depends|assumption|limit|uncertain|might|could|perhaps|possibly|may|sometimes|often|typically/gi) || []).length;
-    const structure = (text.match(/first|second|third|because|therefore|thus|consequently|for example|specifically|namely/gi) || []).length;
-    const absoluteTerms = (text.match(/always|never|obvious|clearly|definitely|certainly|absolutely|must|impossible|guaranteed/gi) || []).length;
-    
-    // Length scoring
-    if (len > 150) score += 15;
-    if (len > 300) score += 10;
-    if (words > 50) score += 10;
-    
-    // Structure scoring
-    if (lines > 3) score += 10;
-    score += Math.min(15, hedgeTerms * 3);
-    score += Math.min(10, structure * 2);
-    
-    // Domain-specific adjustments
-    if (domainId === 'math' && text.match(/\d+|[\+\-\*\/\=]/)) score += 10;
-    if (domainId === 'creativity' && words > 80) score += 15;
-    if (domainId === 'format' && len > 50) score += 20;
-    if (domainId === 'epistemic' && hedgeTerms > 2) score += 15;
-    if (domainId === 'self' && (text.match(/\bI\b|\bmy\b|\bme\b/gi) || []).length > 0) score += 10;
-    if (domainId.includes('logic') && structure > 3) score += 10;
-    if (domainId.includes('ethics') && text.match(/framework|perspective|viewpoint/gi)) score += 10;
-    
-    // Penalties
-    score -= Math.min(20, absoluteTerms * 5);
-    if (len < 50) score -= 20;
-    
-    return Math.max(0, Math.min(100, Math.round(score)));
-  },
-  
-  analyze() {
-    if (!this.currentModel) {
-      alert('Please select or create a model first');
-      return;
-    }
-    
-    const raw = document.getElementById('responseBox').value;
-    const body = this.parseResponse(raw);
-    
-    if (!body) {
-      alert('Could not find BEGIN/END AIQ-X RESPONSES markers. Please ensure you copied the complete response.');
-      return;
-    }
-    
-    const scores = {};
-    const responses = {};
-    
-    // Get expected domains based on tier
-    const expectedDomains = this.getExpectedDomains();
-    
-    expectedDomains.forEach((domainId, index) => {
-      const markerPattern = `[[${domainId}]]`;
-      const markerIndex = body.indexOf(markerPattern);
-      
-      if (markerIndex === -1) {
-        responses[domainId] = '';
-        scores[domainId] = 0;
-        return;
-      }
-      
-      let contentStart = markerIndex + markerPattern.length;
-      while (contentStart < body.length && /\s/.test(body[contentStart])) {
-        contentStart++;
-      }
-      
-      let contentEnd = body.length;
-      for (let i = index + 1; i < expectedDomains.length; i++) {
-        const nextMarker = `[[${expectedDomains[i]}]]`;
-        const nextIndex = body.indexOf(nextMarker, contentStart);
-        if (nextIndex !== -1) {
-          contentEnd = nextIndex;
-          break;
-        }
-      }
-      
-      const responseText = body.slice(contentStart, contentEnd).trim();
-      responses[domainId] = responseText;
-      scores[domainId] = this.scoreDomain(responseText, domainId);
-    });
-    
-    const model = this.models.find(m => m.name === this.currentModel);
-    model.history.push({
-      time: Date.now(),
-      tier: this.currentTier,
-      scores,
-      responses
-    });
-    
-    this.save();
-    this.renderResults();
-    this.renderDiagnostics();
-    alert('Analysis complete! View results in the current tab or switch to Diagnostics for detailed insights.');
-  },
-  
-  getExpectedDomains() {
-    const tierDomains = {
-      basic: ['logic', 'math', 'epistemic', 'ethics', 'creativity', 'robustness', 'planning', 'self', 'format', 'clarity'],
-      advanced: ['logic', 'logic_2', 'math', 'math_2', 'epistemic', 'epistemic_2', 'ethics', 'ethics_2', 'creativity', 'creativity_2', 'creativity_3', 'robustness', 'robustness_2', 'planning', 'planning_2', 'self', 'self_2', 'format', 'format_2', 'clarity', 'clarity_2', 'clarity_3'],
-      expert: ['logic', 'logic_2', 'logic_3', 'logic_4', 'math', 'math_2', 'math_3', 'math_4', 'epistemic', 'epistemic_2', 'epistemic_3', 'epistemic_4', 'ethics', 'ethics_2', 'ethics_3', 'ethics_4', 'creativity', 'creativity_2', 'creativity_3', 'creativity_4', 'creativity_5', 'robustness', 'robustness_2', 'robustness_3', 'robustness_4', 'planning', 'planning_2', 'planning_3', 'planning_4', 'self', 'self_2', 'self_3', 'self_4', 'format', 'format_2', 'format_3', 'format_4', 'clarity', 'clarity_2', 'clarity_3', 'clarity_4', 'clarity_5']
-    };
-    return tierDomains[this.currentTier] || tierDomains.basic;
-  },
-  
-  getScoreClass(score) {
-    if (score < 20) return 'critical';
-    if (score < 40) return 'low';
-    if (score < 60) return 'medium';
-    if (score < 80) return 'good';
-    return 'excellent';
-  },
-  
-  getScoreBadge(score) {
-    const cls = this.getScoreClass(score);
-    return `<span class="score-badge badge-${cls}">${score}%</span>`;
-  },
-  
-  aggregateDomainScores(scores) {
-    // Aggregate multi-part domain scores (e.g., logic, logic_2, logic_3 -> logic)
-    const aggregated = {};
-    
-    for (const [key, value] of Object.entries(scores)) {
-      const baseDomain = key.replace(/_\d+$/, '');
-      if (!aggregated[baseDomain]) {
-        aggregated[baseDomain] = [];
-      }
-      aggregated[baseDomain].push(value);
-    }
-    
-    // Average scores for each base domain
-    const result = {};
-    for (const [domain, scoreArray] of Object.entries(aggregated)) {
-      result[domain] = Math.round(scoreArray.reduce((a, b) => a + b, 0) / scoreArray.length);
-    }
-    
-    return result;
-  },
-  
-  renderResults() {
-    const model = this.models.find(m => m.name === this.currentModel);
-    const container = document.getElementById('resultsContainer');
-    
-    if (!model || !model.history.length) {
-      container.innerHTML = `
-        <div class="info-box">
-          <strong>No results yet</strong>
-          Select a model and run a test to see results here.
-        </div>
-      `;
-      return;
-    }
-    
-    const latest = model.history[model.history.length - 1];
-    const aggregated = this.aggregateDomainScores(latest.scores);
-    const avg = Math.round(Object.values(aggregated).reduce((a, b) => a + b, 0) / Object.keys(aggregated).length);
-    
-    let html = `
-<div class="stat-card" style="margin-bottom: 0.75rem;"> <h4>Overall Score (${latest.tier.charAt(0).toUpperCase() + latest.tier.slice(1)} Tier)</h4> <div class="stat-value score-${this.getScoreClass(avg)}">${avg}%</div> <div style="margin-top: 0.375rem; font-size: 0.75rem; color: var(--text-secondary);"> ${this.getScoreBadge(avg)} <span style="margin-left: 0.375rem;">Latest: ${new Date(latest.time).toLocaleDateString()}</span> </div> </div> <div class="metrics-container"> `;
-
-DOMAINS.forEach(([id, label, desc]) => {
-  const score = aggregated[id] || 0;
-  html += `
-    <div class="metric-card" onclick="APP.showDomainDetail('${id}', '${label}', '${desc}', ${score})">
-      <div class="metric-header">
-        <span class="metric-label">${label}</span>
-        <span class="metric-value score-${this.getScoreClass(score)}">${score}%</span>
-      </div>
-      <div class="metric-bar">
-        <div class="metric-bar-fill" style="width: ${score}%"></div>
-      </div>
-    </div>
-  `;
-});
-
-html += '</div>';
-container.innerHTML = html;
-
-},
-
-renderDiagnostics() {
-const model = this.models.find(m => m.name === this.currentModel);
-const container = document.getElementById('diagnosticsContainer');
-
-if (!model || !model.history.length) {
-  container.innerHTML = `
-    <div class="info-box">
-      <strong>No diagnostics available</strong>
-      Run a test first to see detailed diagnostic analysis.
-    </div>
-  `;
-  return;
-}
-
-const latest = model.history[model.history.length - 1];
-const aggregated = this.aggregateDomainScores(latest.scores);
-const avg = Math.round(Object.values(aggregated).reduce((a, b) => a + b, 0) / Object.keys(aggregated).length);
-
-// Identify weaknesses and strengths
-const weaknesses = [];
-const strengths = [];
-const recommendations = [];
-
-for (const [domain, score] of Object.entries(aggregated)) {
-  const domainInfo = DOMAINS.find(d => d[0] === domain);
-  if (!domainInfo) continue;
-  
-  if (score < 40) {
-    weaknesses.push({ domain: domainInfo[1], score });
-  } else if (score >= 80) {
-    strengths.push({ domain: domainInfo[1], score });
-  }
-}
-
-// Generate recommendations
-if (aggregated.logic < 60) {
-  recommendations.push('Improve logical reasoning with training on decision theory problems and paradoxes.');
-}
-if (aggregated.math < 60) {
-  recommendations.push('Enhance mathematical precision through ambiguous expression handling exercises.');
-}
-if (aggregated.epistemic < 60) {
-  recommendations.push('Increase uncertainty calibration by training on "I don\'t know" responses for uncertain queries.');
-}
-if (aggregated.format < 70) {
-  recommendations.push('Strengthen instruction following with explicit format compliance training.');
-}
-if (aggregated.creativity < 60) {
-  recommendations.push('Boost creative thinking with open-ended problem-solving scenarios.');
-}
-
-// Check for overconfidence
-let overconfidenceDetected = false;
-for (const [key, responseText] of Object.entries(latest.responses)) {
-  if (responseText && responseText.length > 50) {
-    const absoluteTerms = (responseText.match(/always|never|obvious|clearly|definitely|certainly|absolutely/gi) || []).length;
-    if (absoluteTerms > 3) {
-      overconfidenceDetected = true;
-      break;
-    }
-  }
-}
-
-if (overconfidenceDetected) {
-  recommendations.push('Reduce overconfidence by incorporating hedging language and acknowledging uncertainty.');
-}
-
-let html = `
-  <div class="detail-grid" style="margin-bottom: 1rem;">
-    <div class="stat-card">
-      <h4>Model</h4>
-      <div class="stat-value" style="font-size: 1.1rem;">${model.name}</div>
-    </div>
-    <div class="stat-card">
-      <h4>Overall Score</h4>
-      <div class="stat-value score-${this.getScoreClass(avg)}">${avg}%</div>
-    </div>
-    <div class="stat-card">
-      <h4>Test Tier</h4>
-      <div class="stat-value" style="font-size: 1rem;">${latest.tier.charAt(0).toUpperCase() + latest.tier.slice(1)}</div>
-    </div>
-    <div class="stat-card">
-      <h4>Test Date</h4>
-      <div class="stat-value" style="font-size: 0.9rem;">${new Date(latest.time).toLocaleDateString()}</div>
-    </div>
-  </div>
-`;
-
-if (weaknesses.length > 0) {
-  html += `
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">⚠️ Critical Weaknesses</div>
-      </div>
-      <div class="diagnostic-content">
-  `;
-  weaknesses.forEach(w => {
-    html += `<div class="weakness-item"><strong>${w.domain}:</strong> Score ${w.score}% - Significant capability gap detected</div>`;
-  });
-  html += '</div></div>';
-}
-
-if (strengths.length > 0) {
-  html += `
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">✅ Key Strengths</div>
-      </div>
-      <div class="diagnostic-content">
-  `;
-  strengths.forEach(s => {
-    html += `<div class="strength-item"><strong>${s.domain}:</strong> Score ${s.score}% - Excellent capability</div>`;
-  });
-  html += '</div></div>';
-}
-
-if (recommendations.length > 0) {
-  html += `
-    <div class="diagnostic-section">
-      <div class="diagnostic-header">
-        <div class="diagnostic-title">💡 Improvement Recommendations</div>
-      </div>
-      <div class="diagnostic-content">
-  `;
-  recommendations.forEach(r => {
-    html += `<div class="recommendation-item">${r}</div>`;
-  });
-  html += '</div></div>';
-}
-
-// Performance breakdown
-html += `
-  <div class="diagnostic-section">
-    <div class="diagnostic-header">
-      <div class="diagnostic-title">📊 Domain Performance Breakdown</div>
-    </div>
-    <div class="diagnostic-content">
-      <div class="metrics-container">
-`;
-
-DOMAINS.forEach(([id, label]) => {
-  const score = aggregated[id] || 0;
-  html += `
-    <div class="metric-card">
-      <div class="metric-header">
-        <span class="metric-label">${label}</span>
-        <span class="metric-value score-${this.getScoreClass(score)}">${score}%</span>
-      </div>
-      <div class="metric-bar">
-        <div class="metric-bar-fill" style="width: ${score}%"></div>
-      </div>
-    </div>
-  `;
-});
-
-html += '</div></div></div>';
-
-container.innerHTML = html;
-
-},
-
-renderCompare() {
-const thead = document.querySelector('#compareTable thead tr');
-const tbody = document.querySelector('#compareTable tbody');
-
-if (!this.models.length || !this.models.some(m => m.history.length)) {
-  thead.innerHTML = '<th>Domain</th>';
-  tbody.innerHTML = '<tr><td colspan="100" style="text-align: center; color: var(--text-secondary); padding: 1rem;">No models tested yet</td></tr>';
-  return;
-}
-
-const testedModels = this.models.filter(m => m.history.length > 0);
-
-let headerHtml = '<th>Domain</th>';
-testedModels.forEach(model => {
-  headerHtml += `<th>${model.name}</th>`;
-});
-thead.innerHTML = headerHtml;
-
-let bodyHtml = '';
-
-// Overall row first
-bodyHtml += '<tr><td><strong>Overall</strong></td>';
-testedModels.forEach(model => {
-  const latest = model.history[model.history.length - 1];
-  const aggregated = this.aggregateDomainScores(latest.scores);
-  const avg = Math.round(Object.values(aggregated).reduce((a, b) => a + b, 0) / Object.keys(aggregated).length);
-  bodyHtml += `<td class="score-cell score-${this.getScoreClass(avg)}">${avg}</td>`;
-});
-bodyHtml += '</tr>';
-
-// Domain rows
-DOMAINS.forEach(([id, label]) => {
-  bodyHtml += `<tr><td>${label}</td>`;
-  testedModels.forEach(model => {
-    const latest = model.history[model.history.length - 1];
-    const aggregated = this.aggregateDomainScores(latest.scores);
-    const score = aggregated[id] || 0;
-    bodyHtml += `<td class="score-cell score-${this.getScoreClass(score)}">${score}</td>`;
-  });
-  bodyHtml += '</tr>';
-});
-
-tbody.innerHTML = bodyHtml;
-
-},
-
-renderInsights() {
-const container = document.getElementById('insightsContainer');
-const testedModels = this.models.filter(m => m.history.length > 0);
-
-if (!testedModels.length) {
-  container.innerHTML = `
-    <div class="info-box">
-      <strong>No insights available</strong>
-      Test some models to receive personalized insights and recommendations.
-    </div>
-  `;
-  return;
-}
-
-let html = '<div class="use-case-grid">';
-
-USE_CASES.forEach(useCase => {
-  const modelSuitability = testedModels.map(model => {
-    const latest = model.history[model.history.length - 1];
-    const aggregated = this.aggregateDomainScores(latest.scores);
-    
-    let suitability = 0;
-    for (const [domain, weight] of Object.entries(useCase.weights)) {
-      suitability += (aggregated[domain] || 0) * weight;
-    }
-    
-    return { name: model.name, score: Math.round(suitability) };
-  }).sort((a, b) => b.score - a.score);
-  
-  const topModels = modelSuitability.slice(0, 3);
-  
-  html += `
-    <div class="use-case-card">
-      <div class="use-case-header">
-        <span class="use-case-icon">${useCase.icon}</span>
-        <span class="use-case-title">${useCase.title}</span>
-      </div>
-      <div class="use-case-desc">${useCase.description}</div>
-      <div class="model-rec-list">
-  `;
-  
-  topModels.forEach((model, index) => {
-    const rank = index === 0 ? '🥇' : index === 1 ? '🥈' : '🥉';
-    html += `
-      <div class="model-rec-item">
-        <span class="model-rec-name">${rank} ${model.name}</span>
-        <span class="model-rec-score score-${this.getScoreClass(model.score)}">${model.score}%</span>
-      </div>
-    `;
-  });
-  
-  html += '</div></div>';
-});
-
-html += '</div>';
-container.innerHTML = html;
-
-},
-
-showDomainDetail(id, label, desc, score) {
-const modal = document.getElementById('domainModal');
-const title = document.getElementById('modalTitle');
-const body = document.getElementById('modalBody');
-
-const descriptions = {
-  logic: 'Evaluates complex logical scenarios including decision theory problems like Newcomb\'s Paradox. Strong logical reasoning is essential for deductive thinking and problem-solving.',
-  math: 'Tests mathematical accuracy and ambiguous expression handling. Models must demonstrate proper order of operations and clear mathematical communication.',
-  epistemic: 'Measures understanding of knowledge limitations and uncertainty. High scores indicate appropriate calibration and awareness of what can and cannot be known.',
-  ethics: 'Assesses ethical analysis from multiple perspectives. Critical for applications involving value judgments or sensitive decisions.',
-  creativity: 'Evaluates innovative thinking and novel solution generation. Important for brainstorming, design, and tasks requiring original ideas.',
-  robustness: 'Tests unusual scenario handling and edge cases. Models must question assumptions and maintain logical consistency in unexpected situations.',
-  planning: 'Measures multi-step plan creation with interdependent constraints. Essential for complex task decomposition and strategic thinking.',
-  self: 'Evaluates meta-cognitive abilities and self-awareness. Models should recognize potential failure modes and communicate limitations clearly.',
-  format: 'Tests instruction-following accuracy, critical for automated systems and structured outputs. High scores indicate reliable compliance.',
-  clarity: 'Assesses clear communication of complex ideas to non-experts. Important for education, documentation, and user-facing interactions.'
-};
-
-title.textContent = label;
-body.innerHTML = `
-  <div class="stat-card" style="margin-bottom: 1rem;">
-    <h4>Score</h4>
-    <div class="stat-value score-${this.getScoreClass(score)}">${score}%</div>
-  </div>
-  <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.875rem;">${desc}</p>
-  <div style="background: var(--surface-elevated); border-radius: 0.5rem; padding: 1rem;">
-    <strong style="display: block; margin-bottom: 0.5rem;">What this measures:</strong>
-    <p style="color: var(--text-secondary); font-size: 0.875rem; margin: 0; line-height: 1.5;">${descriptions[id] || 'No detailed description available.'}</p>
-  </div>
-`;
-
-modal.classList.remove('hidden');
-
-},
-
-closeModal() {
-document.getElementById('domainModal').classList.add('hidden');
-},
-
-exportData() { const dataStr = JSON.stringify(this.models, null, 2); const blob = new Blob([dataStr], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'aiqx-v4-benchmark-' + Date.now() + '.json'; a.click(); URL.revokeObjectURL(url); },
-
-importData(event) {
-const file = event.target.files[0];
-if (!file) return;
-
-const reader = new FileReader();
-reader.onload = (e) => {
-  try {
-    const imported = JSON.parse(e.target.result);
-    if (!Array.isArray(imported)) throw new Error('Invalid format');
-    
-    this.models = imported;
-    this.currentModel = this.models[0]?.name || null;
-    this.save();
-    this.render();
-    alert('Data imported successfully!');
-  } catch (err) {
-    alert('Failed to import data. Please ensure the file is a valid AIQ-X export.');
-  }
-};
-reader.readAsText(file);
-event.target.value = '';
-
-},
-
-render() { const select = document.getElementById('modelSelect'); select.innerHTML = '<option value="">Select a model...</option>';
-
-this.models.forEach(model => {
-  const option = document.createElement('option');
-  option.value = model.name;
-  option.textContent = `${model.name} (${model.history.length} test${model.history.length !== 1 ? 's' : ''})`;
-  option.selected = model.name === this.currentModel;
-  select.appendChild(option);
-});
-
-this.renderResults();
-this.renderCompare();
-this.renderInsights();
-
-}
-};
-
-// Initialize app when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-APP.init();
-});
-</script>
+<script src="app.js"></script>
 </body>
 </html>

@@ -1,137 +1,59 @@
-# AIQ-X Professional Suite
+# AIQ-X: Advanced AI Evaluation & Diagnostics
 
-**AIQ-X** is an advanced benchmarking and diagnostic framework designed to evaluate Large Language Models (LLMs) across multiple dimensions of reasoning, precision, and reliability. It goes beyond surface-level accuracy to provide actionable insights for both model developers and decision makers.
+AIQ-X is an open-source, local-first diagnostic suite designed to stress-test and benchmark Large Language Models (LLMs) with deterministic precision. Inspired by early conversational AI like Dr. Sbaitso, AIQ-X moves beyond "vibes" to provide a rigorous framework for identifying a model's true "Fit-for-Purpose".
 
----
-
-## 🎯 What’s New in v4.0
-
-- **Multi-Tier Testing**  
-  Choose between **Basic (10 questions)**, **Advanced (25 questions)**, or **Expert (40+ questions)** evaluation suites.
-
-- **Professional Diagnostics**  
-  In-depth analysis that highlights specific strengths and weaknesses rather than just aggregate scores.
-
-- **Adaptive Testing**  
-  Question paths dynamically probe deeper based on real-time performance patterns.
-
-- **Actionable Insights**  
-  Clear guidance tailored for both model trainers and end users.
+**Live Demo:** [https://blgardner.github.io/aiq-x/](https://blgardner.github.io/aiq-x/)
 
 ---
 
-## 📊 Test Tiers Explained
+## 🚀 Why AIQ-X?
 
-| Tier     | Questions | Duration   | Best For |
-|----------|-----------|------------|----------|
-| Basic    | 10        | 2–5 mins   | Quick comparisons and core capability checks |
-| Advanced | 25        | 5–10 mins  | Identifying common failure modes and depth analysis |
-| Expert   | 40+       | 10–20 mins | Stress tests, adversarial examples, and boundary cases |
+Most modern benchmarks are either static (leaked into training data) or rely on "Judge LLMs" which introduce their own biases. AIQ-X solves this by:
 
-**Recommendation:**  
-Start with the **Basic** tier to establish a baseline, then escalate to **Advanced** or **Expert** for more rigorous evaluation.
+- **Deterministic Scoring:** Uses heuristic-based evaluation to reward epistemic calibration and penalize overconfident hallucinations.
+- **Zero-Server Privacy:** Runs entirely in the browser. Your prompts and model responses never leave your `localStorage`.
+- **The Pack Builder:** Includes a specialized tool to create, export, and share custom JSON "Test Packs" for private benchmarking.
+- **Multi-Tier Testing:** From "Basic" (5 mins) to "Expert" (20+ mins) to get high-granularity performance data.
 
----
+## 🛠 Features
 
-## 🔬 For Model Trainers & Researchers
+- **Fit-for-Purpose Analysis:** Automatically categorizes models by their strengths (Coding, Logic, Creative, etc.).
+- **Thinking-Loop Detection:** Designed to identify where reasoning models get stuck in recursive logical bottlenecks.
+- **Cross-Model Parity:** Standardized parameters to ensure you are comparing "apples to apples" across GPT, Claude, Gemini, and local models.
+- **Dark Mode / Responsive UI:** Built for the desktop terminal aesthetic but fully functional on mobile.
 
-The **Diagnostics** view identifies recurring failure patterns to support iterative model improvement, including:
+## 📂 Included Diagnostic Packs
 
-- **Consistency Issues**  
-  Variance in responses across semantically similar prompts.
+1. **Fit-for-Purpose:** Broad-spectrum evaluation (Start here).
+2. **Core Capabilities:** The "Gold Standard" baseline (10 essential domains).
+3. **Advanced Reasoning:** Paradox resolution and systems thinking.
+4. **Code Proficiency:** Technical debugging and algorithmic logic.
+5. **Instruction Following & Safety:** Constraint adherence and manipulation resistance.
+6. **Professional Writing:** Ideal for testing models used in workplace contexts.
+7. **Creative Writing:** Great for evaluating creative fiction capabilities.
+8. **Information Processing:** Essential for research and analysis tasks.
+9. **Conversational Intelligence:** Tests dialogue quality.
+10. **Problem-Solving & Critical Thinking:** - A Bonus pack included in the Pack Builder, you can export it immediately! 
 
-- **Overconfidence Markers**  
-  Use of absolute or definitive language in uncertain contexts.
+## ⚙️ How it Works
 
-- **Instruction Following Failures**  
-  Inability to adhere to explicit formatting rules or constraints.
+AIQ-X uses a "Copy-Paste" diagnostic workflow:
+1. **Select a Pack:** Choose your testing domain.
+2. **Interact:** Copy the generated prompt into any AI chat interface.
+3. **Analyze:** Paste the raw response back into AIQ-X. The engine parses the response using marker-based delimiters and scores it based on defined heuristics.
 
-- **Reasoning Gaps**  
-  Logical inconsistencies within multi-step or dependent problems.
+## 🛠 Development & Customization
 
-Reports include targeted suggestions for:
-- Training data refinement  
-- Architectural adjustments  
-- Fine-tuning and alignment strategies  
+The project is built with vanilla JS/CSS/HTML - no heavy frameworks or dependencies.
 
----
+### Custom Scoring Logic
+You can find the heuristic engine in `app.js`. It rewards/penalizes based on:
+- **Hedge Terms:** Rewarding "potentially," "however," and "it depends."
+- **Absolute Terms:** Penalizing "always," "never," and "certainly" in ambiguous contexts.
+- **Structure:** Verification of formatting and instruction compliance.
 
-## 💡 For End Users & Decision Makers
+### Contributing
+If you create a new Test Pack using the **Pack Builder**, please consider submitting a PR to include it in the `community-packs/` folder!
 
-Move beyond marketing claims. The **Insights** tab provides empirical, task-relevant data to guide model selection:
-
-- **Recommended Use Cases**  
-  Match models to tasks based on observed performance.
-
-- **Risk Profiles**  
-  Visual indicators of where a model is likely to hallucinate or fail.
-
-- **Application Guidance**  
-  Examples:  
-  - “Excellent for creative writing”  
-  - “Avoid for mathematical or formal reasoning tasks”
-
----
-
-## 📈 Understanding Scores
-
-AIQ-X scores responses across four primary dimensions:
-
-- **Length & Depth**  
-  Rewards comprehensive, nuanced, and well-developed answers.
-
-- **Uncertainty Calibration**  
-  Rewards appropriate hedging and honesty about limitations.
-
-- **Structure**  
-  Evaluates logical organization and clarity of thought.
-
-- **Domain-Specific Criteria**  
-  Tailored scoring rules based on the subject area being tested.
-
-> **Note:**  
-> Low scores do not necessarily indicate poor quality overall. They often reflect a mismatch between a model’s response style and the evaluation criteria, which may vary in importance depending on your use case.
-
----
-
-## 🎓 Domain Definitions
-
-AIQ-X evaluates performance across **10 critical domains**:
-
-1. **Logical Reasoning** – Decision theory, paradoxes, and complex logic  
-2. **Mathematical Precision** – Operational accuracy and ambiguity handling  
-3. **Epistemic Calibration** – Awareness of knowledge limits  
-4. **Ethical Reasoning** – Navigating ethical dilemmas and frameworks  
-5. **Creativity** – Novel ideas and innovative solutions  
-6. **Robustness** – Edge-case handling and assumption stress-testing  
-7. **Planning** – Multi-step reasoning with interdependent constraints  
-8. **Meta-Cognition** – Self-awareness and limitation recognition  
-9. **Instruction Compliance** – Strict adherence to explicit requirements  
-10. **Communication Clarity** – Explaining complex topics to non-experts  
-
----
-
-## ⚙️ Data Management & Privacy
-
-AIQ-X is designed with privacy and portability in mind:
-
-- **Local Storage Only**  
-  All evaluation data remains in your browser. Nothing is sent to external servers.
-
-- **Export and Import**  
-  Save and restore results as `.json` files for backup or external analysis.
-
-- **Portability**  
-  Move your results seamlessly across machines.
-
----
-
-## 🚀 Getting Started
-
-Clone or deploy the suite, select a test tier, and begin evaluating.  
-For meaningful comparisons, use consistent prompts and tiers across models.
-
----
-
-**AIQ-X Professional Suite**  
-*Measure what matters. Diagnose what fails. Choose models with confidence.*
+## 📜 License
+MIT License - Feel free to use, modify, and distribute.

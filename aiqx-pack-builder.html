@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AIQ-X Pack Builder</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="favicon.ico">
+<style>
+/* Inline AIQ-X Styles */
+:root {
+  --bg: #0a0e1a;
+  --surface: #151b2e;
+  --surface-elevated: #1a2137;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --accent: #22d3ee;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --text: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --border: #1e293b;
+  --shadow: rgba(0, 0, 0, 0.3);
+}
+
+body.light-mode {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-elevated: #f1f5f9;
+  --text: #0f172a;
+  --text-secondary: #475569;
+  --border: #e2e8f0;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.3;
+  font-size: 14px;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+h1 {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+main {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 5px 20px var(--shadow);
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.3rem;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.4);
+}
+
+button.secondary {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+button.secondary:hover:not(:disabled) {
+  background: var(--border);
+}
+
+button.danger {
+  background: var(--danger);
+}
+
+button.success {
+  background: var(--success);
+}
+
+button.icon-btn {
+  padding: 0.3rem;
+  min-width: auto;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+input, textarea, select {
+  width: 100%;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  color: var(--text);
+  font-size: 0.75rem;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+textarea {
+  font-family: 'Monaco', 'Courier New', monospace;
+  resize: vertical;
+  min-height: 100px;
+}
+
+.info-box {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.info-box.info {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.info-box.success {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.info-box.warning {
+  border-color: var(--warning);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.info-box strong {
+  color: var(--text);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.pack-tag {
+  background: var(--primary);
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.2rem;
+  font-size: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.step-indicator {
+  display: inline-block;
+}
+
+.domain-selector.selected {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+#notification {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  padding: 0.75rem 1rem;
+  box-shadow: 0 4px 12px var(--shadow);
+  font-size: 0.75rem;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+#notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#notification.success {
+  border-color: var(--success);
+  background: rgba(16, 185, 129, 0.1);
+}
+
+#notification.error {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+#notification.info {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.progress-bar {
+  height: 6px;
+  background: var(--surface-elevated);
+  border-radius: 1rem;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: width 0.3s;
+}
+</style>
+</head>
+<body class="light-mode">
+
+<div class="container">
+  <header>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h1><img src="aiqx-badge.png" alt="AIQ-X" width="48" height="48" style="vertical-align: middle; margin-right: 0.5rem;"> AIQ-X Pack Builder</h1>
+        <div class="subtitle">Create Custom Test Packs • Step-by-Step Wizard</div>
+      </div>
+      <button class="secondary icon-btn" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌓</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="info-box info" style="margin-bottom: 1rem;">
+      <strong>✨ Pre-loaded Example Pack</strong>
+      This builder comes with a complete "Problem-Solving & Critical Thinking" test pack already filled in. You can export it immediately or click "New Pack" to start from scratch.
+    </div>
+
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+      <button onclick="exportPack()" class="success" style="flex: 1;">📦 Export Pack</button>
+      <button onclick="newPack()" class="secondary" style="flex: 1;">🆕 New Pack</button>
+      <button onclick="saveDraft()" class="secondary">💾 Save Draft</button>
+    </div>
+
+    <div id="builderContainer"></div>
+  </main>
+</div>
+
+<div id="notification"></div>
+
+<script>
+// Domain definitions
+const DOMAINS = [
+  ['logic', 'Logical Reasoning', 'Tests ability to handle complex logical problems, paradoxes, and decision theory'],
+  ['math', 'Mathematical Precision', 'Evaluates accuracy in mathematical operations and handling of ambiguous expressions'],
+  ['epistemic', 'Epistemic Calibration', 'Measures awareness of uncertainty and knowledge limitations'],
+  ['ethics', 'Ethical Reasoning', 'Assesses ability to navigate ethical dilemmas and explain different frameworks'],
+  ['creativity', 'Creativity', 'Tests innovative thinking and ability to create novel solutions'],
+  ['robustness', 'Robustness', 'Evaluates handling of edge cases and assumption challenging'],
+  ['planning', 'Planning', 'Measures ability to create coherent multi-step plans with constraints'],
+  ['self', 'Meta-Cognition', 'Tests self-awareness and ability to identify own limitations'],
+  ['format', 'Instruction Compliance', 'Evaluates ability to follow explicit formatting and output requirements'],
+  ['clarity', 'Communication Clarity', 'Assesses ability to explain complex topics clearly to non-experts'],
+  ['problemsolve', 'Problem Solving', 'Tests analytical and strategic thinking in novel situations'],
+  ['criticalthink', 'Critical Thinking', 'Evaluates ability to analyze arguments and identify logical flaws'],
+  ['inference', 'Inference & Deduction', 'Measures skill in drawing valid conclusions from limited information'],
+  ['prioritize', 'Prioritization', 'Tests ability to rank options and make decisions under constraints']
+];
+
+// Pre-loaded example pack: Problem-Solving & Critical Thinking
+const EXAMPLE_PACK = {
+  id: 'problem-solving-critical-thinking',
+  name: 'Problem-Solving & Critical Thinking Assessment',
+  version: '1.0.0',
+  author: 'AIQ-X Pack Builder',
+  description: 'Evaluates analytical reasoning, critical thinking, problem decomposition, inference, and strategic decision-making. Tests ability to approach novel problems systematically and identify logical flaws in arguments.',
+  difficulty: 'intermediate',
+  tags: ['analytical', 'reasoning', 'problem-solving', 'critical-thinking'],
+  selectedDomains: ['problemsolve', 'criticalthink', 'inference', 'prioritize', 'logic'],
+  questions: {
+    basic: [
+      {
+        id: 'problemsolve',
+        domain: 'problemsolve',
+        text: 'You have 12 coins that look identical. One coin is counterfeit and weighs differently (you don\'t know if it\'s heavier or lighter). You have a balance scale and can use it exactly 3 times. Describe a strategy to identify the counterfeit coin.'
+      },
+      {
+        id: 'criticalthink',
+        domain: 'criticalthink',
+        text: 'Argument: "Studies show people who drink coffee live longer. Therefore, drinking more coffee will extend your lifespan."\n\nIdentify the logical flaw and explain why this conclusion may not be valid.'
+      },
+      {
+        id: 'inference',
+        domain: 'inference',
+        text: 'Sales of umbrellas increase. Sales of ice cream also increase. What can you infer from these two observations? What can you NOT infer?'
+      },
+      {
+        id: 'prioritize',
+        domain: 'prioritize',
+        text: 'You have 4 tasks: A (2 hours, due today, affects 3 other people), B (30 min, due next week, only affects you), C (1 hour, due tomorrow, blocks task D), D (3 hours, due in 3 days, critical project).\n\nRank them in priority order and explain your reasoning.'
+      },
+      {
+        id: 'logic',
+        domain: 'logic',
+        text: 'All widgets are gadgets. Some gadgets are red. Can you conclude that some widgets are red? Explain why or why not.'
+      }
+    ],
+    advanced: [
+      {
+        id: 'problemsolve',
+        domain: 'problemsolve',
+        text: 'You have 12 coins that look identical. One coin is counterfeit and weighs differently (you don\'t know if it\'s heavier or lighter). You have a balance scale and can use it exactly 3 times. Describe a strategy to identify the counterfeit coin.'
+      },
+      {
+        id: 'problemsolve_2',
+        domain: 'problemsolve',
+        text: 'A farmer needs to cross a river with a wolf, a goat, and a cabbage. The boat can only hold the farmer and one item. If left alone, the wolf eats the goat, and the goat eats the cabbage. How does the farmer get everything across safely?\n\nNow solve this: The farmer also has a second goat. The wolf won\'t eat two goats together, but the goats will fight if left alone. Find a solution.'
+      },
+      {
+        id: 'criticalthink',
+        domain: 'criticalthink',
+        text: 'Argument: "Studies show people who drink coffee live longer. Therefore, drinking more coffee will extend your lifespan."\n\nIdentify the logical flaw and explain why this conclusion may not be valid.'
+      },
+      {
+        id: 'criticalthink_2',
+        domain: 'criticalthink',
+        text: 'Evaluate this argument:\n"Company X\'s stock price increased 20% after hiring a new CEO. This proves the new CEO is effective."\n\nWhat alternative explanations exist? What evidence would you need to support the original claim?'
+      },
+      {
+        id: 'inference',
+        domain: 'inference',
+        text: 'Sales of umbrellas increase. Sales of ice cream also increase. What can you infer from these two observations? What can you NOT infer?'
+      },
+      {
+        id: 'inference_2',
+        domain: 'inference',
+        text: 'A company\'s employee turnover increased 40%, Glassdoor rating dropped from 4.2 to 2.8, and three executives left in two months. What likely happened? What other data would help confirm your hypothesis?'
+      },
+      {
+        id: 'prioritize',
+        domain: 'prioritize',
+        text: 'You have 4 tasks: A (2 hours, due today, affects 3 other people), B (30 min, due next week, only affects you), C (1 hour, due tomorrow, blocks task D), D (3 hours, due in 3 days, critical project).\n\nRank them in priority order and explain your reasoning.'
+      },
+      {
+        id: 'prioritize_2',
+        domain: 'prioritize',
+        text: 'You must choose between: (1) Guaranteed $5000 improvement, (2) 50% chance of $15000 improvement, (3) Unknown probability of $50000 improvement.\n\nHow do you decide? What additional information would change your choice?'
+      },
+      {
+        id: 'logic',
+        domain: 'logic',
+        text: 'All widgets are gadgets. Some gadgets are red. Can you conclude that some widgets are red? Explain why or why not.'
+      },
+      {
+        id: 'logic_2',
+        domain: 'logic',
+        text: 'If it rains, the ground is wet. The ground is wet. Can you conclude it rained? Explain the logical structure and identify the fallacy if present.'
+      }
+    ],
+    expert: [
+      {
+        id: 'problemsolve',
+        domain: 'problemsolve',
+        text: 'You have 12 coins that look identical. One coin is counterfeit and weighs differently (you don\'t know if it\'s heavier or lighter). You have a balance scale and can use it exactly 3 times. Describe a strategy to identify the counterfeit coin.'
+      },
+      {
+        id: 'problemsolve_2',
+        domain: 'problemsolve',
+        text: 'A farmer needs to cross a river with a wolf, a goat, and a cabbage. The boat can only hold the farmer and one item. If left alone, the wolf eats the goat, and the goat eats the cabbage. How does the farmer get everything across safely?\n\nNow solve this: The farmer also has a second goat. The wolf won\'t eat two goats together, but the goats will fight if left alone. Find a solution.'
+      },
+      {
+        id: 'problemsolve_3',
+        domain: 'problemsolve',
+        text: 'Design an algorithm to find the two missing numbers in an array of 1 to 100 where exactly two numbers are removed. Your solution must use O(1) space and O(n) time. Explain your approach.'
+      },
+      {
+        id: 'problemsolve_4',
+        domain: 'problemsolve',
+        text: 'You\'re in a dark room with 100 coins on a table. 20 are heads-up, 80 are tails-up, but you can\'t see or feel which is which. How can you create two piles with equal numbers of heads-up coins?'
+      },
+      {
+        id: 'criticalthink',
+        domain: 'criticalthink',
+        text: 'Argument: "Studies show people who drink coffee live longer. Therefore, drinking more coffee will extend your lifespan."\n\nIdentify the logical flaw and explain why this conclusion may not be valid.'
+      },
+      {
+        id: 'criticalthink_2',
+        domain: 'criticalthink',
+        text: 'Evaluate this argument:\n"Company X\'s stock price increased 20% after hiring a new CEO. This proves the new CEO is effective."\n\nWhat alternative explanations exist? What evidence would you need to support the original claim?'
+      },
+      {
+        id: 'criticalthink_3',
+        domain: 'criticalthink',
+        text: 'A study finds that students who take notes by hand score better on tests than those who type notes. Critics say this doesn\'t account for student motivation levels. Design an experiment that addresses this criticism.'
+      },
+      {
+        id: 'criticalthink_4',
+        domain: 'criticalthink',
+        text: 'Identify all logical fallacies in this argument:\n"Everyone I know uses Product X, so it must be the best. My friend tried Product Y and it didn\'t work, proving X is superior. If you don\'t use X, you\'re making a mistake."'
+      },
+      {
+        id: 'inference',
+        domain: 'inference',
+        text: 'Sales of umbrellas increase. Sales of ice cream also increase. What can you infer from these two observations? What can you NOT infer?'
+      },
+      {
+        id: 'inference_2',
+        domain: 'inference',
+        text: 'A company\'s employee turnover increased 40%, Glassdoor rating dropped from 4.2 to 2.8, and three executives left in two months. What likely happened? What other data would help confirm your hypothesis?'
+      },
+      {
+        id: 'inference_3',
+        domain: 'inference',
+        text: 'Website traffic increased 50% after a redesign. Conversion rate decreased 10%. Revenue stayed flat. What can you infer about user behavior? What hypothesis would explain all three metrics?'
+      },
+      {
+        id: 'prioritize',
+        domain: 'prioritize',
+        text: 'You have 4 tasks: A (2 hours, due today, affects 3 other people), B (30 min, due next week, only affects you), C (1 hour, due tomorrow, blocks task D), D (3 hours, due in 3 days, critical project).\n\nRank them in priority order and explain your reasoning.'
+      },
+      {
+        id: 'prioritize_2',
+        domain: 'prioritize',
+        text: 'You must choose between: (1) Guaranteed $5000 improvement, (2) 50% chance of $15000 improvement, (3) Unknown probability of $50000 improvement.\n\nHow do you decide? What additional information would change your choice?'
+      },
+      {
+        id: 'prioritize_3',
+        domain: 'prioritize',
+        text: 'Create a prioritization framework for evaluating 100+ feature requests with limited engineering resources. What criteria would you use? How would you weight them?'
+      },
+      {
+        id: 'logic',
+        domain: 'logic',
+        text: 'All widgets are gadgets. Some gadgets are red. Can you conclude that some widgets are red? Explain why or why not.'
+      },
+      {
+        id: 'logic_2',
+        domain: 'logic',
+        text: 'If it rains, the ground is wet. The ground is wet. Can you conclude it rained? Explain the logical structure and identify the fallacy if present.'
+      },
+      {
+        id: 'logic_3',
+        domain: 'logic',
+        text: 'Three logicians walk into a bar. The bartender asks "Does everyone want a drink?" First logician: "I don\'t know." Second: "I don\'t know." Third: "Yes!" Explain what happened.'
+      },
+      {
+        id: 'logic_4',
+        domain: 'logic',
+        text: 'You have three boxes: one contains only apples, one contains only oranges, one contains both. All boxes are labeled incorrectly. You may draw one fruit from one box. How do you determine the correct labels?'
+      }
+    ]
+  },
+  scoringParams: {
+    baseScore: 28,
+    hedgeBonus: 4,
+    absolutePenalty: -6,
+    lengthBonuses: [
+      { threshold: 180, bonus: 16 },
+      { threshold: 350, bonus: 12 }
+    ]
+  }
+};
+
+// Builder state
+let currentStep = 1;
+let currentTier = 'basic';
+let packData = JSON.parse(JSON.stringify(EXAMPLE_PACK)); // Deep clone
+
+// Initialize
+window.onload = function() {
+  renderBuilder();
+};
+
+function renderBuilder() {
+  const container = document.getElementById('builderContainer');
+  container.innerHTML = `
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress" style="width: ${(currentStep / 7) * 100}%"></div>
+    </div>
+    
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem; overflow-x: auto; padding-bottom: 0.5rem;">
+      ${renderStepIndicators()}
+    </div>
+    
+    <div id="stepContent">${renderCurrentStep()}</div>
+    
+    <div style="display: flex; gap: 0.5rem; justify-content: space-between; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+      <button class="secondary" onclick="previousStep()" ${currentStep === 1 ? 'disabled' : ''}>← Previous</button>
+      <button onclick="nextStep()" ${currentStep === 7 ? 'class="success"' : ''}>${currentStep === 7 ? '✅ Finish' : 'Next →'}</button>
+    </div>
+  `;
+}
+
+function renderStepIndicators() {
+  const steps = ['📝 Info', '🎯 Domains', '❓ Questions', '⚙️ Scoring', '👁️ Preview', '✅ Validate', '📦 Export'];
+  return steps.map((label, i) => {
+    const num = i + 1;
+    const isActive = num === currentStep;
+    const isComplete = num < currentStep;
+    return `
+      <div onclick="goToStep(${num})" style="flex: 1; min-width: 80px; text-align: center; padding: 0.5rem; border-radius: 0.375rem; cursor: pointer; background: ${isActive ? 'rgba(99, 102, 241, 0.2)' : 'var(--surface-elevated)'}; border: 2px solid ${isActive ? 'var(--primary)' : (isComplete ? 'var(--success)' : 'var(--border)')};">
+        <div style="font-size: 0.9rem;">${isComplete ? '✓' : label.split(' ')[0]}</div>
+        <div style="font-size: 0.65rem; color: var(--text); margin-top: 0.15rem;">${label.split(' ')[1]}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderCurrentStep() {
+  const steps = [
+    renderStep1_Info,
+    renderStep2_Domains,
+    renderStep3_Questions,
+    renderStep4_Scoring,
+    renderStep5_Preview,
+    renderStep6_Validate,
+    renderStep7_Export
+  ];
+  return steps[currentStep - 1]();
+}
+
+function renderStep1_Info() {
+  return `
+    <h3 style="margin-bottom: 0.75rem;">📝 Pack Information</h3>
+    <div style="background: var(--surface-elevated); padding: 1rem; border-radius: 0.5rem;">
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem; font-weight: 500;">Pack ID *</label>
+        <input type="text" id="packId" value="${packData.id}" onchange="saveField('id', this.value)">
+        <div style="font-size: 0.65rem; color: var(--text-secondary); margin-top: 0.25rem;">Unique identifier (lowercase, hyphens only)</div>
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem; font-weight: 500;">Pack Name *</label>
+        <input type="text" id="packName" value="${packData.name}" onchange="saveField('name', this.value)">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem; font-weight: 500;">Version *</label>
+        <input type="text" id="version" value="${packData.version}" onchange="saveField('version', this.value)">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem; font-weight: 500;">Author *</label>
+        <input type="text" id="author" value="${packData.author}" onchange="saveField('author', this.value)">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem; font-weight: 500;">Description *</label>
+        <textarea id="description" rows="4" onchange="saveField('description', this.value)">${packData.description}</textarea>
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem; font-weight: 500;">Difficulty</label>
+        <select id="difficulty" onchange="saveField('difficulty', this.value)">
+          <option value="baseline" ${packData.difficulty === 'baseline' ? 'selected' : ''}>Baseline</option>
+          <option value="intermediate" ${packData.difficulty === 'intermediate' ? 'selected' : ''}>Intermediate</option>
+          <option value="advanced" ${packData.difficulty === 'advanced' ? 'selected' : ''}>Advanced</option>
+          <option value="expert" ${packData.difficulty === 'expert' ? 'selected' : ''}>Expert</option>
+        </select>
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem; font-weight: 500;">Tags</label>
+        <div id="tagsContainer" style="display: flex; flex-wrap: wrap; gap: 0.25rem; padding: 0.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.375rem; min-height: 40px;">
+          ${packData.tags.map(tag => `
+            <span class="pack-tag">
+              ${tag}
+              <button onclick="removeTag('${tag}')" style="background: none; border: none; color: white; padding: 0; cursor: pointer;">×</button>
+            </span>
+          `).join('')}
+          <input type="text" id="tagInput" placeholder="Add tag..." onkeypress="handleTagInput(event)" style="flex: 1; min-width: 100px; border: none; background: transparent; padding: 0.25rem;">
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderStep2_Domains() {
+  return `
+    <h3 style="margin-bottom: 0.75rem;">🎯 Select Capability Domains</h3>
+    <div style="display: grid; gap: 0.5rem;">
+      ${DOMAINS.map(([id, name, description]) => {
+        const isSelected = packData.selectedDomains.includes(id);
+        return `
+          <div class="domain-selector ${isSelected ? 'selected' : ''}" onclick="toggleDomain('${id}')"
+               style="background: var(--surface-elevated); border: 2px solid ${isSelected ? 'var(--primary)' : 'var(--border)'}; border-radius: 0.5rem; padding: 0.75rem; cursor: pointer;">
+            <div style="display: flex; gap: 0.75rem;">
+              <input type="checkbox" ${isSelected ? 'checked' : ''} onclick="event.stopPropagation(); toggleDomain('${id}')">
+              <div>
+                <div style="font-weight: 600; font-size: 0.85rem; margin-bottom: 0.25rem;">${name}</div>
+                <div style="font-size: 0.7rem; color: var(--text-secondary);">${description}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+    <div class="info-box success" style="margin-top: 1rem;">
+      <strong>Selected: ${packData.selectedDomains.length} domain${packData.selectedDomains.length !== 1 ? 's' : ''}</strong>
+    </div>
+  `;
+}
+
+function renderStep3_Questions() {
+  const counts = {
+    basic: packData.questions.basic.length,
+    advanced: packData.questions.advanced.length,
+    expert: packData.questions.expert.length
+  };
+  
+  return `
+    <h3 style="margin-bottom: 0.75rem;">❓ Add Test Questions</h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1rem;">
+      ${['basic', 'advanced', 'expert'].map(tier => {
+        const isActive = tier === currentTier;
+        return `
+          <div onclick="selectTier('${tier}')" 
+               style="background: ${isActive ? 'rgba(99, 102, 241, 0.2)' : 'var(--surface-elevated)'}; border: 2px solid ${isActive ? 'var(--primary)' : 'var(--border)'}; border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center;">
+            <div style="font-weight: 600; font-size: 0.85rem;">${capitalize(tier)}</div>
+            <div style="font-size: 1.2rem; font-weight: 700; color: var(--success);">${counts[tier]}</div>
+            <div style="font-size: 0.65rem; color: var(--text-secondary);">questions</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+    
+    <div style="background: var(--surface-elevated); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+      <h4 style="margin-bottom: 0.75rem; font-size: 0.9rem;">Add Question to ${capitalize(currentTier)} Tier</h4>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Domain *</label>
+        <select id="questionDomain">
+          <option value="">Select domain...</option>
+          ${packData.selectedDomains.map(domainId => {
+            const domain = DOMAINS.find(d => d[0] === domainId);
+            return `<option value="${domainId}">${domain[1]}</option>`;
+          }).join('')}
+        </select>
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Question ID *</label>
+        <input type="text" id="questionId" placeholder="e.g., logic, logic_2">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Question Text *</label>
+        <textarea id="questionText" rows="5"></textarea>
+      </div>
+      <button onclick="addQuestion()">➕ Add Question</button>
+    </div>
+    
+    <div>
+      <h4 style="margin-bottom: 0.75rem; font-size: 0.9rem;">Questions in ${capitalize(currentTier)} Tier (${counts[currentTier]})</h4>
+      ${renderQuestionsList()}
+    </div>
+  `;
+}
+
+function renderQuestionsList() {
+  const questions = packData.questions[currentTier];
+  if (questions.length === 0) {
+    return '<div class="info-box"><strong>No questions yet</strong></div>';
+  }
+  
+  return questions.map((q, i) => {
+    const domain = DOMAINS.find(d => d[0] === q.domain);
+    return `
+      <div style="background: var(--surface-elevated); border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.75rem; margin-bottom: 0.5rem;">
+        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+          <div>
+            <span style="font-weight: 600; font-size: 0.75rem; color: var(--primary);">[${q.id}]</span>
+            <span style="font-size: 0.75rem; color: var(--text-secondary); margin-left: 0.5rem;">${domain ? domain[1] : 'Unknown'}</span>
+          </div>
+          <button class="danger icon-btn" onclick="deleteQuestion(${i})">🗑️</button>
+        </div>
+        <div style="font-size: 0.7rem; color: var(--text-secondary); white-space: pre-wrap; max-height: 100px; overflow-y: auto;">${q.text}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderStep4_Scoring() {
+  return `
+    <h3 style="margin-bottom: 0.75rem;">⚙️ Scoring Configuration</h3>
+    <div style="background: var(--surface-elevated); padding: 1rem; border-radius: 0.5rem;">
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Base Score</label>
+        <input type="number" id="baseScore" value="${packData.scoringParams.baseScore}" onchange="saveScoring()">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Hedge Bonus</label>
+        <input type="number" id="hedgeBonus" value="${packData.scoringParams.hedgeBonus}" onchange="saveScoring()">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Absolute Penalty</label>
+        <input type="number" id="absolutePenalty" value="${packData.scoringParams.absolutePenalty}" onchange="saveScoring()">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Length Bonus 1 - Threshold</label>
+        <input type="number" id="length1" value="${packData.scoringParams.lengthBonuses[0].threshold}" onchange="saveScoring()">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Length Bonus 1 - Points</label>
+        <input type="number" id="lengthBonus1" value="${packData.scoringParams.lengthBonuses[0].bonus}" onchange="saveScoring()">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Length Bonus 2 - Threshold</label>
+        <input type="number" id="length2" value="${packData.scoringParams.lengthBonuses[1].threshold}" onchange="saveScoring()">
+      </div>
+      <div style="margin-bottom: 0.75rem;">
+        <label style="display: block; font-size: 0.8rem; margin-bottom: 0.25rem;">Length Bonus 2 - Points</label>
+        <input type="number" id="lengthBonus2" value="${packData.scoringParams.lengthBonuses[1].bonus}" onchange="saveScoring()">
+      </div>
+    </div>
+  `;
+}
+
+function renderStep5_Preview() {
+  return `
+    <h3 style="margin-bottom: 0.75rem;">👁️ Preview Prompts</h3>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1rem;">
+      ${['basic', 'advanced', 'expert'].map(tier => {
+        const isActive = tier === currentTier;
+        return `
+          <div onclick="selectTier('${tier}')" 
+               style="background: ${isActive ? 'rgba(99, 102, 241, 0.2)' : 'var(--surface-elevated)'}; border: 2px solid ${isActive ? 'var(--primary)' : 'var(--border)'}; border-radius: 0.5rem; padding: 0.75rem; cursor: pointer; text-align: center;">
+            <div style="font-weight: 600;">${capitalize(tier)}</div>
+            <div style="font-size: 0.65rem; color: var(--text-secondary);">Click to preview</div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+    <div style="background: var(--surface-elevated); padding: 1rem; border-radius: 0.5rem;">
+      <h4 style="margin-bottom: 0.75rem;">${capitalize(currentTier)} Tier Prompt</h4>
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 0.375rem; padding: 0.75rem; font-family: 'Monaco', monospace; font-size: 0.65rem; white-space: pre-wrap; max-height: 400px; overflow-y: auto;">
+${generatePrompt(currentTier)}
+      </div>
+    </div>
+  `;
+}
+
+function renderStep6_Validate() {
+  const validation = validatePack();
+  return `
+    <h3 style="margin-bottom: 0.75rem;">✅ Pack Validation</h3>
+    ${validation.valid ? 
+      '<div class="info-box success"><strong>✓ Pack is valid!</strong> Ready to export.</div>' :
+      `<div class="info-box warning"><strong>⚠️ Validation Issues:</strong><ul style="margin: 0.5rem 0 0 1.5rem;">${validation.errors.map(e => `<li>${e}</li>`).join('')}</ul></div>`
+    }
+    <div class="info-box info" style="margin-top: 1rem;">
+      <strong>Pack Summary</strong>
+      Name: ${packData.name}<br>
+      Domains: ${packData.selectedDomains.length}<br>
+      Basic Questions: ${packData.questions.basic.length}<br>
+      Advanced Questions: ${packData.questions.advanced.length}<br>
+      Expert Questions: ${packData.questions.expert.length}
+    </div>
+  `;
+}
+
+function renderStep7_Export() {
+  return `
+    <h3 style="margin-bottom: 0.75rem;">📦 Export Your Pack</h3>
+    <div class="info-box success">
+      <strong>✓ Pack ready to export!</strong>
+      Your test pack is complete and compatible with AIQ-X.
+    </div>
+    <div style="display: grid; gap: 0.5rem; margin-top: 1rem;">
+      <button onclick="exportPack()" class="success" style="width: 100%;">📦 Download Pack JSON</button>
+      <button onclick="copyJSON()" class="secondary" style="width: 100%;">📋 Copy JSON to Clipboard</button>
+    </div>
+    <div class="info-box info" style="margin-top: 1rem;">
+      <strong>Next Steps:</strong><br>
+      1. Download or copy the pack JSON<br>
+      2. In AIQ-X, go to Pack Library<br>
+      3. Click "Import Pack" and select your file<br>
+      4. Start testing!
+    </div>
+  `;
+}
+
+// Event handlers
+function goToStep(step) {
+  currentStep = step;
+  renderBuilder();
+}
+
+function nextStep() {
+  if (currentStep < 7) {
+    currentStep++;
+    renderBuilder();
+  } else {
+    exportPack();
+  }
+}
+
+function previousStep() {
+  if (currentStep > 1) {
+    currentStep--;
+    renderBuilder();
+  }
+}
+
+function selectTier(tier) {
+  currentTier = tier;
+  renderBuilder();
+}
+
+function saveField(field, value) {
+  packData[field] = value;
+}
+
+function handleTagInput(event) {
+  if (event.key === 'Enter' && event.target.value.trim()) {
+    packData.tags.push(event.target.value.trim());
+    event.target.value = '';
+    renderBuilder();
+  }
+}
+
+function removeTag(tag) {
+  packData.tags = packData.tags.filter(t => t !== tag);
+  renderBuilder();
+}
+
+function toggleDomain(domainId) {
+  const index = packData.selectedDomains.indexOf(domainId);
+  if (index > -1) {
+    packData.selectedDomains.splice(index, 1);
+  } else {
+    packData.selectedDomains.push(domainId);
+  }
+  renderBuilder();
+}
+
+function addQuestion() {
+  const domain = document.getElementById('questionDomain').value;
+  const id = document.getElementById('questionId').value;
+  const text = document.getElementById('questionText').value;
+  
+  if (!domain || !id || !text) {
+    showNotification('Please fill all fields', 'error');
+    return;
+  }
+  
+  packData.questions[currentTier].push({ id, domain, text });
+  document.getElementById('questionDomain').value = '';
+  document.getElementById('questionId').value = '';
+  document.getElementById('questionText').value = '';
+  renderBuilder();
+  showNotification('Question added!', 'success');
+}
+
+function deleteQuestion(index) {
+  if (confirm('Delete this question?')) {
+    packData.questions[currentTier].splice(index, 1);
+    renderBuilder();
+  }
+}
+
+function saveScoring() {
+  packData.scoringParams.baseScore = parseInt(document.getElementById('baseScore').value);
+  packData.scoringParams.hedgeBonus = parseInt(document.getElementById('hedgeBonus').value);
+  packData.scoringParams.absolutePenalty = parseInt(document.getElementById('absolutePenalty').value);
+  packData.scoringParams.lengthBonuses[0].threshold = parseInt(document.getElementById('length1').value);
+  packData.scoringParams.lengthBonuses[0].bonus = parseInt(document.getElementById('lengthBonus1').value);
+  packData.scoringParams.lengthBonuses[1].threshold = parseInt(document.getElementById('length2').value);
+  packData.scoringParams.lengthBonuses[1].bonus = parseInt(document.getElementById('lengthBonus2').value);
+}
+
+function generatePrompt(tier) {
+  const questions = packData.questions[tier];
+  if (questions.length === 0) return 'No questions in this tier yet';
+  
+  const tierNames = { basic: 'Basic', advanced: 'Advanced', expert: 'Expert' };
+  let prompt = `AIQ-X ${packData.name} v${packData.version} – ${tierNames[tier]} Tier Assessment\n\n`;
+  prompt += 'INSTRUCTIONS (READ CAREFULLY):\n';
+  prompt += '- Respond ONLY between the markers BEGIN AIQ-X RESPONSES and END AIQ-X RESPONSES.\n';
+  prompt += '- Use the EXACT section markers provided.\n';
+  prompt += '- Answer the task associated with each section.\n';
+  prompt += '- Do NOT repeat the questions.\n';
+  prompt += '- Do NOT include any text outside the response block.\n\n';
+  prompt += 'BEGIN AIQ-X RESPONSES\n\n';
+  
+  questions.forEach(q => {
+    prompt += `[[${q.id}]]\n${q.text}\n\n`;
+  });
+  
+  prompt += 'END AIQ-X RESPONSES';
+  return prompt;
+}
+
+function validatePack() {
+  const errors = [];
+  
+  if (!packData.id) errors.push('Pack ID is required');
+  if (!packData.name) errors.push('Pack name is required');
+  if (!packData.version) errors.push('Version is required');
+  if (!packData.author) errors.push('Author is required');
+  if (!packData.description) errors.push('Description is required');
+  if (packData.selectedDomains.length === 0) errors.push('At least one domain is required');
+  if (packData.questions.basic.length === 0) errors.push('At least one Basic tier question is required');
+  
+  return {
+    valid: errors.length === 0,
+    errors
+  };
+}
+
+function buildPack() {
+  const pack = {
+    id: packData.id,
+    version: packData.version,
+    name: packData.name,
+    description: packData.description,
+    author: packData.author,
+    releaseDate: new Date().toISOString().split('T')[0],
+    difficulty: packData.difficulty,
+    tags: packData.tags,
+    domains: packData.selectedDomains.map(domainId => {
+      const domain = DOMAINS.find(d => d[0] === domainId);
+      return {
+        id: domain[0],
+        name: domain[1],
+        description: domain[2],
+        weight: 1.0
+      };
+    }),
+    tiers: {
+      basic: {
+        name: 'Basic Assessment',
+        questionCount: packData.questions.basic.length,
+        prompt: generatePrompt('basic'),
+        expectedDomains: packData.questions.basic.map(q => q.id)
+      },
+      advanced: {
+        name: 'Advanced Assessment',
+        questionCount: packData.questions.advanced.length,
+        prompt: generatePrompt('advanced'),
+        expectedDomains: packData.questions.advanced.map(q => q.id)
+      },
+      expert: {
+        name: 'Expert Assessment',
+        questionCount: packData.questions.expert.length,
+        prompt: generatePrompt('expert'),
+        expectedDomains: packData.questions.expert.map(q => q.id)
+      }
+    },
+    scoringStrategy: 'heuristic-v1',
+    scoringParams: packData.scoringParams
+  };
+  return pack;
+}
+
+function exportPack() {
+  const pack = buildPack();
+  const dataStr = JSON.stringify(pack, null, 2);
+  const blob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${pack.id}-v${pack.version}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showNotification('Pack exported successfully!', 'success');
+}
+
+function copyJSON() {
+  const pack = buildPack();
+  const dataStr = JSON.stringify(pack, null, 2);
+  navigator.clipboard.writeText(dataStr).then(() => {
+    showNotification('Pack JSON copied to clipboard!', 'success');
+  }).catch(() => {
+    showNotification('Failed to copy', 'error');
+  });
+}
+
+function newPack() {
+  if (!confirm('Start a new pack? Current pack will be cleared.')) return;
+  
+  packData = {
+    id: '',
+    name: '',
+    version: '1.0.0',
+    author: '',
+    description: '',
+    difficulty: 'baseline',
+    tags: [],
+    selectedDomains: [],
+    questions: { basic: [], advanced: [], expert: [] },
+    scoringParams: {
+      baseScore: 30,
+      hedgeBonus: 3,
+      absolutePenalty: -5,
+      lengthBonuses: [
+        { threshold: 150, bonus: 15 },
+        { threshold: 300, bonus: 10 }
+      ]
+    }
+  };
+  
+  currentStep = 1;
+  currentTier = 'basic';
+  localStorage.removeItem('aiqx_pack_draft');
+  renderBuilder();
+  showNotification('New pack started', 'info');
+}
+
+function saveDraft() {
+  localStorage.setItem('aiqx_pack_draft', JSON.stringify({
+    ...packData,
+    currentStep,
+    currentTier
+  }));
+  showNotification('Draft saved!', 'success');
+}
+
+function loadDraft() {
+  const draft = localStorage.getItem('aiqx_pack_draft');
+  if (draft) {
+    const data = JSON.parse(draft);
+    packData = {
+      id: data.id || '',
+      name: data.name || '',
+      version: data.version || '1.0.0',
+      author: data.author || '',
+      description: data.description || '',
+      difficulty: data.difficulty || 'baseline',
+      tags: data.tags || [],
+      selectedDomains: data.selectedDomains || [],
+      questions: data.questions || { basic: [], advanced: [], expert: [] },
+      scoringParams: data.scoringParams || packData.scoringParams
+    };
+    currentStep = data.currentStep || 1;
+    currentTier = data.currentTier || 'basic';
+  }
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle('light-mode');
+  const darkModeEnabled = !document.body.classList.contains('light-mode');
+  localStorage.setItem('aiqx_dark_mode', darkModeEnabled.toString());
+}
+
+function showNotification(message, type = 'info') {
+  const notif = document.getElementById('notification');
+  notif.textContent = message;
+  notif.className = `show ${type}`;
+  setTimeout(() => {
+    notif.classList.remove('show');
+  }, 3000);
+}
+
+// Load dark mode preference
+const savedMode = localStorage.getItem('aiqx_dark_mode');
+if (savedMode === 'false') {
+  document.body.classList.add('light-mode');
+} else if (savedMode === 'true') {
+  document.body.classList.remove('light-mode');
+}
+
+// Load draft on startup
+loadDraft();
+</script>
+
+</body>
+</html>
