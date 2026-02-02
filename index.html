@@ -75,11 +75,13 @@
     <div class="info-box info">
       <strong>💡 About Test Packs</strong>
       Test packs contain curated questions to evaluate AI capabilities. Import packs from the /Test-Packs folder to get started, or create custom packs for specialized testing needs using the included aiqx-pack-builder.html app.
-    </div>
+    </div>	
 
     <div class="controls">
-      <button id="btnImportPack">📥 Import Pack</button>
+      <button id="btnImportPack">📥 Import</button>
+	  <button id="btnImportTestPack" onclick="handleDownloadButtonClick()">💾 Download</button>
     </div>
+	<div id="test-pack-list"></div>
     <input type="file" id="importPackFile" style="display: none;" accept=".json">
 
     <h4 style="margin: 0.5rem 0 0.25rem 0; font-size: 0.8rem; color: var(--text);">Installed Packs</h4>

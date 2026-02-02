@@ -1340,6 +1340,106 @@ function clearAllLocalStorage() {
     }
 }
 
+// --- GitHub Integration Configuration ---
+const GITHUB_CONFIG = {
+    username: 'BLGardner',
+    repo: 'aiq-x',
+    branch: 'main', 
+    cacheTime: 600000 // 10 minutes in milliseconds
+};
+
+/**
+ * Fetch the list of test packs from GitHub
+ */
+async function fetchTestPacks() {
+    const cacheKey = 'github_test_packs';
+    const lastFetch = localStorage.getItem('github_test_packs_time');
+    const now = Date.now();
+
+    // 1. Check Cache
+    if (lastFetch && (now - lastFetch < GITHUB_CONFIG.cacheTime)) {
+        return JSON.parse(localStorage.getItem(cacheKey));
+    }
+
+    try {
+        // 2. Fetch all files recursively using the Trees API
+        const url = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/git/trees/${GITHUB_CONFIG.branch}?recursive=1`;
+        const response = await fetch(url);
+        
+        if (!response.ok) throw new Error('GitHub API Limit reached or Repo not found');
+        
+        const data = await response.json();
+
+        // 3. Filter for .json files in the 'test-packs' directory
+        const testPacks = data.tree.filter(file => 
+            file.path.startsWith('Test-Packs/') && 
+            file.path.endsWith('.json')
+        );
+
+        // 4. Store in Cache
+        localStorage.setItem(cacheKey, JSON.stringify(testPacks));
+        localStorage.setItem('github_test_packs_time', now.toString());
+
+        return testPacks;
+    } catch (error) {
+        console.error('Error fetching from GitHub:', error);
+        alert("Could not load online test packs. Try again later.");
+        return [];
+    }
+}
+
+/**
+ * Imports a specific file directly into the app
+ * @param {string} path - The path to the file in the repo
+ */
+async function importFromGitHub(path) {
+    const rawUrl = `https://raw.githubusercontent.com/BLGardner/aiq-x/main/${path}`;
+    
+    try {
+        const response = await fetch(rawUrl);
+        const jsonData = await response.json();
+        APP.importCustomPack(jsonData);
+        console.log("Successfully fetched:", jsonData);
+        alert(`Imported: ${path.split('/').pop()}`);
+        
+    } catch (error) {
+        console.error("Import failed:", error);
+        alert("Failed to import the test pack.");
+    }
+}
+
+async function handleDownloadButtonClick() {
+    const packs = await fetchTestPacks();
+    const container = document.getElementById('test-pack-list'); // Create this div in your HTML
+    container.innerHTML = ''; // Clear previous
+
+    packs.forEach(pack => {
+        const fileName = pack.path.replace('Test-Packs/', '');
+        const item = document.createElement('div');
+        item.className = 'pack-item';
+        item.innerHTML = `<div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; gap: 15px;">
+    
+    <span style="flex-grow: 1; font-family: sans-serif; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+        ${fileName}
+    </span>
+
+    <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+        <button onclick="importFromGitHub('${pack.path}')" 
+                style="padding: 5px 12px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; white-space: nowrap;">
+            Import
+        </button>
+        <a href="https://raw.githubusercontent.com/BLGardner/aiq-x/main/${pack.path}" 
+           download 
+           style="text-decoration: none; font-size: 14px; color: #555; display: flex; align-items: center; gap: 4px;">
+           💾 <span style="font-size: 12px;">Download</span>
+        </a>
+    </div>
+
+</div>`;
+        container.appendChild(item);
+    });
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
   APP.init();
