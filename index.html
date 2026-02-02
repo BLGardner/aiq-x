@@ -74,21 +74,24 @@
     
     <div class="info-box info">
       <strong>💡 About Test Packs</strong>
-      Test packs contain curated questions to evaluate AI capabilities. Import packs from the /Test-Packs folder to get started, or create custom packs for specialized testing needs using the included aiqx-pack-builder.html app.
+      Test packs contain curated questions to evaluate AI capabilities. Import packs from GitHub, download them to your device, or create custom packs using the Pack Builder.
     </div>	
 
     <div class="controls">
-      <button id="btnImportPack">📥 Import</button>
-	  <button id="btnImportTestPack" onclick="handleDownloadButtonClick()">💾 Download</button>
+      <button id="btnImportPack">📥 Import File</button>
+      <button id="btnShowGitHubPacks" onclick="handleDownloadButtonClick()">📦 Show GitHub Packs</button>
     </div>
-	<div id="test-pack-list"></div>
+    
+    <!-- Container for GitHub packs list -->
+    <div id="test-pack-list" style="margin-top: 0.5rem;"></div>
+    
     <input type="file" id="importPackFile" style="display: none;" accept=".json">
 
     <h4 style="margin: 0.5rem 0 0.25rem 0; font-size: 0.8rem; color: var(--text);">Installed Packs</h4>
     <div id="installedPacksList">
       <div class="info-box">
         <strong>No packs installed yet</strong>
-        Click "Import Pack" to load a test pack.
+        Click "Import File" to load a pack from your device, or "Show GitHub Packs" to browse and import from the repository.
       </div>
     </div>
   </section>

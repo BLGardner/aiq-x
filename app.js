@@ -170,12 +170,6 @@ const APP = {
           }
         });
 
-        const builtinConflict = this.installedPacks.find(p => p.id === pack.id);
-        if (builtinConflict) {
-          this.showInlineMessage('importStatus', `❌ Cannot import: Pack ID "${pack.id}" conflicts with built-in pack`, 'error');
-          return;
-        }
-
         const existingCustom = this.customPacks.find(p => p.id === pack.id);
         if (existingCustom) {
           if (!confirm(`Pack "${pack.name}" already exists. Replace it?`)) {
@@ -198,6 +192,69 @@ const APP = {
     };
     reader.readAsText(file);
     event.target.value = '';
+  },
+
+    importCustomPackFromData(packData) {
+    try {
+      const pack = packData;
+
+      // Validate pack structure
+      if (!pack.id || !pack.version || !pack.tiers) {
+        throw new Error('Invalid pack format');
+      }
+
+      // Set defaults for missing fields
+      if (!pack.name) pack.name = `Unnamed Pack (${pack.id})`;
+      if (!pack.author) pack.author = 'Unknown';
+      if (!pack.description) pack.description = 'No description provided';
+      if (!pack.difficulty) pack.difficulty = 'baseline';
+      if (!pack.tags) pack.tags = [];
+      if (!pack.domains) pack.domains = [];
+      if (!pack.scoringParams) {
+        pack.scoringParams = {
+          baseScore: 30,
+          hedgeBonus: 3,
+          absolutePenalty: -5,
+          lengthBonuses: [
+            { threshold: 150, bonus: 15 },
+            { threshold: 300, bonus: 10 }
+          ]
+        };
+      }
+
+      // Extract expected domains if missing
+      ['basic', 'advanced', 'expert'].forEach(tier => {
+        if (pack.tiers[tier] && !pack.tiers[tier].expectedDomains) {
+          pack.tiers[tier].expectedDomains = this.extractDomainsFromPrompt(pack.tiers[tier].prompt);
+        }
+      });
+
+      // Check if already exists in custom packs
+      const existingCustom = this.customPacks.find(p => p.id === pack.id);
+      if (existingCustom) {
+        if (confirm(`Pack "${pack.name}" already exists. Replace it?`)) {
+          const index = this.customPacks.indexOf(existingCustom);
+          this.customPacks[index] = pack;
+          this.save();
+          this.renderPackLibrary();
+          this.showNotification(`✅ Updated: ${pack.name}`, 'success');
+          return true;
+        }
+        return false;
+      }
+
+      // Add new pack
+      this.customPacks.push(pack);
+      this.save();
+      this.renderPackLibrary();
+      this.showNotification(`✅ Imported: ${pack.name}`, 'success');
+      return true;
+
+    } catch (error) {
+      console.error('Import error:', error);
+      this.showNotification(`❌ Failed to import: ${error.message}`, 'error');
+      return false;
+    }
   },
 
   extractDomainsFromPrompt(prompt) {
@@ -787,7 +844,8 @@ const APP = {
   loadData() {
     this.models = JSON.parse(localStorage.getItem('aiqx_models_v4') || '[]');
     this.installedPacks = JSON.parse(localStorage.getItem('aiqx_installed_packs') || '[]');
-
+    this.customPacks = JSON.parse(localStorage.getItem('aiqx_custom_packs') || '[]');
+	
     const savedModel = localStorage.getItem('aiqx_current_model');
     if (savedModel && this.models.find(m => m.name === savedModel)) {
       this.currentModel = savedModel;
@@ -809,7 +867,8 @@ const APP = {
   save() {
     localStorage.setItem('aiqx_models_v4', JSON.stringify(this.models));
     localStorage.setItem('aiqx_installed_packs', JSON.stringify(this.installedPacks));
-
+    localStorage.setItem('aiqx_custom_packs', JSON.stringify(this.customPacks));
+	
     if (this.currentModel) localStorage.setItem('aiqx_current_model', this.currentModel);
     if (this.currentPack) localStorage.setItem('aiqx_current_pack', this.currentPack.id);
     localStorage.setItem('aiqx_current_tier', this.currentTier);
@@ -1370,7 +1429,7 @@ async function fetchTestPacks() {
         
         const data = await response.json();
 
-        // 3. Filter for .json files in the 'test-packs' directory
+        // 3. Filter for .json files in the 'Test-Packs' directory
         const testPacks = data.tree.filter(file => 
             file.path.startsWith('Test-Packs/') && 
             file.path.endsWith('.json')
@@ -1383,61 +1442,132 @@ async function fetchTestPacks() {
         return testPacks;
     } catch (error) {
         console.error('Error fetching from GitHub:', error);
-        alert("Could not load online test packs. Try again later.");
+        APP.showNotification('Could not load online test packs. Try again later.', 'error');
         return [];
     }
 }
 
-/**
- * Imports a specific file directly into the app
- * @param {string} path - The path to the file in the repo
- */
+//Imports a specific file directly into the app
+
 async function importFromGitHub(path) {
-    const rawUrl = `https://raw.githubusercontent.com/BLGardner/aiq-x/main/${path}`;
+    const rawUrl = `https://raw.githubusercontent.com/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${path}`;
     
     try {
         const response = await fetch(rawUrl);
+        if (!response.ok) throw new Error('Failed to fetch pack');
+        
         const jsonData = await response.json();
-        APP.importCustomPack(jsonData);
-        console.log("Successfully fetched:", jsonData);
-        alert(`Imported: ${path.split('/').pop()}`);
+        
+        // Use the new function instead of importCustomPack
+        const success = APP.importCustomPackFromData(jsonData);
+        
+        if (success) {
+            const fileName = path.split('/').pop().replace('.json', '');
+            APP.showNotification(`✅ Imported: ${fileName}`, 'success');
+        }
         
     } catch (error) {
         console.error("Import failed:", error);
-        alert("Failed to import the test pack.");
+        APP.showNotification('❌ Failed to import test pack', 'error');
     }
 }
 
+/**
+ * Downloads a pack file properly (forces download, not browser view)
+ * @param {string} path - The path to the file in the repo
+ */
+async function downloadFromGitHub(path) {
+    const rawUrl = `https://raw.githubusercontent.com/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${path}`;
+    
+    try {
+        // Fetch the file content
+        const response = await fetch(rawUrl);
+        if (!response.ok) throw new Error('Failed to fetch pack');
+        
+        const jsonData = await response.json();
+        
+        // Create a blob and download it
+        const blob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        // Create temporary download link
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = path.split('/').pop(); // Just the filename
+        document.body.appendChild(a);
+        a.click();
+        
+        // Cleanup
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        APP.showNotification(`💾 Downloaded: ${path.split('/').pop()}`, 'success');
+        
+    } catch (error) {
+        console.error("Download failed:", error);
+        APP.showNotification('❌ Failed to download test pack', 'error');
+    }
+}
+
+/**
+ * Displays the list of available test packs from GitHub
+ */
 async function handleDownloadButtonClick() {
+    const container = document.getElementById('test-pack-list');
+    
+    // Show loading state
+    container.innerHTML = '<div class="info-box">Loading test packs from GitHub...</div>';
+    
     const packs = await fetchTestPacks();
-    const container = document.getElementById('test-pack-list'); // Create this div in your HTML
-    container.innerHTML = ''; // Clear previous
+    
+    if (packs.length === 0) {
+        container.innerHTML = '<div class="info-box warning"><strong>⚠️ No packs found</strong><br>Could not load test packs from GitHub. Check your internet connection.</div>';
+        return;
+    }
+    
+    // Clear and rebuild list
+    container.innerHTML = '';
+    
+    // Add header
+    const header = document.createElement('div');
+    header.className = 'info-box success';
+    header.style.marginBottom = '0.5rem';
+    header.innerHTML = `<strong>📦 ${packs.length} Test Packs Available</strong><br>Import directly into AIQ-X or download to your device.`;
+    container.appendChild(header);
 
     packs.forEach(pack => {
-        const fileName = pack.path.replace('Test-Packs/', '');
+        const fileName = pack.path.replace('Test-Packs/', '').replace('Community-Packs/', '');
+        const isCommunity = pack.path.includes('Community-Packs/');
+        
         const item = document.createElement('div');
-        item.className = 'pack-item';
-        item.innerHTML = `<div style="display: flex; align-items: center; justify-content: space-between; padding: 10px; border-bottom: 1px solid #eee; gap: 15px;">
-    
-    <span style="flex-grow: 1; font-family: sans-serif; font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-        ${fileName}
-    </span>
-
-    <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
-        <button onclick="importFromGitHub('${pack.path}')" 
-                style="padding: 5px 12px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; white-space: nowrap;">
-            Import
-        </button>
-        <a href="https://raw.githubusercontent.com/BLGardner/aiq-x/main/${pack.path}" 
-           download 
-           style="text-decoration: none; font-size: 14px; color: #555; display: flex; align-items: center; gap: 4px;">
-           💾 <span style="font-size: 12px;">Download</span>
-        </a>
-    </div>
-
-</div>`;
+        item.className = 'pack-card';
+        item.style.marginBottom = '0.5rem';
+        item.innerHTML = `
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;">
+                <div style="flex: 1; min-width: 0;">
+                    <div style="font-weight: 600; font-size: 0.75rem; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        ${fileName}
+                    </div>
+                    ${isCommunity ? '<div style="font-size: 0.6rem; color: var(--text-secondary);">Community Pack</div>' : ''}
+                </div>
+                <div style="display: flex; gap: 0.25rem; flex-shrink: 0;">
+                    <button onclick="importFromGitHub('${pack.path}')" 
+                            class="secondary"
+                            style="font-size: 0.65rem; padding: 0.3rem 0.5rem;">
+                        📥 Import
+                    </button>
+                    <button onclick="downloadFromGitHub('${pack.path}')" 
+                            class="secondary"
+                            style="font-size: 0.65rem; padding: 0.3rem 0.5rem;">
+                        💾 Download
+                    </button>
+                </div>
+            </div>
+        `;
         container.appendChild(item);
     });
+    
+    APP.showNotification(`Loaded ${packs.length} test packs from GitHub`, 'success');
 }
 
 // Initialize
