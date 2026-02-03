@@ -1,73 +1,196 @@
+# AIQ-X: AI Model Evaluation Suite
 
-# AIQ-X: Advanced AI Evaluation & Diagnostics
-
-AIQ-X is an open-source, local-first diagnostic suite designed to stress-test and benchmark Large Language Models (LLMs) with deterministic precision. Inspired by early conversational AI like Dr. Sbaitso, AIQ-X moves beyond "vibes" to provide a rigorous framework for identifying a model's true "Fit-for-Purpose".
+**Deterministic, privacy-first AI benchmarking that runs entirely in your browser.**
 
 **Live Demo:** [https://blgardner.github.io/aiq-x/](https://blgardner.github.io/aiq-x/)
 
 ---
 
-## 🚀 Why AIQ-X?
+## Why AIQ-X?
 
-Most benchmarks are either static (leaked into training data) or rely on "Judge LLMs" which introduce their own biases. AIQ-X solves this by:
+Most AI benchmarks are either contaminated (models trained on test questions) or use biased AI judges. AIQ-X is different:
 
-- **Deterministic Scoring:** Uses heuristic-based evaluation to reward epistemic calibration and penalize overconfident hallucinations.
-- **Zero-Server Privacy:** Runs entirely in the browser. Your prompts and model responses never leave your `localStorage`.
-- **The Pack Builder:** Includes a specialized tool to create, export, and share custom JSON "Test Packs" for private benchmarking.
-- **Multi-Tier Testing:** From "Basic" (5 mins) to "Expert" (20+ mins) to get high-granularity performance data.
+- **Deterministic Scoring** - Heuristic-based evaluation, no AI judges
+- **Free-Tier Focused** - Tests models as people actually use them (ChatGPT free, Claude free, etc.)
+- **Privacy First** - Runs locally in browser, zero data sent to servers
+- **Copy-Paste Simple** - No API keys, no setup, just copy and paste
 
-### ❓ Why use regex/heuristics, isn't LLM-as-a-judge better?
+---
 
-That’s a fair question. While LLM-as-a-judge (like using GPT-4o to grade Llama) is popular, it creates a 'circular' evaluation problem. You end up measuring how much a model agrees with the judge, not necessarily how correct it is.
+## Quick Start (5 Minutes)
 
-I chose deterministic heuristics (logic markers, epistemic hedging, structure checks) because they are transparent and consistent. They don't cost money, don't require an API, and they provide a 'ground truth' that doesn't change just because the grading model got a version update.
+1. **Visit:** [https://blgardner.github.io/aiq-x/](https://blgardner.github.io/aiq-x/)
+2. **Import a pack:** Click "📦 Show GitHub Packs" → Import "Fit-for-Purpose Assessment"
+3. **Add your model:** Testing tab → "➕ New Model" → Name it (e.g., "ChatGPT Free")
+4. **Run test:** Select Basic tier → Copy prompt → Paste into AI → Copy response back → Analyze
+5. **View results:** Check "🎯 Fit" tab for strengths analysis
 
-## 🛠 Features
+---
 
-- **Fit-for-Purpose Analysis:** Automatically categorizes models by their strengths (Coding, Logic, Creative, etc.).
-- **Cross-Model Parity:** Standardized parameters to ensure you are comparing "apples to apples" across GPT, Claude, Gemini, and local models.
-- **Dark Mode / Responsive UI:** Built for the desktop terminal aesthetic but fully functional on mobile.
+## Features
 
-## 📂 Included Diagnostic Packs
+- **Fit-for-Purpose Analysis** - Identifies each model's strengths (coding, reasoning, writing, etc.)
+- **Multi-Tier Testing** - Basic (5 min), Advanced (15 min), Expert (25 min)
+- **Epistemic Calibration** - Rewards appropriate uncertainty, penalizes overconfidence
+- **Cross-Model Comparison** - Standardized scoring across any AI model
+- **Pack Builder** - Create custom test packs for specialized evaluation
+- **Zero Dependencies** - Pure HTML/CSS/JS, works offline
 
-1. **Fit-for-Purpose:** Broad-spectrum evaluation (Start here).
-2. **Core Capabilities:** The "Gold Standard" baseline (10 essential domains).
-3. **Advanced Reasoning:** Paradox resolution and systems thinking.
-4. **Code Proficiency:** Technical debugging and algorithmic logic.
-5. **Instruction Following & Safety:** Constraint adherence and manipulation resistance.
-6. **Professional Writing:** Ideal for testing models used in workplace contexts.
-7. **Creative Writing:** Great for evaluating creative fiction capabilities.
-8. **Information Processing:** Essential for research and analysis tasks.
-9. **Conversational Intelligence:** Tests dialogue quality.
-10. **Problem-Solving & Critical Thinking:** - A Bonus pack included in the Pack Builder, you can export it immediately! 
+---
 
-## ⚙️ How it Works
+## Test Packs
 
-AIQ-X uses a "Copy-Paste" diagnostic workflow:
-1. **Select a Pack:** Choose your testing domain.
-2. **Interact:** Copy the generated prompt into any AI chat interface.
-3. **Analyze:** Paste the raw response back into AIQ-X. The engine parses the response using marker-based delimiters and scores it based on defined heuristics. You can even copy the entire chat and paste into AIQ-X, it will only analyze the response!
+**Essential (Start Here)**
+- 🎯 **Fit-for-Purpose Assessment** - Broad-spectrum baseline across 8 capability areas
+- ⭐ **Core Capabilities** - Gold standard test covering 10 essential domains
 
-### ❓ Why copy-paste, why not just use an API?
+**Specialized Packs**
+- 🧠 Advanced Reasoning - Systems thinking, paradoxes, metacognition
+- 💻 Code Proficiency - Debugging, algorithms, architecture
+- ✍️ Professional Writing - Business communication, technical docs
+- 🎨 Creative Writing - Fiction, narrative, character development
+- 📊 Information Processing - Research, analysis, synthesis
+- 💬 Conversational Intelligence - Dialogue quality, context handling
+- 🛡️ Instruction & Safety - Constraint adherence, format compliance
+- 🧩 Problem-Solving - Critical thinking, novel solutions
 
-Privacy and flexibility were my main drivers here. Many of us work in environments where we can’t plug our internal data into a third-party benchmarking tool via API.
+All packs available in the repo's `Test-Packs/` folder or via GitHub import in the app.
 
-By using a copy-paste workflow with local storage, AIQ-X never touches a server. It also means you can test any model - even a local Llama instance running in your terminal or a locked-down enterprise chat - without needing to write a single line of integration code.
+---
 
-## 🛠 Development & Customization
+## How It Works
 
-The project is built with vanilla JS/CSS/HTML - no heavy frameworks or dependencies.
+AIQ-X uses **heuristic-based scoring** to evaluate responses:
 
-### Custom Scoring Logic
-You can find the heuristic engine in `app.js`. It rewards/penalizes based on:
-- **Hedge Terms:** Rewarding "potentially," "however," and "it depends."
-- **Absolute Terms:** Penalizing "always," "never," and "certainly" in ambiguous contexts.
-- **Structure:** Verification of formatting and instruction compliance.
+**Rewards:**
+- Hedge terms ("might", "could", "typically") - shows epistemic calibration
+- Structured reasoning ("first", "because", "therefore")
+- Detailed explanations (length, examples, depth)
+
+**Penalizes:**
+- Absolute terms in ambiguous contexts ("always", "never", "certainly")
+- Overconfident assertions without caveats
+- Brief, shallow responses
+
+**Example:**
+```
+❌ "This will ALWAYS work in every case." 
+   Score: 25 (overconfident, no nuance)
+
+✅ "This approach typically works, though edge cases may exist."
+   Score: 48 (appropriate hedging, acknowledges limitations)
+```
+
+---
+
+## Sample Results
+
+```
+🥇 Claude Sonnet 4.5 (Free Tier)
+   Avg: 72.6 • Tested with Fit-for-Purpose Pack
+
+   Top Strengths:
+   • Metacognition: 85 (Self-awareness, uncertainty calibration)
+   • Coding: 78 (Debugging, architecture, algorithms)
+   • Creativity: 75 (Novel solutions, innovative thinking)
+
+   Best For:
+   • Software development and code review
+   • Tasks requiring self-assessment
+   • Creative problem-solving
+
+   📚 Recommended Next Tests:
+   • Advanced Reasoning Pack
+   • Code Proficiency Pack
+```
+
+*All results represent free-tier performance - how most users actually experience these models.*
+
+---
+
+## Pack Builder
+
+Create custom evaluation frameworks with the included **AIQ-X Pack Builder** (`aiqx-pack-builder.html`).
+
+**Use Cases:**
+- Internal company benchmarks
+- Domain-specific testing (medical, legal, financial)
+- Academic research protocols
+- Targeted capability assessments
+
+**Features:**
+- Visual editor for questions and scoring
+- Three-tier system (Basic/Advanced/Expert)
+- JSON export for sharing
+- Pre-loaded with Problem-Solving pack (export immediately!)
+
+---
+
+## FAQ
+
+**Q: Which models can I test?**  
+Any text-based AI with a chat interface. Successfully tested: ChatGPT, Claude, Gemini, DeepSeek, Grok, Mistral, Perplexity, Meta AI, and more.
+
+**Q: Do I need an API key?**  
+No. Works with free web interfaces via copy-paste.
+
+**Q: Is my data private?**  
+Yes. Everything runs in your browser. Data stored only in browser localStorage. Nothing sent to external servers.
+
+**Q: My model scored low. Is it bad?**  
+Not necessarily. Scores measure response style (hedging, structure, depth) not absolute capability. Low scores often indicate overconfident language or brief responses rather than poor reasoning.
+
+**Q: Can I contribute test packs?**  
+Yes! Use the Pack Builder, then submit a PR to `Test-Packs/Community-Packs/`.
+
+---
+
+## Development
+
+Built with vanilla JavaScript - no frameworks, no dependencies.
+
+### Key Files
+- `index.html` - Main interface
+- `app.js` - Core logic and scoring engine
+- `styles.css` - UI styling
+- `aiqx-pack-builder.html` - Pack creation tool
+- `Test-Packs/` - JSON test pack library
+
+### Scoring Logic
+Found in `app.js` - customizable heuristics for:
+- Hedge term detection
+- Absolute term penalties
+- Structure analysis
+- Length/depth bonuses
 
 ### Contributing
-If you create a new Test Pack using the **Pack Builder**, please consider submitting a PR to include it in the `community-packs/` folder!
+PRs welcome! Especially:
+- New test packs for `Community-Packs/`
+- Scoring algorithm improvements
+- UI/UX enhancements
+- Bug fixes
 
-## 📜 License
+---
 
-MIT License - Feel free to use, modify, and distribute.
+## Technical Details
 
+- **Storage:** Browser localStorage (~250KB typical usage, 5MB limit)
+- **Browser Support:** Modern browsers (Chrome, Firefox, Safari, Edge)
+- **Offline:** Fully functional offline after initial load
+- **Mobile:** Responsive design, works on tablets/phones
+
+---
+
+## License
+
+MIT License - Free to use, modify, and distribute.
+
+---
+
+## Acknowledgments
+
+Inspired by the deterministic simplicity of early AI evaluation methods, built for modern LLM testing needs.
+
+**Built by:** [@BLGardner](https://github.com/BLGardner)  
+**Repository:** [https://github.com/BLGardner/aiq-x](https://github.com/BLGardner/aiq-x)  
+**Live Demo:** [https://blgardner.github.io/aiq-x/](https://blgardner.github.io/aiq-x/)

@@ -1532,7 +1532,10 @@ async function handleDownloadButtonClick() {
     const header = document.createElement('div');
     header.className = 'info-box success';
     header.style.marginBottom = '0.5rem';
-    header.innerHTML = `<strong>📦 ${packs.length} Test Packs Available</strong><br>Import directly into AIQ-X or download to your device.`;
+    header.innerHTML = `
+	<button onclick="document.getElementById('test-pack-list').innerHTML = ''" class="secondary" style="font-size: 0.65rem; padding: 0.3rem 0.5rem;">✕ Hide</button>
+	<strong> 📦 ${packs.length} Test Packs Available</strong><br>
+	Import directly into AIQ-X or download to your device.`;
     container.appendChild(header);
 
     packs.forEach(pack => {
