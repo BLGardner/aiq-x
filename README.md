@@ -1,3 +1,4 @@
+
 # AIQ-X: Advanced AI Evaluation & Diagnostics
 
 AIQ-X is an open-source, local-first diagnostic suite designed to stress-test and benchmark Large Language Models (LLMs) with deterministic precision. Inspired by early conversational AI like Dr. Sbaitso, AIQ-X moves beyond "vibes" to provide a rigorous framework for identifying a model's true "Fit-for-Purpose".
@@ -69,3 +70,4 @@ If you create a new Test Pack using the **Pack Builder**, please consider submit
 ## 📜 License
 
 MIT License - Feel free to use, modify, and distribute.
+
