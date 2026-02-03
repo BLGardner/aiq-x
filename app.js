@@ -1533,9 +1533,18 @@ async function handleDownloadButtonClick() {
     header.className = 'info-box success';
     header.style.marginBottom = '0.5rem';
     header.innerHTML = `
-	<button onclick="document.getElementById('test-pack-list').innerHTML = ''" class="secondary" style="font-size: 0.65rem; padding: 0.3rem 0.5rem;">✕ Hide</button>
-	<strong> 📦 ${packs.length} Test Packs Available</strong><br>
-	Import directly into AIQ-X or download to your device.`;
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 0.5rem; margin-bottom: 0;">
+        <div style="flex: 1; line-height: 1.2;">
+            <strong>📦 ${packs.length} Test Packs Available</strong><br>
+            <span style="font-size: 0.65rem;">Import directly into AIQ-X or download to your device.</span>
+        </div>
+        <button onclick="document.getElementById('test-pack-list').innerHTML = ''" 
+                class="secondary" 
+                style="font-size: 0.65rem; padding: 0.3rem 0.5rem; flex-shrink: 0;">
+            ✕ Hide
+        </button>
+    </div>
+`;
     container.appendChild(header);
 
     packs.forEach(pack => {
