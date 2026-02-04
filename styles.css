@@ -386,7 +386,7 @@ textarea {
 
 .pack-tag {
   background: var(--primary);
-  color: white;
+  color: black;
   padding: 0.15rem 0.3rem;
   border-radius: 0.2rem;
   font-size: 0.55rem;
@@ -740,4 +740,5 @@ tr:hover td {
   th, td {
     padding: 0.3rem 0.2rem;
   }
+
 }
