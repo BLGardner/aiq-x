@@ -124,6 +124,8 @@ Create custom evaluation frameworks with the included **AIQ-X Pack Builder** (`a
 - JSON export for sharing
 - Pre-loaded with Problem-Solving pack (export immediately!)
 
+**Access:** Click the "🛠️ Pack Builder" button in the app, or visit directly: [AIQ-X Pack Builder](https://blgardner.github.io/aiq-x/aiqx-pack-builder.html)
+
 ---
 
 ## FAQ
