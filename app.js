@@ -1308,7 +1308,7 @@ toggleDarkMode() {
       installedPacks: this.installedPacks,
       customPacks: this.customPacks,
       exportDate: new Date().toISOString(),
-      version: '4.2'
+      version: 'X'
     };
 
     const dataStr = JSON.stringify(data, null, 2);
